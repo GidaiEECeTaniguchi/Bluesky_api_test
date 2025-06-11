@@ -4,9 +4,8 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import work.socialhub.kbsky.BlueskyFactory;
 
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
@@ -15,12 +14,14 @@ import work.socialhub.kbsky.api.entity.share.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    ServerCreateSessionRequest req = new ServerCreateSessionRequest();
+    public void login() {
 
-    // セッション作成（同期呼び出し）
-    Response<ServerCreateSessionResponse> res = BlueskyFactory
-            .instance(BSKY_SOCIAL_URI)
-            .server()
-            .createSession(req);
-    String accessJwt = res.get().getAccessJwt();
+        // Session Request
+
+        // 1) セッション作成リクエストを組み立て
+        ServerCreateSessionRequest req = new ServerCreateSessionRequest();
+        req.setIdentifier("your-handle.bsky.social");
+        req.setPassword("your-app-password");
+    }
+
 }
