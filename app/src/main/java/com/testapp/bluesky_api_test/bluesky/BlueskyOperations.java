@@ -1,10 +1,15 @@
 package com.testapp.bluesky_api_test.bluesky;
 
 import android.util.Log;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
 import work.socialhub.kbsky.BlueskyTypes;
+import work.socialhub.kbsky.api.entity.app.bsky.graph.GraphGetFollowsRequest;
+import work.socialhub.kbsky.api.entity.app.bsky.graph.GraphGetFollowsResponse;
 import work.socialhub.kbsky.ATProtocolException;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
@@ -16,17 +21,77 @@ import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedPost;
 import work.socialhub.kbsky.model.share.RecordUnion;
+import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
 
 public class BlueskyOperations {
-
     private static final String TAG = "BlueskyOperations";
-
+    private final Bluesky bluesky;
+    public BlueskyOperations() {
+        this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
+    }
+    
     //!!! Bluesky認証情報 - 必ず実際の値に置き換えてください!!!
     //!!! 注意: アプリ内に認証情報をハードコードするのはセキュリティ上非常に危険です。
     //!!! これはあくまでテスト用であり、実際の製品では絶対に行わないでください。
-    private final String blueskyHandle = "YOUR_HANDLE_OR_EMAIL";
-    private final String blueskyPassword = "YOUR_PASSWORD";
+    private final String blueskyHandle = "galzetilraim@gmail.com";
+    private final String blueskyPassword = ";%Cd6,!?$k_D.6-";
+      // ログイン処理を共通メソッド化
+    private BearerTokenAuthProvider getLoginAuthProvider() throws Exception {
+        if ("YOUR_HANDLE_OR_EMAIL".equals(blueskyHandle)) {
+            throw new IllegalStateException("認証情報を設定してください。");
+        }
+        ServerCreateSessionRequest sessionRequest = new ServerCreateSessionRequest();
+        sessionRequest.setIdentifier(blueskyHandle);
+        sessionRequest.setPassword(blueskyPassword);
+        Log.d(TAG, blueskyHandle + " としてログイン試行中...");
+        Response<ServerCreateSessionResponse> sessionResponse = bluesky.server().createSession(sessionRequest);
+        ServerCreateSessionResponse sessionData = sessionResponse.getData();
+        return new BearerTokenAuthProvider(
+                sessionData.getAccessJwt(),
+                sessionData.getRefreshJwt()
+        );
+    }
+    public String fetchRandomFollowingUserHandle() {
+        try {
+            // 認証処理
+            BearerTokenAuthProvider authProvider = getLoginAuthProvider();
 
+            List<ActorDefsProfileView> allFollows = new ArrayList<>();
+            String cursor = null;
+
+            Log.d(TAG, "フォローリストを取得中...");
+            // 全てのフォローリストを取得するまでループ
+            do {
+                GraphGetFollowsRequest request = new GraphGetFollowsRequest(authProvider);
+                request.setActor(authProvider.getDid());
+                request.setLimit(100);
+                request.setCursor(cursor);
+
+                Response<GraphGetFollowsResponse> response = bluesky.graph().getFollows(request);
+                if (response.getData().getFollows() != null) {
+                    allFollows.addAll(response.getData().getFollows());
+                }
+                cursor = response.getData().getCursor();
+
+            } while (cursor != null && !cursor.isEmpty());
+
+            Log.d(TAG, "合計 " + allFollows.size() + " 人のフォローを取得しました。");
+
+            if (allFollows.isEmpty()) {
+                return "フォローしているユーザーがいません。";
+            }
+
+            // リストからランダムに1人を選択
+            Random random = new Random();
+            ActorDefsProfileView randomUser = allFollows.get(random.nextInt(allFollows.size()));
+
+            return "→ @" + randomUser.getHandle();
+
+        } catch (Exception e) {
+            Log.e(TAG, "フォローリストの取得に失敗", e);
+            return "エラー: " + e.getMessage();
+        }
+    }
     public BlueskyPostInfo fetchFirstTimelinePostInfo() {
         if ("YOUR_HANDLE_OR_EMAIL".equals(blueskyHandle) || "YOUR_PASSWORD".equals(blueskyPassword)) {
             Log.e(TAG, "Bluesky認証情報が設定されていません。");
@@ -34,24 +99,11 @@ public class BlueskyOperations {
         }
 
         try {
-            Bluesky bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social"); // [1]
+           
 
-            // 1. セッションを作成 (ログイン)
-            ServerCreateSessionRequest sessionRequest = new ServerCreateSessionRequest(); // [1]
-            sessionRequest.setIdentifier(blueskyHandle);
-            sessionRequest.setPassword(blueskyPassword);
-
-            Log.d(TAG, blueskyHandle + " としてログイン試行中...");
-            Response<ServerCreateSessionResponse> sessionResponse = bluesky.server().createSession(sessionRequest); // [1]
-            ServerCreateSessionResponse sessionData = sessionResponse.getData(); // [1]
-            Log.d(TAG, "ログイン成功。DID: " + sessionData.getDid());
-
+            
             // 2. BearerTokenAuthProvider を作成
-            BearerTokenAuthProvider authProvider = new BearerTokenAuthProvider( // [1]
-                    sessionData.getAccessJwt(),
-                    sessionData.getRefreshJwt()
-            );
-
+            BearerTokenAuthProvider authProvider = getLoginAuthProvider();
             // 3. タイムライン取得リクエストを作成
             FeedGetTimelineRequest timelineRequest = new FeedGetTimelineRequest(authProvider); // [1]
             timelineRequest.setLimit(1); // タイムラインから最新の投稿を1件だけ取得

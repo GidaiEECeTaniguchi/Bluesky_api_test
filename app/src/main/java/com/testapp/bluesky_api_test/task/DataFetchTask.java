@@ -48,10 +48,18 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
         publishProgress(resultBuilder.toString());
 
         // 2. Bluesky API操作
+        publishProgress(resultBuilder.toString() + "フォローリストを取得中...");
+        
+        // BlueskyOperationsの新しいメソッドを呼び出す
+        String randomUserInfo = blueskyOperations.fetchRandomFollowingUserHandle();
+        
+        resultBuilder.append("ランダムに選ばれたフォロー中のユーザー:\n");
+        resultBuilder.append(randomUserInfo); // メソッドからの戻り値を直接追加
+        /* 
         resultBuilder.append("Blueskyタイムライン情報:\n");
         BlueskyPostInfo postInfo = blueskyOperations.fetchFirstTimelinePostInfo();
         resultBuilder.append(postInfo.toString()).append("\n");
-
+         */
         // publishProgressで最終結果をUIスレッドに送信することも可能ですが、
         // doInBackgroundの戻り値として返し、onPostExecuteで処理する方が一般的です。
         // ここでは最終結果を戻り値として返します。

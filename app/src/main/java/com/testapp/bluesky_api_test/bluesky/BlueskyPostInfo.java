@@ -49,12 +49,12 @@ public class BlueskyPostInfo {
 
     @Override
     public String toString() {
-        if (!isSuccess()) {
-            return "Bluesky APIエラー: " + error;
+        if (isSuccess()) {
+            return "投稿者: @" + authorHandle + "\n"
+                    + "テキスト: " + text + "\n" // ここで全文を表示
+                    + "文字数: " + charCount;
+        } else {
+            return "エラー: " + error;
         }
-        return "投稿者: @" + authorHandle + "\n" +
-                "投稿URI: " + postUri + "\n" +
-                "テキスト: " + text + "\n" +
-                "文字数: " + charCount;
     }
 }
