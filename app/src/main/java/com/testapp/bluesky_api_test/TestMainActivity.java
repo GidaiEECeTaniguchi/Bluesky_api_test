@@ -1,37 +1,38 @@
 package com.testapp.bluesky_api_test;
 
 import androidx.appcompat.app.AppCompatActivity;
-// Room関連のimportは既存のまま
-// import androidx.room.Room;
-// import androidx.room.RoomDatabase;
+
 
 import android.app.Activity;
 import android.os.Bundle;
-// import android.util.Log; // 必要に応じて
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-// import android.widget.Toast; // DataFetchTask内で処理
+
 
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.task.DataFetchTask; // 新しいタスククラスをインポート
-
+import com.testapp.bluesky_api_test.repository.AuthRepository;
 // Rクラスのimportはプロジェクト構成によって変わる可能性があります
 // import com.testapp.bluesky_api_test.R;
 
 import java.lang.ref.WeakReference;
-// import java.sql.Timestamp; // DatabaseOperationsへ移動
-// import java.util.List; // DatabaseOperationsへ移動
+
 
 // kbskyライブラリのimportはBlueskyOperationsへ移動
 
-public class MainActivity extends AppCompatActivity {
+public class TestMainActivity extends AppCompatActivity {
 
-    // private static final String TAG = "MainActivity"; // 必要に応じて
+    private static final String TAG = "TestMainActivity"; // 必要に応じて
 
     private TextView tvInfo;
     private AppDatabase appDb;
+
+
+    public TestMainActivity(AuthRepository authRepository) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,18 +50,19 @@ public class MainActivity extends AppCompatActivity {
         private final WeakReference<Activity> activityReference;
         private final AppDatabase db;
         private final TextView tv;
+        private final AuthRepository authRepository;
 
         private ButtonClickListener(Activity activity, AppDatabase db, TextView tv) {
             this.activityReference = new WeakReference<>(activity);
             this.db = db;
             this.tv = tv;
+            this.authRepository = new AuthRepository(activity.getApplicationContext());
         }
 
         @Override
         public void onClick(View view) {
             Activity activity = activityReference.get();
-            if (activity!= null &&!activity.isFinishing()) {
-                new DataFetchTask(activity, db, tv).execute();
+            if (activity!= null &&!activity.isFinishing()) {new DataFetchTask(activity,authRepository,tv).execute();
             }
         }
     }

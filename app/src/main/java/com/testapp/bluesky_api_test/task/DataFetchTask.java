@@ -9,20 +9,21 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 import com.testapp.bluesky_api_test.DataBaseManupilate.DatabaseOperations;
-
+import com.testapp.bluesky_api_test.repository.BlueskyRepository;
 import java.lang.ref.WeakReference;
-
+import com.testapp.bluesky_api_test.repository.AuthRepository; // AuthRepositoryをインポート
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider; // AuthProviderをインポート
 public class DataFetchTask extends AsyncTask<Void, String, String> {
 
     private final WeakReference<Activity> weakActivity;
-    private final DatabaseOperations databaseOperations;
-    private final BlueskyOperations blueskyOperations;
+    private final BlueskyRepository repository;
+    private final AuthRepository authRepository;
     private final TextView textViewToUpdate;
 
-    public DataFetchTask(Activity activity, AppDatabase db, TextView textView) {
+    public DataFetchTask(Activity activity, AuthRepository authRepository, TextView textView) {
         this.weakActivity = new WeakReference<>(activity);
-        this.databaseOperations = new DatabaseOperations(db);
-        this.blueskyOperations = new BlueskyOperations();
+        this.repository = new BlueskyRepository(activity.getApplicationContext());
+        this.authRepository = authRepository;
         this.textViewToUpdate = textView;
     }
 
@@ -41,20 +42,23 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
         StringBuilder resultBuilder = new StringBuilder();
 
         // 1. DB操作
-        String dbHistory = databaseOperations.recordAccessAndGetHistory();
+        String dbHistory = repository.getAccessHistory();
         resultBuilder.append(dbHistory);
         resultBuilder.append("-----------------------------------\n");
         // publishProgressで現在の結果をUIスレッドに送信
         publishProgress(resultBuilder.toString());
-
-        // 2. Bluesky API操作
-        publishProgress(resultBuilder.toString() + "フォローリストを取得中...");
-        
-        // BlueskyOperationsの新しいメソッドを呼び出す
-        String randomUserInfo = blueskyOperations.fetchRandomFollowingUserHandle();
-        
+        BearerTokenAuthProvider authProvider = authRepository.getAuthProvider();
+        String did = authRepository.getDid();
+        // ログインしていない場合はエラーメッセージを表示して終了
+        if (authProvider == null || did == null) {
+            resultBuilder.append("ログインしていません。\nログイン画面からログインしてください。");
+            return resultBuilder.toString();
+        }
+        // 2. RepositoryにBlueskyの情報を要求
+        publishProgress(resultBuilder.toString() + "Blueskyの情報を取得中...");
+        String randomUserInfo = repository.getRandomFollowingUserInfo();
         resultBuilder.append("ランダムに選ばれたフォロー中のユーザー:\n");
-        resultBuilder.append(randomUserInfo); // メソッドからの戻り値を直接追加
+        resultBuilder.append(randomUserInfo);
         /* 
         resultBuilder.append("Blueskyタイムライン情報:\n");
         BlueskyPostInfo postInfo = blueskyOperations.fetchFirstTimelinePostInfo();
