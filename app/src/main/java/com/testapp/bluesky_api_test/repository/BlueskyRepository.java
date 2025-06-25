@@ -18,7 +18,7 @@ public class BlueskyRepository {
     private final BlueskyOperations blueskyOperations;
     private final AuthRepository authRepository;
     public BlueskyRepository(Context context) {
-        // DB担当とAPI担当のクラスを初期化して保持する
+        // DB担当クラスを初期化して保持する
 
 
         this.blueskyOperations = new BlueskyOperations();

@@ -3,10 +3,11 @@ package com.testapp.bluesky_api_test.bluesky;
 public class BlueskyPostInfo {
     private final String authorHandle;
     private final String postUri;
-    private final String text;
+    private final String text; //投稿本文
     private final int charCount;
     private final String error; // エラー情報を保持
 
+    //Constructor
     public BlueskyPostInfo(String authorHandle, String postUri, String text, int charCount) {
         this.authorHandle = authorHandle;
         this.postUri = postUri;

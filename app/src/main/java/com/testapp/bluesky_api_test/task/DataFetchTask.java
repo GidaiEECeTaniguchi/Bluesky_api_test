@@ -59,9 +59,6 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
         BlueskyPostInfo postInfo = blueskyOperations.fetchFirstTimelinePostInfo();
         resultBuilder.append(postInfo.toString()).append("\n");
          */
-        // publishProgressで最終結果をUIスレッドに送信することも可能ですが、
-        // doInBackgroundの戻り値として返し、onPostExecuteで処理する方が一般的です。
-        // ここでは最終結果を戻り値として返します。
         return resultBuilder.toString();
     }
 

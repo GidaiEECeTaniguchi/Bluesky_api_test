@@ -31,9 +31,7 @@ public class BlueskyOperations {
         this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
     }
     
-    //!!! Bluesky認証情報 - 必ず実際の値に置き換えてください!!!
-    //!!! 注意: アプリ内に認証情報をハードコードするのはセキュリティ上非常に危険です。
-    //!!! これはあくまでテスト用であり、実際の製品では絶対に行わないでください。
+
     /**
      * フォローリストからランダムに1人を選ぶメソッド。
      * @param authProvider 認証済みのAuthProvider（外部から渡される）
