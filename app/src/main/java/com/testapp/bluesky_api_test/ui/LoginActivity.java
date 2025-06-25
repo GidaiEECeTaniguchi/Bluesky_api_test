@@ -2,20 +2,17 @@ package com.testapp.bluesky_api_test.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar; // ProgressBarを追加するとより良い
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.testapp.bluesky_api_test.TestMainActivity;
+import com.testapp.bluesky_api_test.ui.MainActivity;
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.viewmodel.LoginViewModel;
-import com.testapp.bluesky_api_test.viewmodel.LoginViewModel.LoginResult;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -93,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navigateToMain() {
-        Intent intent = new Intent(LoginActivity.this, TestMainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish(); // ログイン画面に戻らないように終了する
     }

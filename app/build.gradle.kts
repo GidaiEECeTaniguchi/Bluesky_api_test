@@ -68,4 +68,15 @@ dependencies {
     //annotationProcessor(libs.room.compiler)
     kapt(libs.room.compiler)
     // ======================
+
+    // Navigation Component
+    val lifecycle_version = "2.6.2" // 最新バージョンは適宜確認してください
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+
+    // Navigation Component (今回のHome画面で必要)
+    val nav_version = "2.7.7" // 最新バージョンは適宜確認してください
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
 }

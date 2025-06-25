@@ -3,11 +3,8 @@ package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
 
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
-import com.testapp.bluesky_api_test.DataBaseManupilate.DatabaseOperations;
 
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
@@ -17,13 +14,13 @@ import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
  */
 public class BlueskyRepository {
 
-    private final DatabaseOperations databaseOperations;
+
     private final BlueskyOperations blueskyOperations;
     private final AuthRepository authRepository;
     public BlueskyRepository(Context context) {
         // DB担当とAPI担当のクラスを初期化して保持する
-        AppDatabase db = AppDatabaseSingleton.getInstance(context.getApplicationContext());
-        this.databaseOperations = new DatabaseOperations(db);
+
+
         this.blueskyOperations = new BlueskyOperations();
         this.authRepository = new AuthRepository(context);
     }
@@ -33,9 +30,7 @@ public class BlueskyRepository {
      * 内部でDatabaseOperationsを呼び出す。
      * @return DBの全アクセス履歴
      */
-    public String getAccessHistory() {
-        return databaseOperations.recordAccessAndGetHistory();
-    }
+
     private BearerTokenAuthProvider getLoginAuthProvider() {
         BearerTokenAuthProvider authProvider = authRepository.getAuthProvider();
         if (authProvider == null) {

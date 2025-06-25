@@ -5,10 +5,6 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
-import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
-import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
-import com.testapp.bluesky_api_test.DataBaseManupilate.DatabaseOperations;
 import com.testapp.bluesky_api_test.repository.BlueskyRepository;
 import java.lang.ref.WeakReference;
 import com.testapp.bluesky_api_test.repository.AuthRepository; // AuthRepositoryをインポート
@@ -41,9 +37,8 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
     protected String doInBackground(Void... voids) {
         StringBuilder resultBuilder = new StringBuilder();
 
-        // 1. DB操作
-        String dbHistory = repository.getAccessHistory();
-        resultBuilder.append(dbHistory);
+
+
         resultBuilder.append("-----------------------------------\n");
         // publishProgressで現在の結果をUIスレッドに送信
         publishProgress(resultBuilder.toString());
