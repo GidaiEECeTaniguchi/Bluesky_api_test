@@ -5,6 +5,7 @@ import androidx.room.ForeignKey;
 import androidx.room.ColumnInfo;
 
 @Entity(
+    primaryKeys = {"group_id", "tag_id"},
 	foreignKeys = {
 		@ForeignKey(
 			entity = GroupEntity.class,

@@ -16,4 +16,9 @@
         android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="プロフィール" />
 
+    <item
+        android:id="@+id/navigation_group_list"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="グループ" />
+
 </menu>

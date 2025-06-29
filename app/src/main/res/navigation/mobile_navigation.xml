@@ -23,4 +23,10 @@
         android:label="プロフィール"
         tools:layout="@layout/fragment_profile" />
 
+    <fragment
+        android:id="@+id/navigation_group_list"
+        android:name="com.testapp.bluesky_api_test.ui.fragment.GroupListFragment"
+        android:label="グループ"
+        tools:layout="@layout/fragment_group_list" />
+
 </navigation>

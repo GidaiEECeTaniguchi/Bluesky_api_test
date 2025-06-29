@@ -7,6 +7,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.*;
 @Database(
         entities = {
                 User.class,
+                Author.class,
                 GroupEntity.class,  // ← 旧 Group
                 BasePost.class,
                 Tag.class,
@@ -17,11 +18,12 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.*;
                 GroupRewrite.class,
                 GroupRef.class
         },
-        version = 1,
+        version = 2, // Increment the version
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase{
     public abstract UserDao userDao();
+    public abstract AuthorDao authorDao();
     public abstract GroupEntityDao groupEntityDao();
     public abstract BasePostDao basePostDao();
     public abstract TagDao tagDao();

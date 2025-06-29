@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
 @Entity(
+    primaryKeys = {"post_id", "tag_id"},
 	foreignKeys = {
 		@ForeignKey(
 			entity = BasePost.class,

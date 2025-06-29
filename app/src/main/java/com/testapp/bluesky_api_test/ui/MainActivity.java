@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // 各メニューIDをトップレベルの遷移先として設定します。
         // これにより、戻るボタンの挙動が適切に管理されます。
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_notifications, R.id.navigation_profile)
+                R.id.navigation_home, R.id.navigation_notifications, R.id.navigation_profile, R.id.navigation_group_list)
                 .build();
 
         // Fragmentの表示領域(nav_host_fragment)を管理するNavControllerを取得
