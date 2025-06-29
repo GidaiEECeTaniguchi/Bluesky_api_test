@@ -1,0 +1,99 @@
+package com.testapp.bluesky_api_test.repository;
+
+import android.content.Context;
+import android.util.Log;
+
+import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
+import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
+import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
+
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
+
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class AuthorRepository {
+
+    private static final String TAG = "AuthorRepository";
+    private final BlueskyOperations blueskyOperations;
+    private final AuthorDao authorDao;
+    private final ExecutorService executorService;
+
+    public AuthorRepository(Context context) {
+        this.blueskyOperations = new BlueskyOperations();
+        AppDatabase db = AppDatabaseSingleton.getInstance(context);
+        this.authorDao = db.authorDao();
+        this.executorService = Executors.newSingleThreadExecutor();
+    }
+
+    /**
+     * Bluesky APIからフォローしている全ユーザーのリストを取得します。
+     * @param authProvider 認証プロバイダー
+     * @param userDid ユーザーのDID
+     * @return フォローしているユーザーのリスト
+     */
+    public List<ActorDefsProfileView> fetchAllFollowingUsersFromApi(BearerTokenAuthProvider authProvider, String userDid) {
+        return blueskyOperations.fetchAllFollowingUsers(authProvider, userDid);
+    }
+
+    /**
+     * 単一のAuthorをデータベースに挿入します。
+     * 既に存在するhandleまたはdidを持つAuthorは挿入されません。
+     * @param author 挿入するAuthorオブジェクト
+     */
+    public void insertAuthorToDb(Author author) {
+        executorService.execute(() -> {
+            try {
+                Author existingAuthorByHandle = authorDao.getAuthorByHandle(author.getHandle());
+                Author existingAuthorByDid = authorDao.getAuthorByDid(author.getDid());
+
+                if (existingAuthorByHandle == null && existingAuthorByDid == null) {
+                    long id = authorDao.insert(author);
+                    Log.d(TAG, "Author inserted with ID: " + id + ", Handle: " + author.getHandle());
+                } else {
+                    Log.d(TAG, "Author already exists: " + author.getHandle() + " or " + author.getDid());
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "Error inserting author: " + author.getHandle(), e);
+            }
+        });
+    }
+
+    /**
+     * ActorDefsProfileViewのリストをAuthorテーブルに保存します。
+     * @param profileViews 保存するActorDefsProfileViewのリスト
+     */
+    public void saveFollowingAuthorsToDb(List<ActorDefsProfileView> profileViews) {
+        executorService.execute(() -> {
+            for (ActorDefsProfileView profileView : profileViews) {
+                if (profileView.getHandle() != null && profileView.getDid() != null) {
+                    Author author = new Author(profileView.getHandle(), profileView.getDid());
+                    insertAuthorToDb(author);
+                } else {
+                    Log.w(TAG, "Skipping author due to null handle or DID: " + profileView);
+                }
+            }
+            Log.d(TAG, "Finished saving following authors to DB.");
+        });
+    }
+
+    /**
+     * データベースからAuthorを取得します。
+     * @param handle Authorのハンドル
+     * @return 該当するAuthorオブジェクト、またはnull
+     */
+    public Author getAuthorByHandleFromDb(String handle) {
+        return authorDao.getAuthorByHandle(handle);
+    }
+
+    /**
+     * ExecutorServiceをシャットダウンします。
+     */
+    public void shutdown() {
+        executorService.shutdown();
+    }
+}

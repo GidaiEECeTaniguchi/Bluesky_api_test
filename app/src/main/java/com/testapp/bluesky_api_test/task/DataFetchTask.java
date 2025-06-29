@@ -5,21 +5,31 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.testapp.bluesky_api_test.repository.BlueskyRepository;
+import com.testapp.bluesky_api_test.repository.AuthorRepository;
+import com.testapp.bluesky_api_test.repository.PostRepository;
+import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
+
 import java.lang.ref.WeakReference;
-import com.testapp.bluesky_api_test.repository.AuthRepository; // AuthRepositoryをインポート
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider; // AuthProviderをインポート
+import com.testapp.bluesky_api_test.repository.AuthRepository;
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
+
+import java.util.List;
+import java.util.Random;
+
 public class DataFetchTask extends AsyncTask<Void, String, String> {
 
     private final WeakReference<Activity> weakActivity;
-    private final BlueskyRepository repository;
     private final AuthRepository authRepository;
+    private final AuthorRepository authorRepository;
+    private final PostRepository postRepository;
     private final TextView textViewToUpdate;
 
     public DataFetchTask(Activity activity, AuthRepository authRepository, TextView textView) {
         this.weakActivity = new WeakReference<>(activity);
-        this.repository = new BlueskyRepository(activity.getApplicationContext());
         this.authRepository = authRepository;
+        this.authorRepository = new AuthorRepository(activity.getApplicationContext());
+        this.postRepository = new PostRepository(activity.getApplicationContext());
         this.textViewToUpdate = textView;
     }
 
@@ -37,28 +47,45 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
     protected String doInBackground(Void... voids) {
         StringBuilder resultBuilder = new StringBuilder();
 
-
-
         resultBuilder.append("-----------------------------------\n");
-        // publishProgressで現在の結果をUIスレッドに送信
         publishProgress(resultBuilder.toString());
+
         BearerTokenAuthProvider authProvider = authRepository.getAuthProvider();
         String did = authRepository.getDid();
-        // ログインしていない場合はエラーメッセージを表示して終了
+
         if (authProvider == null || did == null) {
             resultBuilder.append("ログインしていません。\nログイン画面からログインしてください。");
             return resultBuilder.toString();
         }
-        // 2. RepositoryにBlueskyの情報を要求
+
         publishProgress(resultBuilder.toString() + "Blueskyの情報を取得中...");
-        String randomUserInfo = repository.getRandomFollowingUserInfo();
-        resultBuilder.append("ランダムに選ばれたフォロー中のユーザー:\n");
-        resultBuilder.append(randomUserInfo);
-        /* 
-        resultBuilder.append("Blueskyタイムライン情報:\n");
-        BlueskyPostInfo postInfo = blueskyOperations.fetchFirstTimelinePostInfo();
-        resultBuilder.append(postInfo.toString()).append("\n");
-         */
+
+        // フォローしているユーザーをランダムに取得
+        List<ActorDefsProfileView> allFollows = authorRepository.fetchAllFollowingUsersFromApi(authProvider, did);
+        if (!allFollows.isEmpty()) {
+            Random random = new Random();
+            ActorDefsProfileView randomUser = allFollows.get(random.nextInt(allFollows.size()));
+            resultBuilder.append("ランダムに選ばれたフォロー中のユーザー:\n");
+            resultBuilder.append("→ @" + randomUser.getHandle()).append("\n");
+        } else {
+            resultBuilder.append("フォローしているユーザーがいません。\n");
+        }
+
+        // タイムラインの最初の投稿情報を取得
+        try {
+            List<BlueskyPostInfo> timeline = postRepository.fetchTimelineFromApi(authProvider);
+            if (!timeline.isEmpty()) {
+                BlueskyPostInfo firstPost = timeline.get(0);
+                resultBuilder.append("Blueskyタイムライン情報:\n");
+                resultBuilder.append(firstPost.toString()).append("\n");
+            } else {
+                resultBuilder.append("タイムラインに投稿がありません。\n");
+            }
+        } catch (Exception e) {
+            resultBuilder.append("タイムライン取得エラー: " + e.getMessage()).append("\n");
+            Log.e("DataFetchTask", "タイムライン取得エラー", e);
+        }
+
         return resultBuilder.toString();
     }
 
@@ -66,9 +93,7 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
     protected void onProgressUpdate(String... values) {
         super.onProgressUpdate(values);
         Activity activity = weakActivity.get();
-        // valuesがnullでなく、要素が存在することを確認
         if (activity!= null &&!activity.isFinishing() && values!= null && values.length > 0) {
-            // 配列の最初の要素をTextViewに設定
             textViewToUpdate.setText(values[0]);
         }
     }
@@ -82,7 +107,6 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
             if (result!= null) {
                 textViewToUpdate.setText(result);
             } else {
-                // doInBackgroundでエラーが発生した場合など、resultがnullになる可能性も考慮
                 textViewToUpdate.append("\n最終結果の取得に失敗しました。");
             }
         }
