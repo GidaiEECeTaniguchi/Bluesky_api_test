@@ -16,6 +16,7 @@ import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
 
 import java.util.List;
 import java.util.Random;
+import android.util.Log;
 
 public class DataFetchTask extends AsyncTask<Void, String, String> {
 

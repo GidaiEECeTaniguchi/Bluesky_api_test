@@ -10,7 +10,13 @@ import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
+import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
+import work.socialhub.kbsky.model.app.bsky.feed.FeedPost;
+import work.socialhub.kbsky.model.share.RecordUnion;
+import work.socialhub.kbsky.BlueskyTypes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PostRepository {
@@ -31,7 +37,8 @@ public class PostRepository {
      * @throws Exception API呼び出し中にエラーが発生した場合
      */
     public List<BlueskyPostInfo> fetchTimelineFromApi(BearerTokenAuthProvider authProvider) throws Exception {
-        return blueskyOperations.fetchTimeline(authProvider);
+        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchTimeline(authProvider);
+        return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
     /**
@@ -42,7 +49,8 @@ public class PostRepository {
      * @throws Exception API呼び出し中にエラーが発生した場合
      */
     public List<BlueskyPostInfo> fetchAuthorFeedFromApi(BearerTokenAuthProvider authProvider, String actorIdentifier) throws Exception {
-        return blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
+        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
+        return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
     /**
@@ -69,5 +77,24 @@ public class PostRepository {
      */
     public BasePost getPostByIdFromDb(int id) {
         return basePostDao.getById(id);
+    }
+
+    private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
+        List<BlueskyPostInfo> blueskyPostInfos = new ArrayList<>();
+        for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {
+            FeedDefsPostView postView = feedViewPost.getPost();
+            if (postView != null && postView.getRecord() != null) {
+                RecordUnion record = postView.getRecord();
+                if (BlueskyTypes.FeedPost.equals(record.getType())) {
+                    FeedPost postContent = (FeedPost) record;
+                    String postText = postContent.getText() != null ? postContent.getText() : "";
+                    int charCount = postText.length();
+                    String authorHandle = postView.getAuthor().getHandle();
+                    String postUri = postView.getUri();
+                    blueskyPostInfos.add(new BlueskyPostInfo(authorHandle, postUri, postText, charCount));
+                }
+            }
+        }
+        return blueskyPostInfos;
     }
 }
