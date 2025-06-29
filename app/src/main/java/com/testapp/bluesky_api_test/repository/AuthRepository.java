@@ -9,11 +9,6 @@ import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionReq
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
-import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
-import com.testapp.bluesky_api_test.DataBaseManupilate.AuthorDatabaseOperations;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class AuthRepository {
 
@@ -25,16 +20,10 @@ public class AuthRepository {
 
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
-    private final BlueskyOperations blueskyOperations;
-    private final AuthorDatabaseOperations authorDatabaseOperations;
-    private final ExecutorService executorService;
 
     public AuthRepository(Context context) {
         this.sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
-        this.blueskyOperations = new BlueskyOperations();
-        this.authorDatabaseOperations = new AuthorDatabaseOperations(context);
-        this.executorService = Executors.newSingleThreadExecutor();
     }
 
     // ログイン処理
@@ -54,16 +43,6 @@ public class AuthRepository {
         editor.putString(KEY_HANDLE, data.getHandle());
 
         editor.apply();
-
-        // ログイン成功後、フォローしているユーザーをデータベースに保存
-        executorService.execute(() -> {
-            try {
-                BearerTokenAuthProvider authProvider = new BearerTokenAuthProvider(data.getAccessJwt(), data.getRefreshJwt());
-                authorDatabaseOperations.saveFollowingAuthors(blueskyOperations.fetchAllFollowingUsers(authProvider, data.getDid()));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     // ログアウト処理
