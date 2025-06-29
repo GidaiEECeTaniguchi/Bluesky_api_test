@@ -189,7 +189,7 @@ public class BlueskyOperations {
                     FeedDefsPostView postView = feedViewPost.getPost();
                     if(postView != null && postView.getRecord() !=null){
                         RecordUnion record = postView.getRecord();
-                        if(BlueskyTypes.FeedPost.equals(record.getType()))){
+                        if(BlueskyTypes.FeedPost.equals(record.getType())){
                             FeedPost postContent = (FeedPost) record;
                             String postText = postContent.getText() != null ? postContent.getText():"";
                             int charCount = postContent.getText().length();
