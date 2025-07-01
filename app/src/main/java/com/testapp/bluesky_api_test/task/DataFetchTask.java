@@ -62,7 +62,7 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
         publishProgress(resultBuilder.toString() + "Blueskyの情報を取得中...");
 
         // フォローしているユーザーをランダムに取得
-        List<ActorDefsProfileView> allFollows = authorRepository.fetchAllFollowingUsersFromApi(authProvider, did);
+        List<ActorDefsProfileView> allFollows = authorRepository.fetchAndSaveFollowingFromApi(authProvider, did);
         if (!allFollows.isEmpty()) {
             Random random = new Random();
             ActorDefsProfileView randomUser = allFollows.get(random.nextInt(allFollows.size()));

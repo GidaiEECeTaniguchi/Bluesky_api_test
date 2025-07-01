@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Index;
 
 @Entity(
     tableName = "base_posts",
@@ -20,12 +21,19 @@ import androidx.room.ColumnInfo;
             childColumns = "author_id",
             onDelete = ForeignKey.CASCADE
         )
-    }
+    },
+    indices = {@Index(value = {"uri"}, unique = true)}
 )
 public class BasePost {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name = "uri")
+    private String uri;
+
+    @ColumnInfo(name = "cid")
+    private String cid;
 
     @ColumnInfo(name = "user_id")
     private int user_id;
@@ -41,7 +49,9 @@ public class BasePost {
 
     public BasePost() {}
 
-    public BasePost(int user_id, int author_id, String content, String created_at) {
+    public BasePost(String uri, String cid, int user_id, int author_id, String content, String created_at) {
+        this.uri = uri;
+        this.cid = cid;
         this.user_id = user_id;
         this.author_id = author_id;
         this.content = content;
@@ -53,6 +63,20 @@ public class BasePost {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public String getCid() {
+        return cid;
+    }
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
     public int getUser_id() {

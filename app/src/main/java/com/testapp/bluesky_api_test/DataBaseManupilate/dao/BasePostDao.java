@@ -3,6 +3,7 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.dao;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
@@ -23,10 +24,13 @@ public interface BasePostDao {
     @Query("SELECT * FROM base_posts WHERE author_id = :authorId")
     List<BasePost> getPostsByAuthorId(int authorId);
 
-    @Insert
+    @Query("SELECT * FROM base_posts WHERE uri = :uri")
+    BasePost getByUri(String uri);
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(BasePost item);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     long[] insertAll(BasePost... items);
 
     @Update

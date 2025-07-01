@@ -18,6 +18,9 @@ public interface UserDao {
     @Query("SELECT * FROM User WHERE id = :id")
     User getById(int id);
 
+    @Query("SELECT * FROM User WHERE did = :did")
+    User getUserByDid(String did);
+
     @Query("SELECT * FROM User WHERE id IN (:ids)")
     List<User> loadAllByIds(List<Integer> ids);
 

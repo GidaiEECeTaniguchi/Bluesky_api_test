@@ -31,13 +31,15 @@ public class AuthorRepository {
     }
 
     /**
-     * Bluesky APIからフォローしている全ユーザーのリストを取得します。
+     * Bluesky APIからフォローしている全ユーザーのリストを取得し、データベースに保存します。
      * @param authProvider 認証プロバイダー
      * @param userDid ユーザーのDID
      * @return フォローしているユーザーのリスト
      */
-    public List<ActorDefsProfileView> fetchAllFollowingUsersFromApi(BearerTokenAuthProvider authProvider, String userDid) {
-        return blueskyOperations.fetchAllFollowingUsers(authProvider, userDid);
+    public List<ActorDefsProfileView> fetchAndSaveFollowingFromApi(BearerTokenAuthProvider authProvider, String userDid) {
+        List<ActorDefsProfileView> followingProfiles = blueskyOperations.fetchAllFollowingUsers(authProvider, userDid);
+        saveFollowingAuthorsToDb(followingProfiles);
+        return followingProfiles;
     }
 
     /**

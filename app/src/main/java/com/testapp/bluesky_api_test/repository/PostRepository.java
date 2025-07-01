@@ -1,14 +1,16 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
-
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
 import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
-
+import java.time.Instant;
+import java.util.Date;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
@@ -23,58 +25,67 @@ public class PostRepository {
 
     private final BlueskyOperations blueskyOperations;
     private final BasePostDao basePostDao;
+    private final AuthorDao authorDao;
 
     public PostRepository(Context context) {
         this.blueskyOperations = new BlueskyOperations();
         AppDatabase db = AppDatabaseSingleton.getInstance(context);
         this.basePostDao = db.basePostDao();
+        this.authorDao = db.authorDao();
     }
 
-    /**
-     * Bluesky APIからタイムラインの投稿情報を取得します。
-     * @param authProvider 認証プロバイダー
-     * @return 投稿情報オブジェクトのリスト
-     * @throws Exception API呼び出し中にエラーが発生した場合
-     */
+    public void fetchAndSaveAuthorFeed(BearerTokenAuthProvider authProvider, String actorIdentifier, int userId) throws Exception {
+        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
+        List<BasePost> postsToSave = new ArrayList<>();
+
+        for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {
+            FeedDefsPostView postView = feedViewPost.getPost();
+            if (postView != null && postView.getRecord() != null) {
+                RecordUnion record = postView.getRecord();
+                if (BlueskyTypes.FeedPost.equals(record.getType())) {
+                    FeedPost postContent = (FeedPost) record;
+
+                    Author author = authorDao.getAuthorByDid(postView.getAuthor().getDid());
+                    if (author == null) {
+                        continue;
+                    }
+                    int authorId = author.getId();
+
+                    String content = postContent.getText() != null ? postContent.getText() : "";
+                    String createdAt = postContent.getCreatedAt();
+                    String uri = postView.getUri();
+                    String cid = postView.getCid();
+
+                    BasePost basePost = new BasePost(uri, cid, userId, authorId, content, createdAt);
+
+                    postsToSave.add(basePost);
+                }
+            }
+        }
+
+        if (!postsToSave.isEmpty()) {
+            basePostDao.insertAll(postsToSave.toArray(new BasePost[0]));
+        }
+    }
+
     public List<BlueskyPostInfo> fetchTimelineFromApi(BearerTokenAuthProvider authProvider) throws Exception {
         List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchTimeline(authProvider);
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
-    /**
-     * Bluesky APIから特定のユーザーの投稿情報を取得します。
-     * @param authProvider 認証プロバイダー
-     * @param actorIdentifier ユーザーの識別子（DIDまたはハンドル）
-     * @return 投稿情報オブジェクトのリスト
-     * @throws Exception API呼び出し中にエラーが発生した場合
-     */
     public List<BlueskyPostInfo> fetchAuthorFeedFromApi(BearerTokenAuthProvider authProvider, String actorIdentifier) throws Exception {
         List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
-    /**
-     * データベースから保存された投稿を取得するメソッド。
-     * @return 保存された投稿のリスト
-     */
     public List<BasePost> getSavedPostsFromDb() {
         return basePostDao.getAll();
     }
 
-    /**
-     * 単一のBasePostをデータベースに挿入します。
-     * @param post 挿入するBasePostオブジェクト
-     * @return 挿入された行のID
-     */
     public long insertPostToDb(BasePost post) {
         return basePostDao.insert(post);
     }
 
-    /**
-     * データベースから特定のIDの投稿を取得します。
-     * @param id 投稿ID
-     * @return 該当するBasePostオブジェクト、またはnull
-     */
     public BasePost getPostByIdFromDb(int id) {
         return basePostDao.getById(id);
     }
@@ -91,7 +102,9 @@ public class PostRepository {
                     int charCount = postText.length();
                     String authorHandle = postView.getAuthor().getHandle();
                     String postUri = postView.getUri();
-                    blueskyPostInfos.add(new BlueskyPostInfo(authorHandle, postUri, postText, charCount));
+                    String cid = postView.getCid();
+                    String createdAt = postContent.getCreatedAt();
+                    blueskyPostInfos.add(new BlueskyPostInfo(authorHandle, postUri, cid, postText, charCount, createdAt));
                 }
             }
         }
