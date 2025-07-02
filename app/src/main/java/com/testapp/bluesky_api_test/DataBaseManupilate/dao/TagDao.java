@@ -24,6 +24,9 @@ public interface TagDao {
     @Insert
     void insertAll(Tag... items);
 
+    @Query("SELECT * FROM Tag WHERE name = :name")
+    Tag getTagByName(String name);
+
     @Insert
     void insert(Tag item);
 

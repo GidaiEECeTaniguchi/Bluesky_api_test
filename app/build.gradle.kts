@@ -57,6 +57,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation("org.mockito:mockito-core:5.18.0")
+    androidTestImplementation("org.mockito:mockito-android:5.18.0")
     // kbskyの追加
     implementation (libs.kotlin.stdlib.jdk8)
     implementation(libs.core.jvm)

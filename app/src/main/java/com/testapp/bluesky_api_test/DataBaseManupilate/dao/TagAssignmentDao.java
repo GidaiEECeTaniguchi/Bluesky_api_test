@@ -15,6 +15,9 @@ public interface TagAssignmentDao {
     @Query("SELECT * FROM TagAssignment")
     List<TagAssignment> getAll();
 
+    @Query("SELECT * FROM TagAssignment WHERE tag_id = :tagId")
+    List<TagAssignment> getTagAssignmentByTagId(int tagId);
+
     @Query("SELECT * FROM TagAssignment")
     TagAssignment getByComposite();
 
