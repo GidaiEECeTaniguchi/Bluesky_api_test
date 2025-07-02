@@ -72,7 +72,7 @@ public class MainViewModel extends ViewModel {
                     }
 
                     // BasePostを保存
-                    // ここではuser_idを仮に1としています。実際のアプリケーションユーザーのIDを使用してください。
+                    // ここではuser_idを仮に1としています。
                     BasePost basePost = new BasePost(postInfo.getPostUri(), postInfo.getCid(), 1, author.getId(), postInfo.getText(), postInfo.getCreatedAt());
                     postRepository.insertPostToDb(basePost);
                 }
