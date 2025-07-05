@@ -3,7 +3,7 @@ package com.testapp.bluesky_api_test.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.testapp.bluesky_api_test.ui.GroupAdapter.GroupEntity; // 仮の GroupEntity をインポート
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity; // 本物の GroupEntity をインポート
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +15,9 @@ public class GroupViewModel extends ViewModel {
         groupList = new MutableLiveData<>();
         // ダミーデータをセット
         List<GroupEntity> dummyGroups = new ArrayList<>();
-        dummyGroups.add(new GroupEntity("グループA"));
-        dummyGroups.add(new GroupEntity("グループB"));
-        dummyGroups.add(new GroupEntity("グループC"));
+        dummyGroups.add(new GroupEntity(1, "グループA", "2025-07-05"));
+        dummyGroups.add(new GroupEntity(1, "グループB", "2025-07-05"));
+        dummyGroups.add(new GroupEntity(1, "グループC", "2025-07-05"));
         groupList.setValue(dummyGroups);
     }
 

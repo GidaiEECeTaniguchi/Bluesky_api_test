@@ -8,16 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.testapp.bluesky_api_test.R;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity; // 本物の GroupEntity をインポート
 import java.util.List;
-
-// 仮の GroupEntity クラス
-class GroupEntity {
-    String name;
-
-    public GroupEntity(String name) {
-        this.name = name;
-    }
-}
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHolder> {
 
@@ -37,7 +29,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
     @Override
     public void onBindViewHolder(@NonNull GroupViewHolder holder, int position) {
         GroupEntity group = groupList.get(position);
-        holder.groupNameTextView.setText(group.name);
+        holder.groupNameTextView.setText(group.getName()); // getName() を使う
         // ここでアイコンを設定する処理を追加する
     }
 
