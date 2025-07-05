@@ -1,6 +1,8 @@
 package com.testapp.bluesky_api_test.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -41,5 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         // BottomNavigationViewとNavControllerを連携
         NavigationUI.setupWithNavController(navView, navController);
+
+        // グループ画面への遷移処理
+        Button buttonToGroup = findViewById(R.id.button_to_group);
+        buttonToGroup.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GroupActivity.class);
+            startActivity(intent);
+        });
     }
 }
