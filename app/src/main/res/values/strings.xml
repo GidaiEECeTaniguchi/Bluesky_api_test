@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Bluesky_api_test</string>
+    <string name="placeholder_post_content">投稿内容</string>
+    <string name="placeholder_post_author">投稿者</string>
+    <string name="placeholder_post_timestamp">タイムスタンプ</string>
 </resources>
