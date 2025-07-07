@@ -10,7 +10,7 @@ public class GroupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // あとで activity_group.xml を作るからね
+
         setContentView(R.layout.activity_group); 
         
         Toolbar toolbar = findViewById(R.id.toolbar);
