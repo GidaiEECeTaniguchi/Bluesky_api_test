@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupMemberDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupMember;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,6 +32,14 @@ public class GroupRepository {
             GroupMember groupMember = new GroupMember(groupId, postId, order);
             groupMemberDao.insert(groupMember);
         });
+    }
+
+    public List<GroupMember> getAllGroupMembersFromDb() {
+        return groupMemberDao.getAll();
+    }
+
+    public List<GroupMember> getAllGroupMembersByIdsFromDb() {
+        return groupMemberDao.loadAllByIds();
     }
 
     /**

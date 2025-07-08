@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRewriteDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupRewrite;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -48,6 +49,14 @@ public class GroupRewriteRepository {
      */
     public GroupRewrite getGroupRewriteById(int id) {
         return groupRewriteDao.getById(id);
+    }
+
+    public List<GroupRewrite> getAllGroupRewritesFromDb() {
+        return groupRewriteDao.getAll();
+    }
+
+    public List<GroupRewrite> getGroupRewritesByIdsFromDb(List<Integer> ids) {
+        return groupRewriteDao.loadAllByIds(ids);
     }
 
     /* シャットダウン処理

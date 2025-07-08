@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRefDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupRef;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -47,6 +48,14 @@ public class GroupRefRepository {
      */
     public GroupRef getGroupRefById(int id) {
         return groupRefDao.getById(id);
+    }
+
+    public List<GroupRef> getAllGroupRefsFromDb() {
+        return groupRefDao.getAll();
+    }
+
+    public List<GroupRef> getGroupRefsByIdsFromDb(List<Integer> ids) {
+        return groupRefDao.loadAllByIds(ids);
     }
 
     /* シャットダウン処理だよぉ

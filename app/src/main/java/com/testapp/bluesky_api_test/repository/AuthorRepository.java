@@ -92,6 +92,14 @@ public class AuthorRepository {
         return authorDao.getAuthorByHandle(handle);
     }
 
+    public Author getAuthorByIdFromDb(int id) {
+        return authorDao.getAuthorById(id);
+    }
+
+    public List<Author> getAllAuthorsFromDb() {
+        return authorDao.getAllAuthors();
+    }
+
     /**
      * ExecutorServiceをシャットダウンします。
      */
