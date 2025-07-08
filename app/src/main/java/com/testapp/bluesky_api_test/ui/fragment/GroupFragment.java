@@ -13,6 +13,9 @@ import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.ui.GroupAdapter;
 import com.testapp.bluesky_api_test.viewmodel.GroupViewModel;
 
+import android.content.Intent;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
+import com.testapp.bluesky_api_test.ui.GroupEditActivity;
 import java.util.ArrayList;
 
 public class GroupFragment extends Fragment implements  BaseFragmentInterface {
@@ -43,6 +46,13 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
         recyclerView = view.findViewById(R.id.recycler_view_groups);
         groupAdapter = new GroupAdapter(new ArrayList<>()); // 最初は空のリストで初期化
         recyclerView.setAdapter(groupAdapter);
+
+        groupAdapter.setOnItemClickListener(group -> {
+            Intent intent = new Intent(getActivity(), GroupEditActivity.class);
+            intent.putExtra("group_id", group.getId());
+            intent.putExtra("group_name", group.getName());
+            startActivity(intent);
+        });
     }
 
     @Override

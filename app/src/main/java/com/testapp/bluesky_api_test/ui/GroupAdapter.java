@@ -14,6 +14,15 @@ import java.util.List;
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHolder> {
 
     private List<GroupEntity> groupList;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(GroupEntity group);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public GroupAdapter(List<GroupEntity> groupList) {
         this.groupList = groupList;
@@ -31,6 +40,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
         GroupEntity group = groupList.get(position);
         holder.groupNameTextView.setText(group.getName()); // getName() を使う
         // ここでアイコンを設定する処理を追加する
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(group);
+            }
+        });
     }
 
     @Override
