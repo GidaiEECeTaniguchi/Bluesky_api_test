@@ -1,8 +1,14 @@
 package com.testapp.bluesky_api_test.ui;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,10 +38,19 @@ public class GroupEditActivity extends AppCompatActivity {
     private RecyclerView groupTagAssignmentsRecyclerView;
     private GroupTagAssignmentAdapter groupTagAssignmentAdapter;
 
+    private LinearLayout editButtonsContainer;
+    private Button addPostsButton;
+    private Button addRefsButton;
+
+    private boolean isEditMode = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_edit);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // UI要素の初期化
         groupNameTextView = findViewById(R.id.group_name_text_view);
@@ -43,6 +58,10 @@ public class GroupEditActivity extends AppCompatActivity {
         groupAnnotationsRecyclerView = findViewById(R.id.group_annotations_recycler_view);
         groupRefsRecyclerView = findViewById(R.id.group_refs_recycler_view);
         groupTagAssignmentsRecyclerView = findViewById(R.id.group_tag_assignments_recycler_view);
+
+        editButtonsContainer = findViewById(R.id.edit_buttons_container);
+        addPostsButton = findViewById(R.id.add_posts_button);
+        addRefsButton = findViewById(R.id.add_refs_button);
 
         // RecyclerViewのセットアップ
         groupMembersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -104,5 +123,34 @@ public class GroupEditActivity extends AppCompatActivity {
             groupTagAssignmentAdapter = new GroupTagAssignmentAdapter(groupTagAssignments);
             groupTagAssignmentsRecyclerView.setAdapter(groupTagAssignmentAdapter);
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.layout.group_edit_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_edit) {
+            toggleEditMode();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void toggleEditMode() {
+        isEditMode = !isEditMode;
+        if (isEditMode) {
+            editButtonsContainer.setVisibility(View.VISIBLE);
+        } else {
+            editButtonsContainer.setVisibility(View.GONE);
+        }
+        // TODO: 各Adapterに編集モードの変更を通知する
+        groupMemberAdapter.setEditMode(isEditMode);
+        groupAnnotationAdapter.setEditMode(isEditMode);
+        groupRefAdapter.setEditMode(isEditMode);
+        groupTagAssignmentAdapter.setEditMode(isEditMode);
     }
 }

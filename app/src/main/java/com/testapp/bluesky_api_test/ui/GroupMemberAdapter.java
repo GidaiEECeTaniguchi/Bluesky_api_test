@@ -3,6 +3,7 @@ package com.testapp.bluesky_api_test.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import java.util.List;
 public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.GroupMemberViewHolder> {
 
     private List<BasePost> postList;
+    private boolean isEditMode = false;
 
     /**
      * コンストラクタ。
@@ -24,6 +26,11 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
      */
     public GroupMemberAdapter(List<BasePost> postList) {
         this.postList = postList;
+    }
+
+    public void setEditMode(boolean isEditMode) {
+        this.isEditMode = isEditMode;
+        notifyDataSetChanged(); // データセットの変更を通知してUIを更新
     }
 
     @NonNull
@@ -38,6 +45,9 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
         BasePost post = postList.get(position);
         holder.postContentTextView.setText(post.getContent());
         // 他の情報を表示する場合はここに追加
+
+        // 編集モードに応じて編集ボタンの表示を切り替える
+        holder.editButton.setVisibility(isEditMode ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -50,10 +60,12 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
      */
     static class GroupMemberViewHolder extends RecyclerView.ViewHolder {
         TextView postContentTextView;
+        ImageView editButton;
 
         GroupMemberViewHolder(View itemView) {
             super(itemView);
             postContentTextView = itemView.findViewById(R.id.text_post_content);
+            editButton = itemView.findViewById(R.id.edit_button);
         }
     }
 }

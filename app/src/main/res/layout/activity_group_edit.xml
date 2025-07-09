@@ -85,5 +85,29 @@
             android:nestedScrollingEnabled="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        <LinearLayout
+            android:id="@+id/edit_buttons_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:visibility="gone"> <!-- 初期状態では非表示 -->
+
+            <Button
+                android:id="@+id/add_posts_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add posts"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/add_refs_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add refs"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
