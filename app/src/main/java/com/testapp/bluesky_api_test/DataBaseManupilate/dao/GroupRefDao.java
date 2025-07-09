@@ -15,6 +15,9 @@ public interface GroupRefDao {
     @Query("SELECT * FROM GroupRef")
     List<GroupRef> getAll();
 
+    @Query("SELECT * FROM GroupRef WHERE group_id = :groupId")
+    List<GroupRef> getRefsByGroupId(int groupId);
+
     @Query("SELECT * FROM GroupRef WHERE id = :id")
     GroupRef getById(int id);
 
