@@ -33,4 +33,7 @@ public interface GroupAnnotationDao {
 
     @Delete
     void delete(GroupAnnotation item);
+
+    @Query("DELETE FROM GroupAnnotation")
+    void deleteAll();
 }

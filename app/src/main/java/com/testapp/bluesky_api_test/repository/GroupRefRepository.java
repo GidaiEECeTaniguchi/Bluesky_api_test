@@ -1,6 +1,7 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
+import androidx.lifecycle.LiveData;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRefDao;
@@ -50,7 +51,7 @@ public class GroupRefRepository {
         return groupRefDao.getById(id);
     }
 
-    public List<GroupRef> getAllGroupRefsFromDb() {
+    public LiveData<List<GroupRef>> getAllGroupRefsFromDb() {
         return groupRefDao.getAll();
     }
 
@@ -60,6 +61,10 @@ public class GroupRefRepository {
 
     public List<GroupRef> getRefsByGroupId(int groupId) {
         return groupRefDao.getRefsByGroupId(groupId);
+    }
+
+    public LiveData<List<GroupRef>> getAllRefs() {
+        return groupRefDao.getAll();
     }
 
     /* シャットダウン処理だよぉ

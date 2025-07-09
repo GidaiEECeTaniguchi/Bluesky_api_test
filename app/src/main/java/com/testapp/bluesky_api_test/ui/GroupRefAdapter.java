@@ -15,6 +15,15 @@ public class GroupRefAdapter extends RecyclerView.Adapter<GroupRefAdapter.GroupR
 
     private List<GroupRef> refList;
     private boolean isEditMode = false;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(GroupRef ref);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public GroupRefAdapter(List<GroupRef> refList) {
         this.refList = refList;
@@ -23,6 +32,12 @@ public class GroupRefAdapter extends RecyclerView.Adapter<GroupRefAdapter.GroupR
     public void setEditMode(boolean isEditMode) {
         this.isEditMode = isEditMode;
         notifyDataSetChanged(); // データセットの変更を通知してUIを更新
+    }
+
+    public void setRefList(List<GroupRef> newRefList) {
+        this.refList.clear();
+        this.refList.addAll(newRefList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -41,6 +56,12 @@ public class GroupRefAdapter extends RecyclerView.Adapter<GroupRefAdapter.GroupR
 
         // 編集モードに応じて編集ボタンの表示を切り替える
         holder.editButton.setVisibility(isEditMode ? View.VISIBLE : View.GONE);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(ref);
+            }
+        });
     }
 
     @Override

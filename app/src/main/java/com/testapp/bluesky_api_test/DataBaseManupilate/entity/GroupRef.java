@@ -16,7 +16,7 @@ import androidx.room.ColumnInfo;
 )
 public class GroupRef {
 
-	@PrimaryKey(autoGenerate = false)
+	@PrimaryKey(autoGenerate = true)
 	private int id;
 
 	@ColumnInfo(name = "group_id")
@@ -31,7 +31,19 @@ public class GroupRef {
 	@ColumnInfo(name = "ref_path")
 	private String ref_path;
 
+	@ColumnInfo(name = "order_in_group")
+	private int order_in_group; // 新しく追加
+
 	public GroupRef() {}
+
+	// 新しいコンストラクタ
+	public GroupRef(int group_id, String title, String type, String ref_path, int order_in_group) {
+		this.group_id = group_id;
+		this.title = title;
+		this.type = type;
+		this.ref_path = ref_path;
+		this.order_in_group = order_in_group;
+	}
 
 	public GroupRef(int group_id, String title, String type, String ref_path) {
 		this.group_id = group_id;
@@ -75,4 +87,10 @@ public class GroupRef {
 		this.ref_path = ref_path;
 	}
 
+	public int getOrder_in_group() {
+		return order_in_group;
+	}
+	public void setOrder_in_group(int order_in_group) {
+		this.order_in_group = order_in_group;
+	}
 }

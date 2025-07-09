@@ -13,9 +13,24 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     private List<BasePost> postList;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(BasePost post);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public PostAdapter(List<BasePost> postList) {
         this.postList = postList;
+    }
+
+    public void setPostList(List<BasePost> newPostList) {
+        this.postList.clear();
+        this.postList.addAll(newPostList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,6 +46,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.contentTextView.setText(post.getContent());
         holder.authorTextView.setText("Author ID: " + post.getAuthor_id()); // 仮の表示
         holder.timestampTextView.setText(post.getCreated_at()); // 仮の表示
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(post);
+            }
+        });
     }
 
     @Override

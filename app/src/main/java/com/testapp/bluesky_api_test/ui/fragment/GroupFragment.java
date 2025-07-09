@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.ui.GroupAdapter;
@@ -15,7 +16,7 @@ import com.testapp.bluesky_api_test.viewmodel.GroupViewModel;
 
 import android.content.Intent;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
-import com.testapp.bluesky_api_test.ui.GroupEditActivity;
+
 import java.util.ArrayList;
 
 public class GroupFragment extends Fragment implements  BaseFragmentInterface {
@@ -44,11 +45,12 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
     @Override
     public void initViews(@NonNull View view, @Nullable Bundle savedInstanceState) {
         recyclerView = view.findViewById(R.id.recycler_view_groups);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         groupAdapter = new GroupAdapter(new ArrayList<>()); // 最初は空のリストで初期化
         recyclerView.setAdapter(groupAdapter);
 
         groupAdapter.setOnItemClickListener(group -> {
-            Intent intent = new Intent(getActivity(), GroupEditActivity.class);
+            Intent intent = new Intent(getActivity(), com.testapp.bluesky_api_test.ui.GroupEditActivity.class);
             intent.putExtra("group_id", group.getId());
             intent.putExtra("group_name", group.getName());
             startActivity(intent);
@@ -62,10 +64,9 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
 
     @Override
     public void initObservers() {
-        groupViewModel.getGroupList().observe(getViewLifecycleOwner(), groups -> {
+        groupViewModel.getAllGroups().observe(getViewLifecycleOwner(), groups -> {
             // データが更新されたらアダプターにセットして表示を更新
-            groupAdapter = new GroupAdapter(groups);
-            recyclerView.setAdapter(groupAdapter);
+            groupAdapter.setGroupList(groups);
         });
     }
 

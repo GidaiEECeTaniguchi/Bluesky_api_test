@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.DataBaseManupilate.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +14,7 @@ import java.util.List;
 public interface BasePostDao {
 
     @Query("SELECT * FROM base_posts")
-    List<BasePost> getAll();
+    LiveData<List<BasePost>> getAll();
 
     @Query("SELECT * FROM base_posts WHERE id = :id")
     BasePost getById(int id);
@@ -33,9 +34,15 @@ public interface BasePostDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long[] insertAll(BasePost... items);
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertAll(List<BasePost> items);
+
     @Update
     void update(BasePost item);
 
     @Delete
     void delete(BasePost item);
+
+    @Query("DELETE FROM base_posts")
+    void deleteAll();
 }

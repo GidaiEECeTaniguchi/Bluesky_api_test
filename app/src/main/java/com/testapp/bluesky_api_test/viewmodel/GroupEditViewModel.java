@@ -169,6 +169,30 @@ public class GroupEditViewModel extends AndroidViewModel {
         });
     }
 
+    /**
+     * グループに新しい参照を追加します。
+     * @param groupId 参照を追加するグループのID
+     * @param refId 追加する参照のID
+     */
+    public void addRefToGroup(int groupId, int refId) {
+        executorService.execute(() -> {
+            GroupRef originalRef = groupRefRepository.getGroupRefById(refId);
+            if (originalRef != null) {
+                // 新しいGroupRefオブジェクトを作成し、group_idを現在のグループに設定
+                // idは自動生成されるので設定しない
+                GroupRef newRef = new GroupRef(
+                        groupId,
+                        originalRef.getTitle(),
+                        originalRef.getType(),
+                        originalRef.getRef_path(),
+                        originalRef.getOrder_in_group() // 順序もコピー
+                );
+                groupRefRepository.saveGroupRef(newRef);
+                loadGroupAndMembers(groupId); // 参照リストを再読み込み
+            }
+        });
+    }
+
     // TODO: メンバーの並べ替え機能を追加する
 
 

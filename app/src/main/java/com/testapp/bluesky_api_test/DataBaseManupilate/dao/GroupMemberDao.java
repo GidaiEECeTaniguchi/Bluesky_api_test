@@ -32,4 +32,7 @@ public interface GroupMemberDao {
 
     @Delete
     void delete(GroupMember item);
+
+    @Query("DELETE FROM GroupMember")
+    void deleteAll();
 }

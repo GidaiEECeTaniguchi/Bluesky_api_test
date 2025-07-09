@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -7,14 +8,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
 
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.viewmodel.GroupEditViewModel;
+import com.testapp.bluesky_api_test.ui.GroupMemberAdapter;
+import com.testapp.bluesky_api_test.ui.GroupAnnotationAdapter;
+import com.testapp.bluesky_api_test.ui.GroupRefAdapter;
+import com.testapp.bluesky_api_test.ui.GroupTagAssignmentAdapter;
+import com.testapp.bluesky_api_test.ui.PostSelectActivity;
+import com.testapp.bluesky_api_test.ui.RefSelectActivity;
 
 import java.util.ArrayList;
 
@@ -43,9 +54,13 @@ public class GroupEditActivity extends AppCompatActivity {
     private Button addRefsButton;
 
     private boolean isEditMode = false;
+    private int currentGroupId = -1; // 現在のグループIDを保持
+
+    private ActivityResultLauncher<Intent> selectPostLauncher;
+    private ActivityResultLauncher<Intent> selectRefLauncher;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_edit);
 
@@ -62,6 +77,47 @@ public class GroupEditActivity extends AppCompatActivity {
         editButtonsContainer = findViewById(R.id.edit_buttons_container);
         addPostsButton = findViewById(R.id.add_posts_button);
         addRefsButton = findViewById(R.id.add_refs_button);
+
+        // ActivityResultLauncherの初期化
+        selectPostLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        int selectedPostId = result.getData().getIntExtra(PostSelectActivity.EXTRA_SELECTED_POST_ID, -1);
+                        if (selectedPostId != -1 && currentGroupId != -1) {
+                            groupEditViewModel.addGroupMember(currentGroupId, selectedPostId);
+                            Toast.makeText(this, "Post added: " + selectedPostId, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to add post.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+        selectRefLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        int selectedRefId = result.getData().getIntExtra(RefSelectActivity.EXTRA_SELECTED_REF_ID, -1);
+                        if (selectedRefId != -1 && currentGroupId != -1) {
+                            groupEditViewModel.addRefToGroup(currentGroupId, selectedRefId);
+                            Toast.makeText(this, "Reference added: " + selectedRefId, Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Failed to add reference.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
+        addPostsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(GroupEditActivity.this, PostSelectActivity.class);
+            selectPostLauncher.launch(intent);
+        });
+
+        addRefsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(GroupEditActivity.this, RefSelectActivity.class);
+            selectRefLauncher.launch(intent);
+        });
 
         // RecyclerViewのセットアップ
         groupMembersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,6 +142,9 @@ public class GroupEditActivity extends AppCompatActivity {
         // IntentからグループIDとグループ名を取得
         int groupId = getIntent().getIntExtra("group_id", -1);
         String groupName = getIntent().getStringExtra("group_name");
+
+        // 現在のグループIDを保存
+        currentGroupId = groupId;
 
         // グループIDが有効な場合、データをロードして表示
         if (groupId != -1) {
@@ -127,7 +186,7 @@ public class GroupEditActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.layout.group_edit_menu, menu);
+        getMenuInflater().inflate(R.menu.group_edit_menu, menu);
         return true;
     }
 

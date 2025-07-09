@@ -28,6 +28,12 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHol
         this.groupList = groupList;
     }
 
+    public void setGroupList(List<GroupEntity> newGroupList) {
+        this.groupList.clear();
+        this.groupList.addAll(newGroupList);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public GroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
