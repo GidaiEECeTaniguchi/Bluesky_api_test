@@ -89,7 +89,13 @@ public class PostRepository {
     public BasePost getPostByIdFromDb(int id) {
         return basePostDao.getById(id);
     }
+    public List<BasePost> getPostsByUserIdFromDb(int userId) {
+        return basePostDao.getPostsByUserId(userId);
+    }
 
+            public List<BasePost> getPostsByAuthorIdFromDb(int authorId) {
+    return basePostDao.getPostsByAuthorId(authorId);
+ }
     private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
         List<BlueskyPostInfo> blueskyPostInfos = new ArrayList<>();
         for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {

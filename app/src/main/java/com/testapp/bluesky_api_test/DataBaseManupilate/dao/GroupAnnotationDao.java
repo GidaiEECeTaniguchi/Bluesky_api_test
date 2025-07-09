@@ -16,6 +16,9 @@ public interface GroupAnnotationDao {
     @Query("SELECT * FROM GroupAnnotation")
     List<GroupAnnotation> getAll();
 
+    @Query("SELECT * FROM GroupAnnotation WHERE group_id = :groupId")
+    List<GroupAnnotation> getAnnotationsByGroupId(int groupId);
+
     @Query("SELECT * FROM GroupAnnotation WHERE id = :id")
     GroupAnnotation getById(int id);
 

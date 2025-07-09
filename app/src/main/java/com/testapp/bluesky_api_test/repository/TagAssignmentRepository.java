@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.TagAssignmentDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.TagAssignment;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,6 +28,14 @@ public class TagAssignmentRepository {
             TagAssignment tagAssignment = new TagAssignment(postId, tagId);
             tagAssignmentDao.insert(tagAssignment);
         });
+    }
+
+    public List<TagAssignment> getAllTagAssignmentsFromDb() {
+        return tagAssignmentDao.getAll();
+    }
+
+    public List<TagAssignment> getTagAssignmentsByTagIdFromDb(int tagId) {
+        return tagAssignmentDao.getTagAssignmentByTagId(tagId);
     }
     /*シャットダウン処理
    

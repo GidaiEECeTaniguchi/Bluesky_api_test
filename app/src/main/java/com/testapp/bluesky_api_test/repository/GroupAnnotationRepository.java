@@ -49,6 +49,14 @@ public class GroupAnnotationRepository {
         return groupAnnotationDao.getById(id);
     }
 
+    public List<GroupAnnotation> getAllGroupAnnotationsFromDb() {
+        return groupAnnotationDao.getAll();
+    }
+
+    public List<GroupAnnotation> getGroupAnnotationsByIdsFromDb(List<Integer> ids) {
+        return groupAnnotationDao.loadAllByIds(ids);
+    }
+
     /* シャットダウン処理だよぉ
      */
     public void shutdown() {
