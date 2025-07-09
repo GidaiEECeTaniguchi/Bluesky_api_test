@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupAnnotationDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupAnnotation;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,6 +56,10 @@ public class GroupAnnotationRepository {
 
     public List<GroupAnnotation> getGroupAnnotationsByIdsFromDb(List<Integer> ids) {
         return groupAnnotationDao.loadAllByIds(ids);
+    }
+
+    public List<GroupAnnotation> getAnnotationsByGroupId(int groupId) {
+        return groupAnnotationDao.getAnnotationsByGroupId(groupId);
     }
 
     /* シャットダウン処理だよぉ

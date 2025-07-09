@@ -58,6 +58,10 @@ public class GroupRefRepository {
         return groupRefDao.loadAllByIds(ids);
     }
 
+    public List<GroupRef> getRefsByGroupId(int groupId) {
+        return groupRefDao.getRefsByGroupId(groupId);
+    }
+
     /* シャットダウン処理だよぉ
      */
     public void shutdown() {

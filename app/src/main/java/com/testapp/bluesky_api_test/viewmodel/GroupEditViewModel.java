@@ -9,10 +9,19 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupEntityDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupMemberDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupAnnotationDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRefDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupTagAssignmentDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupMember;
-
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupAnnotation;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupRef;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupTagAssignment;
+import com.testapp.bluesky_api_test.repository.GroupAnnotationRepository;
+import com.testapp.bluesky_api_test.repository.GroupRefRepository;
+import com.testapp.bluesky_api_test.repository.GroupTagAssignmentRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -26,9 +35,17 @@ public class GroupEditViewModel extends AndroidViewModel {
 
     private MutableLiveData<GroupEntity> group;
     private MutableLiveData<List<BasePost>> groupMembers;
+    private MutableLiveData<List<GroupAnnotation>> groupAnnotations;
+    private MutableLiveData<List<GroupRef>> groupRefs;
+    private MutableLiveData<List<GroupTagAssignment>> groupTagAssignments;
+
     private GroupEntityDao groupEntityDao;
     private GroupMemberDao groupMemberDao;
     private BasePostDao basePostDao;
+    private GroupAnnotationRepository groupAnnotationRepository;
+    private GroupRefRepository groupRefRepository;
+    private GroupTagAssignmentRepository groupTagAssignmentRepository;
+
     private ExecutorService executorService;
 
     /**
@@ -40,11 +57,18 @@ public class GroupEditViewModel extends AndroidViewModel {
         super(application);
         group = new MutableLiveData<>();
         groupMembers = new MutableLiveData<>();
+        groupAnnotations = new MutableLiveData<>();
+        groupRefs = new MutableLiveData<>();
+        groupTagAssignments = new MutableLiveData<>();
 
         AppDatabase db = AppDatabaseSingleton.getInstance(application);
         groupEntityDao = db.groupEntityDao();
         groupMemberDao = db.groupMemberDao();
         basePostDao = db.basePostDao();
+        groupAnnotationRepository = new GroupAnnotationRepository(application);
+        groupRefRepository = new GroupRefRepository(application);
+        groupTagAssignmentRepository = new GroupTagAssignmentRepository(application);
+
         executorService = Executors.newSingleThreadExecutor();
     }
 
@@ -65,6 +89,30 @@ public class GroupEditViewModel extends AndroidViewModel {
     }
 
     /**
+     * 監視可能なグループアノテーションリストを返します。
+     * @return LiveData<List<GroupAnnotation>> グループアノテーションリスト
+     */
+    public LiveData<List<GroupAnnotation>> getGroupAnnotations() {
+        return groupAnnotations;
+    }
+
+    /**
+     * 監視可能なグループ参照リストを返します。
+     * @return LiveData<List<GroupRef>> グループ参照リスト
+     */
+    public LiveData<List<GroupRef>> getGroupRefs() {
+        return groupRefs;
+    }
+
+    /**
+     * 監視可能なグループタグ割り当てリストを返します。
+     * @return LiveData<List<GroupTagAssignment>> グループタグ割り当てリスト
+     */
+    public LiveData<List<GroupTagAssignment>> getGroupTagAssignments() {
+        return groupTagAssignments;
+    }
+
+    /**
      * 指定されたグループIDに基づいて、グループ情報とそのメンバーをデータベースからロードします。
      * @param groupId ロードするグループのID
      */
@@ -82,6 +130,15 @@ public class GroupEditViewModel extends AndroidViewModel {
                 }
             }
             groupMembers.postValue(posts);
+
+            List<GroupAnnotation> annotations = groupAnnotationRepository.getAnnotationsByGroupId(groupId);
+            groupAnnotations.postValue(annotations);
+
+            List<GroupRef> refs = groupRefRepository.getRefsByGroupId(groupId);
+            groupRefs.postValue(refs);
+
+            List<GroupTagAssignment> tagAssignments = groupTagAssignmentRepository.getTagAssignmentsByGroupId(groupId);
+            groupTagAssignments.postValue(tagAssignments);
         });
     }
 
