@@ -25,7 +25,7 @@ public interface GroupEntityDao {
     void insertAll(GroupEntity... items);
 
     @Insert
-    void insert(GroupEntity item);
+    long insert(GroupEntity item);
 
     @Delete
     void delete(GroupEntity item);

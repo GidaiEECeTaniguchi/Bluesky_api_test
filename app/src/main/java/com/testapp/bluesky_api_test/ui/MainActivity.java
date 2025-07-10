@@ -13,6 +13,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.UserDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
@@ -24,6 +28,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupMemberDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupAnnotationDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRefDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 
 import java.util.Arrays;
@@ -88,11 +93,14 @@ public class MainActivity extends AppCompatActivity {
         executorService.execute(() -> {
             try {
                 Log.d("MainActivity", "Starting initial data insertion.");
+                AppDatabase db = AppDatabaseSingleton.getInstance(getApplication());
                 GroupEntityRepository groupEntityRepository = new GroupEntityRepository(getApplication());
-                BasePostDao basePostDao = AppDatabaseSingleton.getInstance(getApplication()).basePostDao();
-                GroupMemberDao groupMemberDao = AppDatabaseSingleton.getInstance(getApplication()).groupMemberDao();
-                GroupAnnotationDao groupAnnotationDao = AppDatabaseSingleton.getInstance(getApplication()).groupAnnotationDao();
-                GroupRefDao groupRefDao = AppDatabaseSingleton.getInstance(getApplication()).groupRefDao();
+                BasePostDao basePostDao = db.basePostDao();
+                GroupMemberDao groupMemberDao = db.groupMemberDao();
+                GroupAnnotationDao groupAnnotationDao = db.groupAnnotationDao();
+                GroupRefDao groupRefDao = db.groupRefDao();
+                UserDao userDao = db.userDao();
+                AuthorDao authorDao = db.authorDao();
 
                 // 既存データをクリア（テスト用）
                 Log.d("MainActivity", "Deleting existing data.");
@@ -101,27 +109,35 @@ public class MainActivity extends AppCompatActivity {
                 groupMemberDao.deleteAll();
                 groupAnnotationDao.deleteAll();
                 groupRefDao.deleteAll();
+                userDao.deleteAll(); // ユーザーもクリア
+                authorDao.deleteAll(); // Authorもクリア
                 Log.d("MainActivity", "Existing data deleted.");
 
+                User dummyUser = new User("dummy_user", "did:plc:dummyuser");
+                Author dummyAuthor = new Author("dummy_author_handle", "did:plc:dummyauthor");
+
+                long userId = userDao.insert(dummyUser);
+                long authorId = authorDao.insert(dummyAuthor);
+
                 // GroupEntity の挿入
-                GroupEntity group1 = new GroupEntity(1, "Group1", "2025-07-09");
+                GroupEntity group1 = new GroupEntity(1, (int) userId, "Group1", "2025-07-09");
                 groupEntityRepository.insert(group1);
                 Log.d("MainActivity", "Inserted Group1.");
 
                 // BasePost の挿入
-                BasePost post11 = new BasePost("uri_post11", "cid_post11", 1, 1, "Post11", "2025-07-09T10:00:00Z");
-                BasePost post8 = new BasePost("uri_post8", "cid_post8", 1, 1, "Post8 (rewritten)", "2025-07-09T10:05:00Z");
-                BasePost post37 = new BasePost("uri_post37", "cid_post37", 1, 1, "Post37", "2025-07-09T10:10:00Z");
-                BasePost post20 = new BasePost("uri_post20", "cid_post20", 1, 1, "Post20", "2025-07-09T10:15:00Z");
+                BasePost post11 = new BasePost("uri_post11", "cid_post11", (int) userId, (int) authorId, "Post11", "2025-07-09T10:00:00Z");
+                BasePost post8 = new BasePost("uri_post8", "cid_post8", (int) userId, (int) authorId, "Post8 (rewritten)", "2025-07-09T10:05:00Z");
+                BasePost post37 = new BasePost("uri_post37", "cid_post37", (int) userId, (int) authorId, "Post37", "2025-07-09T10:10:00Z");
+                BasePost post20 = new BasePost("uri_post20", "cid_post20", (int) userId, (int) authorId, "Post20", "2025-07-09T10:15:00Z");
 
-                basePostDao.insertAll(Arrays.asList(post11, post8, post37, post20));
+                long[] postIds = basePostDao.insertAll(post11, post8, post37, post20);
                 Log.d("MainActivity", "Inserted BasePosts.");
 
                 // GroupMember の挿入 (Group1 に Post を関連付け)
-                groupMemberDao.insert(new GroupMember(group1.getId(), post11.getId(), 0));
-                groupMemberDao.insert(new GroupMember(group1.getId(), post8.getId(), 1));
-                groupMemberDao.insert(new GroupMember(group1.getId(), post37.getId(), 2));
-                groupMemberDao.insert(new GroupMember(group1.getId(), post20.getId(), 4)); // appendix of post37 のために順序を空ける
+                groupMemberDao.insert(new GroupMember(group1.getId(), (int) postIds[0], 0));
+                groupMemberDao.insert(new GroupMember(group1.getId(), (int) postIds[1], 1));
+                groupMemberDao.insert(new GroupMember(group1.getId(), (int) postIds[2], 2));
+                groupMemberDao.insert(new GroupMember(group1.getId(), (int) postIds[3], 4)); // appendix of post37 のために順序を空ける
                 Log.d("MainActivity", "Inserted GroupMembers.");
 
                 // GroupAnnotation の挿入 (appendix of post37)

@@ -30,7 +30,8 @@ public class GroupEntity {
 
 	public GroupEntity() {}
 
-	public GroupEntity(int user_id, String name, String created_at) {
+	public GroupEntity(int id, int user_id, String name, String created_at) {
+		this.id = id;
 		this.user_id = user_id;
 		this.name = name;
 		this.created_at = created_at;

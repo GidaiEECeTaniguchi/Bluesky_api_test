@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 @Entity(indices = {@Index(value = {"did"}, unique = true)})
 public class User {
 
-	@PrimaryKey(autoGenerate = false)
+	@PrimaryKey(autoGenerate = true)
 	private int id;
 
 	@ColumnInfo(name = "name")
