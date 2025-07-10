@@ -1,6 +1,7 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.app.Application;
+import android.util.Log;
 import androidx.lifecycle.LiveData;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
@@ -21,6 +22,7 @@ public class GroupEntityRepository {
     }
 
     public LiveData<List<GroupEntity>> getAllGroups() {
+        Log.d("GroupEntityRepository", "Fetching all groups from database.");
         return groupEntityDao.getAll();
     }
 

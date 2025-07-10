@@ -1,6 +1,7 @@
 package com.testapp.bluesky_api_test.ui.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,16 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
 
         initViews(view, savedInstanceState);
         initListeners();
+        // onViewCreatedで一度だけ監視を設定する
         initObservers();
         loadData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 画面が表示されるたびにデータを再読み込みする
+        groupViewModel.refreshGroups();
     }
 
     @Override
@@ -65,6 +74,13 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
     @Override
     public void initObservers() {
         groupViewModel.getAllGroups().observe(getViewLifecycleOwner(), groups -> {
+            // ログを追加して、取得したグループの数を確認
+            Log.d("GroupFragment", "Groups updated. Size: " + (groups != null ? groups.size() : "null"));
+            if (groups != null) {
+                for (GroupEntity group : groups) {
+                    Log.d("GroupFragment", "Group Name: " + group.getName());
+                }
+            }
             // データが更新されたらアダプターにセットして表示を更新
             groupAdapter.setGroupList(groups);
         });
