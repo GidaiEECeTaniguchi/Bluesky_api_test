@@ -11,7 +11,7 @@ public class AppDatabaseSingleton {
                             context.getApplicationContext(),
                             AppDatabase.class,
                             "app-database"
-                    ).fallbackToDestructiveMigration().build();
+                    ).build();
                 }
             }
         }

@@ -1,0 +1,179 @@
+--------- beginning of main
+--------- beginning of system
+---------------------------- PROCESS STARTED (2041) for package com.testapp.bluesky_api_test ----------------------------
+2025-07-10 15:31:43.351  2041-2041  nativeloader            com.testapp.bluesky_api_test         D  Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so using system ns (caller=<unknown>): ok
+2025-07-10 15:31:43.340  2041-2041  re-initialized>         com.testapp.bluesky_api_test         W  type=1400 audit(0.0:94): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so" dev="dm-55" ino=368912 scontext=u:r:untrusted_app:s0:c218,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c218,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
+2025-07-10 15:31:43.424  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         W  hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-c8049923.jar is in boot class path but is not in a known location
+2025-07-10 15:31:43.996  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+2025-07-10 15:31:44.009  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+2025-07-10 15:31:44.449  2041-2041  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-10 15:31:44.449  2041-2041  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-10 15:31:45.348  2041-2041  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
+2025-07-10 15:31:45.360  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10218; state: ENABLED
+2025-07-10 15:31:45.391  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c7162f8) locale list changing from [] to [en-US]
+2025-07-10 15:31:45.405  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c717bf8) locale list changing from [] to [en-US]
+2025-07-10 15:31:45.474  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
+2025-07-10 15:31:45.475  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
+2025-07-10 15:31:45.475  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
+2025-07-10 15:31:45.475  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
+2025-07-10 15:31:45.476  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
+2025-07-10 15:31:45.476  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
+2025-07-10 15:31:45.477  2041-2041  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-10 15:31:45.589  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10218; state: ENABLED
+2025-07-10 15:31:46.048  2041-2245  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
+2025-07-10 15:31:46.083  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c719b38) locale list changing from [] to [en-US]
+2025-07-10 15:31:46.139  2041-2245  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
+2025-07-10 15:31:46.139  2041-2245  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
+2025-07-10 15:31:46.167  2041-2245  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-10 15:31:46.239  2041-2041  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-10 15:31:46.240  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c71d058) locale list changing from [] to [en-US]
+2025-07-10 15:31:46.356  2041-2041  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-10 15:31:46.516  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10218; state: ENABLED
+2025-07-10 15:31:46.526  2041-2041  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-10 15:31:46.626  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-10 15:31:46.740  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:46.770  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:46.770  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:46.815  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10218; state: ENABLED
+2025-07-10 15:31:46.826  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10218; state: ENABLED
+2025-07-10 15:31:46.882  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 303326708; UID 10218; state: ENABLED
+2025-07-10 15:31:47.400  2041-2041  Choreographer           com.testapp.bluesky_api_test         I  Skipped 104 frames!  The application may be doing too much work on its main thread.
+2025-07-10 15:31:47.757  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:47.810  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:47.845  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:47.880  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-10 15:31:48.160  2041-2340  MainActivity            com.testapp.bluesky_api_test         D  Starting initial data insertion.
+2025-07-10 15:31:48.337  2041-2340  MainActivity            com.testapp.bluesky_api_test         D  Deleting existing data.
+2025-07-10 15:31:48.363  2041-2041  MainFragment            com.testapp.bluesky_api_test         D  Loading timeline...
+2025-07-10 15:31:48.453  2041-2041  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10218; state: ENABLED
+2025-07-10 15:31:48.473  2041-2041  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
+2025-07-10 15:31:48.741  2041-2340  MainActivity            com.testapp.bluesky_api_test         D  Existing data deleted.
+2025-07-10 15:31:48.750  2041-2340  MainActivity            com.testapp.bluesky_api_test         D  Inserted Group1.
+2025-07-10 15:31:48.751  2041-2340  MainActivity            com.testapp.bluesky_api_test         D  Inserted BasePosts.
+2025-07-10 15:31:48.773  2041-2340  MainActivity            com.testapp.bluesky_api_test         E  Error inserting initial data
+                                                                                                    android.database.sqlite.SQLiteConstraintException: FOREIGN KEY constraint failed (code 787 SQLITE_CONSTRAINT_FOREIGNKEY)
+                                                                                                    	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+                                                                                                    	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:985)
+                                                                                                    	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:825)
+                                                                                                    	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:89)
+                                                                                                    	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.executeInsert(FrameworkSQLiteStatement.kt:42)
+                                                                                                    	at androidx.room.EntityInsertionAdapter.insert(EntityInsertionAdapter.kt:51)
+                                                                                                    	at com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupMemberDao_Impl.insert(GroupMemberDao_Impl.java:92)
+                                                                                                    	at com.testapp.bluesky_api_test.ui.MainActivity.lambda$insertInitialData$1$com-testapp-bluesky_api_test-ui-MainActivity(MainActivity.java:137)
+                                                                                                    	at com.testapp.bluesky_api_test.ui.MainActivity$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1119)
+2025-07-10 15:31:48.922  2041-2041  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-10 15:31:49.030  2041-2349  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
+2025-07-10 15:31:49.031  2041-2349  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+2025-07-10 15:31:49.031  2041-2349  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+2025-07-10 15:31:49.962  2041-2361  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1380ms; Flags=1, FrameTimelineVsyncId=6638, IntendedVsync=84158740881, Vsync=84175407547, InputEventId=0, HandleInputStart=84199442607, AnimationStart=84199479360, PerformTraversalsStart=84199493751, DrawStart=84637060095, FrameDeadline=84175407547, FrameStartTime=84191535563, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=84702326328, SyncStart=84706024835, IssueDrawCommandsStart=84707712559, SwapBuffers=85207291831, FrameCompleted=85543412880, DequeueBufferDuration=21115, QueueBufferDuration=1907061, GpuCompleted=85543412880, SwapBuffersCompleted=85537070150, DisplayPresentTime=0, CommandSubmissionCompleted=85207291831, 
+2025-07-10 15:31:49.976  2041-2041  Choreographer           com.testapp.bluesky_api_test         I  Skipped 80 frames!  The application may be doing too much work on its main thread.
+2025-07-10 15:31:50.298  2041-2361  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1542ms; Flags=0, FrameTimelineVsyncId=6661, IntendedVsync=84292074209, Vsync=85625407489, InputEventId=0, HandleInputStart=85636974433, AnimationStart=85636983050, PerformTraversalsStart=85638431267, DrawStart=85666100556, FrameDeadline=85575407491, FrameStartTime=85634680300, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=85669905805, SyncStart=85670111196, IssueDrawCommandsStart=85670536242, SwapBuffers=85674493292, FrameCompleted=85835067224, DequeueBufferDuration=22188, QueueBufferDuration=3694018, GpuCompleted=85833964932, SwapBuffersCompleted=85835067224, DisplayPresentTime=0, CommandSubmissionCompleted=85674493292, 
+2025-07-10 15:31:50.833  2041-2041  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-10 15:31:50.835  2041-2041  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:ec3bf763: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-10 15:31:51.744   782-2346  ActivityManager         system_server                        E  ANR in com.android.systemui
+                                                                                                    PID: 1126
+                                                                                                    Reason: executing service com.android.systemui/.keyguard.KeyguardService, waited 20111ms
+                                                                                                    ErrorId: d94ad737-3b23-4c5d-9c72-9f2ea8d09171
+                                                                                                    Frozen: false
+                                                                                                    Load: 16.93 / 4.29 / 1.45
+                                                                                                    ----- Output from /proc/pressure/memory -----
+                                                                                                    some avg10=6.52 avg60=1.53 avg300=0.34 total=1199560
+                                                                                                    full avg10=2.01 avg60=0.51 avg300=0.11 total=479729
+                                                                                                    ----- End output from /proc/pressure/memory -----
+                                                                                                    ----- Output from /proc/pressure/cpu -----
+                                                                                                    some avg10=68.29 avg60=30.08 avg300=8.14 total=26404616
+                                                                                                    full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+                                                                                                    ----- End output from /proc/pressure/cpu -----
+                                                                                                    ----- Output from /proc/pressure/io -----
+                                                                                                    some avg10=21.08 avg60=10.88 avg300=3.26 total=11141654
+                                                                                                    full avg10=2.83 avg60=3.30 avg300=1.23 total=4665868
+                                                                                                    ----- End output from /proc/pressure/io -----
+                                                                                                    
+                                                                                                    CPU usage from 32136ms to -15ms ago (2025-07-10 15:31:16.096 to 2025-07-10 15:31:48.247):
+                                                                                                      92% 782/system_server: 67% user + 24% kernel / faults: 44734 minor 782 major
+                                                                                                      36% 563/surfaceflinger: 15% user + 21% kernel / faults: 2387 minor 3 major
+                                                                                                      23% 511/android.hardware.graphics.composer3-service.ranchu: 4.9% user + 18% kernel / faults: 9 minor 127 major
+                                                                                                      10% 571/adbd: 4.7% user + 5.2% kernel / faults: 35792 minor
+                                                                                                      3.6% 71/kswapd0: 0% user + 3.6% kernel
+                                                                                                      5.5% 238/logd: 2.6% user + 2.9% kernel / faults: 894 minor 26 major
+                                                                                                      5.2% 241/servicemanager: 2.1% user + 3.1% kernel / faults: 26 minor
+                                                                                                      4.5% 297/kworker/u13:4-blk_crypto_wq: 0% user + 4.5% kernel
+                                                                                                      4.2% 296/kworker/u13:3-fscrypt_read_queue: 0% user + 4.2% kernel
+                                                                                                      3.7% 294/kworker/u13:1-fscrypt_read_queue: 0% user + 3.7% kernel
+                                                                                                    89% TOTAL: 39% user + 41% kernel + 4.3% iowait + 3.4% irq + 1.3% softirq
+                                                                                                    CPU usage from 916ms to 2235ms later (2025-07-10 15:31:49.148 to 2025-07-10 15:31:50.467):
+                                                                                                      78% 782/system_server: 46% user + 32% kernel / faults: 795 minor 34 major
+                                                                                                        19% 2348/AnrAuxiliaryTas: 5% user + 14% kernel
+                                                                                                        4% 991/WifiHandlerThre: 2% user + 2% kernel
+                                                                                                        3% 1012/audioserver_lif: 3% user + 0% kernel
+                                                                                                        3% 1082/binder:782_6: 2% user + 1% kernel
+                                                                                                        3% 1937/binder:782_16: 2% user + 1% kernel
+                                                                                                        2% 782/system_server: 2% user + 0% kernel
+                                                                                                        2% 800/HeapTaskDaemon: 1% user + 1% kernel
+                                                                                                        2% 818/android.anim: 1% user + 1% kernel
+                                                                                                        2% 899/binder:782_5: 1% user + 1% kernel
+                                                                                                        2% 997/ConnectivitySer: 1% user + 1% kernel
+                                                                                                        2% 1017/AudioService: 1% user + 1% kernel
+                                                                                                        2% 1679/backup-0: 2% user + 0% kernel
+                                                                                                        2% 1818/binder:782_11: 2% user + 0% kernel
+                                                                                                        2% 2127/binder:782_19: 1% user + 1% kernel
+                                                                                                        2% 2182/binder:782_1C: 1% user + 1% kernel
+                                                                                                        2% 2216/binder:782_1E: 1% user + 1% kernel
+                                                                                                        1% 814/android.fg: 0% user + 1% kernel
+                                                                                                        1% 816/android.io: 0% user + 1% kernel
+                                                                                                        1% 836/batterystats-ha: 1% user + 0% kernel
+                                                                                                        1% 918/SensorService: 0% user + 1% kernel
+                                                                                                        1% 921/eduling.default: 1% user + 0% kernel
+                                                                                                        1% 988/NetworkStats: 1% user + 0% kernel
+                                                                                                        1% 1058/BackgroundInsta: 1% user + 0% kernel
+                                                                                                        1% 1083/binder:782_7: 1% user + 0% kernel
+                                                                                                        1% 1087/TaskSnapshotPer: 1% user + 0% kernel
+                                                                                                        1% 1169/binder:782_8: 1% user + 0% kernel
+                                                                                                        1% 1199/binder:782_9: 1% user + 0% kernel
+                                                                                                        1% 1223/binder:782_A: 1% user + 0% kernel
+                                                                                                        1% 1226/binder:782_B: 0% user + 1% kernel
+                                                                                                        1% 1706/pool-81-thread-: 0% user + 1% kernel
+                                                                                                        1% 1713/LazyTaskWriterT: 1% user + 0% kernel
+                                                                                                        1% 1788/binder:782_F: 1% user + 0% kernel
+                                                                                                        1% 1808/binder:782_10: 1% user + 0% kernel
+                                                                                                        1% 1936/binder:782_15: 1% user + 0% kernel
+                                                                                                        1% 2122/binder:782_17: 1% user + 0% kernel
+                                                                                                        1% 2123/binder:782_18: 1% user + 0% kernel
+                                                                                                        1% 2147/binder:782_1A: 1% user + 0% kernel
+                                                                                                        1% 2215/binder:782_1D: 1% user + 0% kernel
+                                                                                                        1% 2219/binder:782_1F: 1% user + 0% kernel
+                                                                                                        1% 2220/binder:782_20: 1% user + 0% kernel
+                                                                                                      60% 2041/com.testapp.bluesky_api_test: 23% user + 37% kernel / faults: 64 minor
+                                                                                                        37% 2245/RenderThread: 4.3% user + 33% kernel
+                                                                                                        12% 2060/Jit thread pool: 11% user + 1.4% kernel
+                                                                                                        5.7% 2041/luesky_api_test: 5.7% user + 0% kernel
+                                                                                                       +0% 2404/binder:2041_4: 0% user + 0% kernel
+2025-07-10 15:31:52.544  2041-2060  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+2025-07-10 15:31:52.939  2041-2467  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
+2025-07-10 15:31:53.115  2041-2062  luesky_api_test         com.testapp.bluesky_api_test         W  Cleared Reference was only reachable from finalizer (only reported once)
+2025-07-10 15:31:53.227  2041-2062  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 4006KB AllocSpace bytes, 9(252KB) LOS objects, 49% free, 4186KB/8372KB, paused 6.497ms,17.504ms total 345.968ms
+2025-07-10 15:31:55.084  2041-2041  MainFragment            com.testapp.bluesky_api_test         E  Error: Failed to fetch timeline: null
+2025-07-10 15:31:55.176  2041-2041  MainFragment            com.testapp.bluesky_api_test         D  Finished loading timeline.
+2025-07-10 15:31:56.975  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c7243f8) locale list changing from [] to [en-US]
+2025-07-10 15:31:57.831  2041-2041  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-10 15:32:01.143  2041-2041  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-10 15:32:01.143  2041-2041  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:e4916f40: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-10 15:32:12.347  2041-2041  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x724e0c71d058) locale list changing from [] to [en-US]
+2025-07-10 15:32:12.901  2041-2041  GroupViewModel          com.testapp.bluesky_api_test         D  ViewModel created.
+2025-07-10 15:32:12.903  2041-2041  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
+2025-07-10 15:32:12.939  2041-2041  GroupViewModel          com.testapp.bluesky_api_test         D  getAllGroups() called.
+2025-07-10 15:32:12.969  2041-2041  GroupViewModel          com.testapp.bluesky_api_test         D  Refreshing groups data.
+2025-07-10 15:32:12.969  2041-2041  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
+2025-07-10 15:32:13.645  2041-2041  Choreographer           com.testapp.bluesky_api_test         I  Skipped 33 frames!  The application may be doing too much work on its main thread.
+2025-07-10 15:32:13.782  2041-2041  GroupFragment           com.testapp.bluesky_api_test         D  Groups updated. Size: 1
+2025-07-10 15:32:13.783  2041-2041  GroupFragment           com.testapp.bluesky_api_test         D  Group Name: Group1
+2025-07-10 15:32:13.877  2041-2416  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=750ms; Flags=0, FrameTimelineVsyncId=9000, IntendedVsync=108742073231, Vsync=109292073209, InputEventId=758999635, HandleInputStart=109313088749, AnimationStart=109313100267, PerformTraversalsStart=109326715147, DrawStart=109383367761, FrameDeadline=108758739897, FrameStartTime=109303606858, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=109389525135, SyncStart=109399720233, IssueDrawCommandsStart=109409247779, SwapBuffers=109465324989, FrameCompleted=109502679918, DequeueBufferDuration=32907, QueueBufferDuration=5083275, GpuCompleted=109487588763, SwapBuffersCompleted=109502679918, DisplayPresentTime=0, CommandSubmissionCompleted=109465324989, 
+2025-07-10 15:32:14.609  2041-2041  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-10 15:32:14.610  2041-2041  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:9c50fae: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-10 15:32:14.611  2041-2041  VRI[MainActivity]       com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
+2025-07-10 15:32:20.316  2041-2041  VRI[GroupActivity]      com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
+2025-07-10 15:32:20.326  2041-2041  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-10 15:32:20.326  2041-2041  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:563b2cdf: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
