@@ -27,10 +27,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * グループ編集画面のデータを管理するViewModel。
- * 特定のグループの情報をロードし、そのグループに属する投稿（メンバー）のリストを管理します。
- */
 public class GroupEditViewModel extends AndroidViewModel {
 
     private MutableLiveData<GroupEntity> group;
@@ -48,11 +44,6 @@ public class GroupEditViewModel extends AndroidViewModel {
 
     private ExecutorService executorService;
 
-    /**
-     * コンストラクタ。
-     * データベースインスタンスとDAOを初期化します。
-     * @param application アプリケーションコンテキスト
-     */
     public GroupEditViewModel(Application application) {
         super(application);
         group = new MutableLiveData<>();
@@ -72,50 +63,26 @@ public class GroupEditViewModel extends AndroidViewModel {
         executorService = Executors.newSingleThreadExecutor();
     }
 
-    /**
-     * 監視可能なグループデータを返します。
-     * @return LiveData<GroupEntity> グループデータ
-     */
     public LiveData<GroupEntity> getGroup() {
         return group;
     }
 
-    /**
-     * 監視可能なグループメンバー（投稿）リストを返します。
-     * @return LiveData<List<BasePost>> グループメンバーリスト
-     */
     public LiveData<List<BasePost>> getGroupMembers() {
         return groupMembers;
     }
 
-    /**
-     * 監視可能なグループアノテーションリストを返します。
-     * @return LiveData<List<GroupAnnotation>> グループアノテーションリスト
-     */
     public LiveData<List<GroupAnnotation>> getGroupAnnotations() {
         return groupAnnotations;
     }
 
-    /**
-     * 監視可能なグループ参照リストを返します。
-     * @return LiveData<List<GroupRef>> グループ参照リスト
-     */
     public LiveData<List<GroupRef>> getGroupRefs() {
         return groupRefs;
     }
 
-    /**
-     * 監視可能なグループタグ割り当てリストを返します。
-     * @return LiveData<List<GroupTagAssignment>> グループタグ割り当てリスト
-     */
     public LiveData<List<GroupTagAssignment>> getGroupTagAssignments() {
         return groupTagAssignments;
     }
 
-    /**
-     * 指定されたグループIDに基づいて、グループ情報とそのメンバーをデータベースからロードします。
-     * @param groupId ロードするグループのID
-     */
     public void loadGroupAndMembers(int groupId) {
         executorService.execute(() -> {
             GroupEntity loadedGroup = groupEntityDao.getById(groupId);
@@ -142,63 +109,30 @@ public class GroupEditViewModel extends AndroidViewModel {
         });
     }
 
-    /**
-     * グループに新しいメンバー（投稿）を追加します。
-     * @param groupId メンバーを追加するグループのID
-     * @param postId 追加する投稿のID
-     */
     public void addGroupMember(int groupId, int postId) {
         executorService.execute(() -> {
-            // TODO: order の設定を考慮する
             GroupMember newMember = new GroupMember(groupId, postId, 0);
             groupMemberDao.insert(newMember);
-            loadGroupAndMembers(groupId); // メンバーリストを再読み込み
+            loadGroupAndMembers(groupId);
         });
     }
 
-    /**
-     * グループからメンバー（投稿）を削除します。
-     * @param groupId メンバーを削除するグループのID
-     * @param postId 削除する投稿のID
-     */
     public void removeGroupMember(int groupId, int postId) {
         executorService.execute(() -> {
-            GroupMember memberToRemove = new GroupMember(groupId, postId, 0); // order は仮
+            GroupMember memberToRemove = new GroupMember(groupId, postId, 0);
             groupMemberDao.delete(memberToRemove);
-            loadGroupAndMembers(groupId); // メンバーリストを再読み込み
+            loadGroupAndMembers(groupId);
         });
     }
 
-    /**
-     * グループに新しい参照を追加します。
-     * @param groupId 参照を追加するグループのID
-     * @param refId 追加する参照のID
-     */
-    public void addRefToGroup(int groupId, int refId) {
+    public void addNewRefToGroup(int groupId, String title, String refPath) {
         executorService.execute(() -> {
-            GroupRef originalRef = groupRefRepository.getGroupRefById(refId);
-            if (originalRef != null) {
-                // 新しいGroupRefオブジェクトを作成し、group_idを現在のグループに設定
-                // idは自動生成されるので設定しない
-                GroupRef newRef = new GroupRef(
-                        groupId,
-                        originalRef.getTitle(),
-                        originalRef.getType(),
-                        originalRef.getRef_path(),
-                        originalRef.getOrder_in_group() // 順序もコピー
-                );
-                groupRefRepository.saveGroupRef(newRef);
-                loadGroupAndMembers(groupId); // 参照リストを再読み込み
-            }
+            GroupRef newRef = new GroupRef(groupId, title, "", refPath, 0);
+            groupRefRepository.saveGroupRef(newRef);
+            loadGroupAndMembers(groupId);
         });
     }
 
-    // TODO: メンバーの並べ替え機能を追加する
-
-
-    /**
-     * ViewModelが破棄される際にExecutorServiceをシャットダウンします。
-     */
     @Override
     protected void onCleared() {
         super.onCleared();

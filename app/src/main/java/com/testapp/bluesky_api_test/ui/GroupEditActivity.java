@@ -1,7 +1,9 @@
 package com.testapp.bluesky_api_test.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,14 +27,9 @@ import com.testapp.bluesky_api_test.ui.GroupAnnotationAdapter;
 import com.testapp.bluesky_api_test.ui.GroupRefAdapter;
 import com.testapp.bluesky_api_test.ui.GroupTagAssignmentAdapter;
 import com.testapp.bluesky_api_test.ui.PostSelectActivity;
-import com.testapp.bluesky_api_test.ui.RefSelectActivity;
 
 import java.util.ArrayList;
 
-/**
- * グループの編集画面を管理するActivity。
- * グループ名と、そのグループに属する投稿（メンバー）のリストを表示します。
- */
 public class GroupEditActivity extends AppCompatActivity {
 
     private GroupEditViewModel groupEditViewModel;
@@ -54,10 +51,10 @@ public class GroupEditActivity extends AppCompatActivity {
     private Button addRefsButton;
 
     private boolean isEditMode = false;
-    private int currentGroupId = -1; // 現在のグループIDを保持
+    private int currentGroupId = -1; 
 
     private ActivityResultLauncher<Intent> selectPostLauncher;
-    private ActivityResultLauncher<Intent> selectRefLauncher;
+    private ActivityResultLauncher<String[]> openFileLauncher;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +64,6 @@ public class GroupEditActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // UI要素の初期化
         groupNameTextView = findViewById(R.id.group_name_text_view);
         groupMembersRecyclerView = findViewById(R.id.group_members_recycler_view);
         groupAnnotationsRecyclerView = findViewById(R.id.group_annotations_recycler_view);
@@ -78,7 +74,6 @@ public class GroupEditActivity extends AppCompatActivity {
         addPostsButton = findViewById(R.id.add_posts_button);
         addRefsButton = findViewById(R.id.add_refs_button);
 
-        // ActivityResultLauncherの初期化
         selectPostLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -94,20 +89,30 @@ public class GroupEditActivity extends AppCompatActivity {
                 }
         );
 
-        selectRefLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result -> {
-                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        int selectedRefId = result.getData().getIntExtra(RefSelectActivity.EXTRA_SELECTED_REF_ID, -1);
-                        if (selectedRefId != -1 && currentGroupId != -1) {
-                            groupEditViewModel.addRefToGroup(currentGroupId, selectedRefId);
-                            Toast.makeText(this, "Reference added: " + selectedRefId, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, "Failed to add reference.", Toast.LENGTH_SHORT).show();
+        openFileLauncher = registerForActivityResult(
+                new ActivityResultContracts.OpenDocument(),
+                uri -> {
+                    if (uri != null) {
+                        getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        
+                        String fileName = "Unknown";
+                        try (android.database.Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
+                            if (cursor != null && cursor.moveToFirst()) {
+                                int nameIndex = cursor.getColumnIndex(DocumentsContract.Document.COLUMN_DISPLAY_NAME);
+                                if (nameIndex != -1) {
+                                    fileName = cursor.getString(nameIndex);
+                                }
+                            }
                         }
+
+                        groupEditViewModel.addNewRefToGroup(currentGroupId, fileName, uri.toString());
+                        Toast.makeText(this, "Reference added: " + fileName, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Failed to get file.", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
+
 
         addPostsButton.setOnClickListener(v -> {
             Intent intent = new Intent(GroupEditActivity.this, PostSelectActivity.class);
@@ -115,11 +120,12 @@ public class GroupEditActivity extends AppCompatActivity {
         });
 
         addRefsButton.setOnClickListener(v -> {
-            Intent intent = new Intent(GroupEditActivity.this, RefSelectActivity.class);
-            selectRefLauncher.launch(intent);
+            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            intent.setType("*/*");
+            openFileLauncher.launch(new String[]{"*/*"});
         });
 
-        // RecyclerViewのセットアップ
         groupMembersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         groupMemberAdapter = new GroupMemberAdapter(new ArrayList<>());
         groupMembersRecyclerView.setAdapter(groupMemberAdapter);
@@ -136,48 +142,39 @@ public class GroupEditActivity extends AppCompatActivity {
         groupTagAssignmentAdapter = new GroupTagAssignmentAdapter(new ArrayList<>());
         groupTagAssignmentsRecyclerView.setAdapter(groupTagAssignmentAdapter);
 
-        // ViewModelの初期化
         groupEditViewModel = new ViewModelProvider(this).get(GroupEditViewModel.class);
 
-        // IntentからグループIDとグループ名を取得
         int groupId = getIntent().getIntExtra("group_id", -1);
         String groupName = getIntent().getStringExtra("group_name");
 
-        // 現在のグループIDを保存
         currentGroupId = groupId;
 
-        // グループIDが有効な場合、データをロードして表示
         if (groupId != -1) {
             groupNameTextView.setText(groupName);
             groupEditViewModel.loadGroupAndMembers(groupId);
         }
 
-        // ViewModelからのグループデータの変更を監視し、UIを更新
         groupEditViewModel.getGroup().observe(this, groupEntity -> {
             if (groupEntity != null) {
                 groupNameTextView.setText(groupEntity.getName());
             }
         });
 
-        // ViewModelからのグループメンバー（投稿）データの変更を監視し、UIを更新
         groupEditViewModel.getGroupMembers().observe(this, basePosts -> {
             groupMemberAdapter = new GroupMemberAdapter(basePosts);
             groupMembersRecyclerView.setAdapter(groupMemberAdapter);
         });
 
-        // ViewModelからのグループアノテーションデータの変更を監視し、UIを更新
         groupEditViewModel.getGroupAnnotations().observe(this, groupAnnotations -> {
             groupAnnotationAdapter = new GroupAnnotationAdapter(groupAnnotations);
             groupAnnotationsRecyclerView.setAdapter(groupAnnotationAdapter);
         });
 
-        // ViewModelからのグループ参照データの変更を監視し、UIを更新
         groupEditViewModel.getGroupRefs().observe(this, groupRefs -> {
             groupRefAdapter = new GroupRefAdapter(groupRefs);
             groupRefsRecyclerView.setAdapter(groupRefAdapter);
         });
 
-        // ViewModelからのグループタグ割り当てデータの変更を監視し、UIを更新
         groupEditViewModel.getGroupTagAssignments().observe(this, groupTagAssignments -> {
             groupTagAssignmentAdapter = new GroupTagAssignmentAdapter(groupTagAssignments);
             groupTagAssignmentsRecyclerView.setAdapter(groupTagAssignmentAdapter);
@@ -206,7 +203,6 @@ public class GroupEditActivity extends AppCompatActivity {
         } else {
             editButtonsContainer.setVisibility(View.GONE);
         }
-        // TODO: 各Adapterに編集モードの変更を通知する
         groupMemberAdapter.setEditMode(isEditMode);
         groupAnnotationAdapter.setEditMode(isEditMode);
         groupRefAdapter.setEditMode(isEditMode);
