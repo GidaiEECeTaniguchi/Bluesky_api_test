@@ -30,6 +30,8 @@
             android:exported="false"></activity>
         <activity android:name=".ui.GroupEditActivity"
             android:exported="false"></activity>
+        <activity android:name=".ui.PostSelectActivity"
+            android:exported="false"></activity>
     </application>
 
 </manifest>

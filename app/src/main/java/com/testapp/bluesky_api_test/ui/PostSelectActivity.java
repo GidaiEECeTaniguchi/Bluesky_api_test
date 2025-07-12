@@ -2,6 +2,8 @@ package com.testapp.bluesky_api_test.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -24,6 +26,7 @@ public class PostSelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("PostSelectActivity", "onCreate started.");
         setContentView(R.layout.activity_post_select);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_posts);
@@ -40,8 +43,14 @@ public class PostSelectActivity extends AppCompatActivity {
         });
 
         postSelectViewModel = new ViewModelProvider(this).get(PostSelectViewModel.class);
+        Log.d("PostSelectActivity", "ViewModel created and observing posts.");
         postSelectViewModel.getAllPosts().observe(this, posts -> {
-            postAdapter.setPostList(posts);
+            if (posts != null) {
+                Log.d("PostSelectActivity", "Posts received from ViewModel. Count: " + posts.size());
+                postAdapter.setPostList(posts);
+            } else {
+                Log.d("PostSelectActivity", "Received null post list from ViewModel.");
+            }
         });
     }
 }

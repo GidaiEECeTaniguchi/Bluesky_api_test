@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.ui;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public void setPostList(List<BasePost> newPostList) {
+        Log.d("PostAdapter", "Setting new post list. Count: " + newPostList.size());
         this.postList.clear();
         this.postList.addAll(newPostList);
         notifyDataSetChanged();
