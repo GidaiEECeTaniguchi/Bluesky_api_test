@@ -2,6 +2,15 @@ package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
+
+import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.UserDao;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
@@ -12,7 +21,7 @@ import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
 public class AuthRepository {
 
-    private static final String PREF_NAME = "AuthPrefs";
+    private static final String PREF_NAME = "EncryptedAuthPrefs";
     private static final String KEY_ACCESS_TOKEN = "accessToken";
     private static final String KEY_REFRESH_TOKEN = "refreshToken";
     private static final String KEY_DID = "did";
@@ -20,10 +29,23 @@ public class AuthRepository {
 
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
+    private final UserDao userDao;
 
     public AuthRepository(Context context) {
-        this.sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        try {
+            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+            this.sharedPreferences = EncryptedSharedPreferences.create(
+                    PREF_NAME,
+                    masterKeyAlias,
+                    context,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+        } catch (GeneralSecurityException | IOException e) {
+            throw new RuntimeException("Could not create EncryptedSharedPreferences", e);
+        }
         this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
+        this.userDao = AppDatabaseSingleton.getInstance(context).userDao();
     }
 
     // ログイン処理
@@ -35,7 +57,14 @@ public class AuthRepository {
         Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
         ServerCreateSessionResponse data = response.getData();
 
-        // 取得したトークンと情報をSharedPreferencesに保存
+        // ユーザーがDBに存在するか確認し、存在しなければ追加
+        User user = userDao.getUserByDid(data.getDid());
+        if (user == null) {
+            user = new User(data.getHandle(), data.getDid());
+            userDao.insert(user);
+        }
+
+        // 取得したトークンと情報をEncryptedSharedPreferencesに保存
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
         editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
