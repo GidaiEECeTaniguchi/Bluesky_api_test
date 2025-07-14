@@ -92,6 +92,14 @@ public class AuthorRepository {
         return authorDao.getAuthorByHandle(handle);
     }
 
+    public Author getAuthorByDidFromDb(String did) {
+        return authorDao.getAuthorByDid(did);
+    }
+
+    public long insertAuthor(Author author) {
+        return authorDao.insert(author);
+    }
+
     /**
      * ExecutorServiceをシャットダウンします。
      */

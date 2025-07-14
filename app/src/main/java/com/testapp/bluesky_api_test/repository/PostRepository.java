@@ -90,6 +90,10 @@ public class PostRepository {
         return basePostDao.getById(id);
     }
 
+    public void insertAllPosts(List<BasePost> posts) {
+        basePostDao.insertAll(posts.toArray(new BasePost[0]));
+    }
+
     private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
         List<BlueskyPostInfo> blueskyPostInfos = new ArrayList<>();
         for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {
