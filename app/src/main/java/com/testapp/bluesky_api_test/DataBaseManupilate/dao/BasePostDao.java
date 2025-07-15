@@ -9,11 +9,13 @@ import androidx.room.Update;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
+
 @Dao
 public interface BasePostDao {
 
-    @Query("SELECT * FROM base_posts")
-    List<BasePost> getAll();
+    @Query("SELECT * FROM base_posts ORDER BY created_at DESC")
+    LiveData<List<BasePost>> getAll();
 
     @Query("SELECT * FROM base_posts WHERE id = :id")
     BasePost getById(int id);

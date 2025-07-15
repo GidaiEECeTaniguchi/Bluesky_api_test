@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 

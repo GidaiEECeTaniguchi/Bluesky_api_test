@@ -1,6 +1,9 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
+
+import androidx.lifecycle.LiveData;
+
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
@@ -78,7 +81,9 @@ public class PostRepository {
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
-    public List<BasePost> getSavedPostsFromDb() {
+
+
+    public LiveData<List<BasePost>> getSavedPostsFromDb() {
         return basePostDao.getAll();
     }
 

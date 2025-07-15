@@ -16,6 +16,8 @@ public class Author {
     @ColumnInfo(name = "did")
     private String did;
 
+    public Author() {}
+
     public Author(String handle, String did) {
         this.handle = handle;
         this.did = did;

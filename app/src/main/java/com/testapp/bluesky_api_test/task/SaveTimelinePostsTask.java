@@ -50,12 +50,7 @@ public class SaveTimelinePostsTask extends AsyncTask<List<FeedDefsFeedViewPost>,
                         // Authorの保存または取得
                         Author author = authorRepository.getAuthorByDidFromDb(postView.getAuthor().getDid());
                         if (author == null) {
-                            author = new Author();
-                            author.setDid(postView.getAuthor().getDid());
-                            author.setHandle(postView.getAuthor().getHandle());
-                            author.setDisplayName(postView.getAuthor().getDisplayName());
-                            author.setAvatar(postView.getAuthor().getAvatar());
-                            author.setIndexedAt(postView.getAuthor().getIndexedAt().getTime());
+                            author = new Author(postView.getAuthor().getHandle(), postView.getAuthor().getDid());
                             long authorId = authorRepository.insertAuthor(author);
                             author.setId((int) authorId);
                         }

@@ -2,6 +2,7 @@ package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
@@ -26,6 +27,7 @@ public class AuthRepository {
     private static final String KEY_REFRESH_TOKEN = "refreshToken";
     private static final String KEY_DID = "did";
     private static final String KEY_HANDLE = "handle";
+    private static final String TAG = "AuthRepository";
 
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
@@ -54,8 +56,26 @@ public class AuthRepository {
         request.setIdentifier(handle);
         request.setPassword(password);
 
-        Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
+        Response<ServerCreateSessionResponse> response;
+        try {
+            response = bluesky.server().createSession(request);
+        } catch (Exception e) {
+            Log.e(TAG, "Bluesky login failed: " + e.getMessage(), e);
+            throw e;
+        }
         ServerCreateSessionResponse data = response.getData();
+
+        if (data == null) {
+            // データがnullの場合、JSONエラーレスポンスを確認
+            if (response.getJson() != null) {
+                Log.e(TAG, "Bluesky login error: " + response.getJson());
+                throw new Exception("Login failed: " + response.getJson());
+            } else {
+                // JSONエラーレスポンスもnullの場合の一般的なエラー
+                Log.e(TAG, "Bluesky login response data is null and no specific JSON error.");
+                throw new Exception("Login failed: No data in response.");
+            }
+        }
 
         // ユーザーがDBに存在するか確認し、存在しなければ追加
         User user = userDao.getUserByDid(data.getDid());
