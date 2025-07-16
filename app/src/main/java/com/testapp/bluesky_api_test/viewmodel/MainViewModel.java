@@ -69,6 +69,8 @@ public class MainViewModel extends ViewModel {
                     if (author == null) {
                         author = new Author(postInfo.getAuthorHandle(), "");
                         authorRepository.insertAuthorToDb(author);
+                        // DBから再度取得して、IDがセットされたAuthorを取得する
+                        author = authorRepository.getAuthorByHandleFromDb(postInfo.getAuthorHandle());
                     }
 
                     // BasePostを保存

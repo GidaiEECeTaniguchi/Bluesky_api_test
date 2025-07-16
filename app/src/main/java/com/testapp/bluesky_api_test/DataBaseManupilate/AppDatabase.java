@@ -18,7 +18,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.*;
                 GroupRewrite.class,
                 GroupRef.class
         },
-        version = 3, // Increment the version
+        version = 4, // Increment the version
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase{

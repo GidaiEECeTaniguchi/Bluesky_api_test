@@ -2,6 +2,7 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
@@ -17,6 +18,7 @@ public class Tag {
 	@ColumnInfo(name = "scope")
 	private String scope;
 
+	@Ignore
 	public Tag() {}
 
 	public Tag(String name, String scope) {

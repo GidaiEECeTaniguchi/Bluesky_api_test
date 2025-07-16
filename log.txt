@@ -1,245 +1,420 @@
---------- beginning of main
---------- beginning of system
---------- beginning of crash
-Late-enabling -Xcheck:jni
-Using CollectorTypeCMC GC.
-Unexpected CPU variant for x86: x86_64.
-Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
-Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
-Suspending all threads took: 93.975ms
-Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so using system ns (caller=<unknown>): ok
-hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-c8049923.jar is in boot class path but is not in a known location
-type=1400 audit(0.0:131): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so" dev="dm-55" ino=368912 scontext=u:r:untrusted_app:s0:c218,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c218,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
-Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
-Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
-Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
-Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
-ANR in com.android.systemui
-PID: 1176
-Reason: executing service com.android.systemui/.keyguard.KeyguardService, waited 20380ms
-ErrorId: 2306392a-9450-42b0-945d-6caeba7c8aaa
-Frozen: false
-Load: 15.89 / 4.33 / 1.49
------ Output from /proc/pressure/memory -----
-some avg10=3.23 avg60=0.92 avg300=0.22 total=909457
-full avg10=0.72 avg60=0.29 avg300=0.07 total=354313
------ End output from /proc/pressure/memory -----
------ Output from /proc/pressure/cpu -----
-some avg10=70.71 avg60=36.97 avg300=10.92 total=36997402
-full avg10=0.00 avg60=0.00 avg300=0.00 total=0
------ End output from /proc/pressure/cpu -----
------ Output from /proc/pressure/io -----
-some avg10=31.16 avg60=13.56 avg300=4.16 total=14542809
-full avg10=2.30 avg60=2.94 avg300=1.32 total=5416048
------ End output from /proc/pressure/io -----
-
-CPU usage from 8307ms to -101ms ago (2025-07-12 13:04:17.540 to 2025-07-12 13:04:23.569):
-  65% 767/system_server: 48% user + 17% kernel / faults: 4096 minor 25 major
-  58% 558/surfaceflinger: 12% user + 46% kernel / faults: 157 minor
-  45% 1372/com.google.android.apps.nexuslauncher: 8.6% user + 36% kernel / faults: 68 minor
-  25% 1176/com.android.systemui: 18% user + 7.1% kernel / faults: 3506 minor 5 major
-  15% 1777/com.google.android.as: 12% user + 3.8% kernel / faults: 3954 minor 66 major
-  13% 1270/com.android.networkstack.process: 9.7% user + 3.8% kernel / faults: 2146 minor 5 major
-  7.5% 1820/com.google.android.providers.media.module: 5.1% user + 2.3% kernel / faults: 1147 minor 16 major
-  6.3% 1514/com.google.android.gms.persistent: 3.9% user + 2.3% kernel / faults: 919 minor 121 major
-  5.7% 244/logd: 2.5% user + 3.1% kernel / faults: 146 minor
-  5.7% 507/android.hardware.graphics.composer3-service.ranchu: 2.6% user + 3% kernel
-97% TOTAL: 37% user + 48% kernel + 4.8% iowait + 4.9% irq + 1.9% softirq
-CPU usage from 1955ms to 3667ms later (2025-07-12 13:04:25.423 to 2025-07-12 13:04:27.135):
-  100% 767/system_server: 70% user + 29% kernel / faults: 628 minor 8 major
-    30% 787/HeapTaskDaemon: 26% user + 4.4% kernel
-    17% 2028/AnrAuxiliaryTas: 4.4% user + 13% kernel
-    7.3% 1877/pool-78-thread-: 5.8% user + 1.4% kernel
-    4.4% 1102/shortcut: 2.9% user + 1.4% kernel
-    4.4% 1128/binder:767_5: 2.9% user + 1.4% kernel
-    2.9% 991/StorageManagerS: 2.9% user + 0% kernel
-    2.9% 1031/WifiScanningSer: 2.9% user + 0% kernel
-    2.9% 1234/binder:767_7: 1.4% user + 1.4% kernel
-    2.9% 2066/binder:767_12: 2.9% user + 0% kernel
-    2.9% 2138/binder:767_15: 1.4% user + 1.4% kernel
-    1.4% 808/android.ui: 0% user + 1.4% kernel
-    1.4% 941/SensorService: 1.4% user + 0% kernel
-    1.4% 944/eduling.default: 1.4% user + 0% kernel
-    1.4% 958/CachedAppOptimi: 1.4% user + 0% kernel
-    1.4% 1025/WifiHandlerThre: 1.4% user + 0% kernel
-    1.4% 1807/binder:767_D: 1.4% user + 0% kernel
-    1.4% 2067/binder:767_13: 1.4% user + 0% kernel
-    1.4% 2068/binder:767_14: 1.4% user + 0% kernel
-    1.4% 2144/binder:767_17: 1.4% user + 0% kernel
-    1.4% 2268/AnrMainProcessD: 0% user + 1.4% kernel
-  23% 69/kswapd0: 0% user + 23% kernel
-  40% 2274/com.testapp.bluesky_api_test: 35% user + 4.3% kernel / faults: 748 minor 1 major
-    21% 2296/Jit thread pool: 20% user + 1.4% kernel
-    18% 2274/re-initialized>: 17% user + 1.4% kernel
-  39% 1176/com.android.systemui: 28% user + 11% kernel / faults: 526 minor 10 major
-    26% 1177/Signal Catcher: 17% user + 8.8% kernel
-    8.8% 1176/ndroid.systemui: 7.3% user + 1.4% kernel
-    1.4% 1573/SysUiLng: 0% user + 1.4% kernel
-  33% 1514/com.google.android.gms.persistent: 29% user + 4.6% kernel / faults: 453 minor 25 major
-    12% 1514/.gms.persistent: 7.7% user + 4.6% kernel
-    10% 1520/HeapTaskDaemon: 9.2% user + 1.5% kernel
-    4.6% 1527/binder:1514_1: 4.6% user + 0% kernel
-    4.6% 2258/highpool[2]: 4.6% user + 0% kernel
-    1.5% 1763/GoogleApiHandle: 0% user + 1.5% kernel
-    1.5% 2099/binder:1514_5: 1.5% user + 0% kernel
-    1.5% 2266/highpool[3]: 1.5% user + 0% kernel
-   +0% 2351/FlpThread: 0% user + 0% kernel
-Configuring clns-9 for other apk /data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
-Compat change id reported: 202956589; UID 10218; state: ENABLED
-AssetManager2(0x7be9a2d53e78) locale list changing from [] to [en-US]
-AssetManager2(0x7be9a2d47678) locale list changing from [] to [en-US]
-Currently set values for:
-  angle_gl_driver_selection_pkgs=[]
-  angle_gl_driver_selection_values=[]
-com.testapp.bluesky_api_test is not listed in per-application setting
-ANGLE allowlist from config: 
-com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
-Neither updatable production driver nor prerelease driver is supported.
-Compat change id reported: 279646685; UID 10218; state: ENABLED
-AssetManager2(0x7be9a2d4f058) locale list changing from [] to [en-US]
-Choreographer implicitly registered for the refresh rate.
-Checking for metadata for AppLocalesMetadataHolderService : Service not found
-AssetManager2(0x7be9a2d56718) locale list changing from [] to [en-US]
-Pinning is deprecated since Android Q. Please use trim or other methods.
-Opening libGLESv1_CM_emulation.so
-Opening libGLESv2_emulation.so
-Failed to initialize 101010-2 format, error = EGL_SUCCESS
-Compat change id reported: 309578419; UID 10218; state: ENABLED
-Toggle override initialized to: OVERRIDE_UNSET
-hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
-Image decoding logging dropped!
-Image decoding logging dropped!
-Image decoding logging dropped!
-Compat change id reported: 63938206; UID 10218; state: ENABLED
-Compat change id reported: 352594277; UID 10218; state: ENABLED
-Compat change id reported: 303326708; UID 10218; state: ENABLED
-Image decoding logging dropped!
-Image decoding logging dropped!
-Image decoding logging dropped!
-Image decoding logging dropped!
-Loading timeline...
-Compat change id reported: 349153669; UID 10218; state: ENABLED
-Unknown dataspace 0
-SLF4J(W): No SLF4J providers were found.
-SLF4J(W): Defaulting to no-operation (NOP) logger implementation
-SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
-No adapter attached; skipping layout
-Verification of boolean okhttp3.internal.Util.isHealthy(java.net.Socket, okio.BufferedSource) took 131.269ms (327.57 bytecodes/s) (0B arena alloc)
-Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[MainActivity]#0) as ready
-Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[MainActivity]#1) as ready
-Verification of void okhttp3.internal.connection.RouteSelector.<clinit>() took 103.212ms (87.20 bytecodes/s) (0B arena alloc)
-Skipped 141 frames!  The application may be doing too much work on its main thread.
-No adapter attached; skipping layout
-Davey! duration=2446ms; Flags=1, FrameTimelineVsyncId=7159, IntendedVsync=117567382423, Vsync=117700715751, InputEventId=0, HandleInputStart=117701649966, AnimationStart=117701656068, PerformTraversalsStart=117701657378, DrawStart=118307436881, FrameDeadline=117584049089, FrameStartTime=117701250010, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=118426986294, SyncStart=118439017186, IssueDrawCommandsStart=118441147432, SwapBuffers=119440842923, FrameCompleted=120025541222, DequeueBufferDuration=14765, QueueBufferDuration=97509903, GpuCompleted=120025230786, SwapBuffersCompleted=120025541222, DisplayPresentTime=35192962073999, CommandSubmissionCompleted=119440842923, 
-Installing profile for com.testapp.bluesky_api_test
-Davey! duration=2667ms; Flags=0, FrameTimelineVsyncId=7224, IntendedVsync=117734049083, Vsync=120084048989, InputEventId=0, HandleInputStart=120097627668, AnimationStart=120097634717, PerformTraversalsStart=120100531518, DrawStart=120109444442, FrameDeadline=120050715657, FrameStartTime=120091610071, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=120117915792, SyncStart=120118080572, IssueDrawCommandsStart=120121410405, SwapBuffers=120126479943, FrameCompleted=120401898235, DequeueBufferDuration=90719, QueueBufferDuration=7257094, GpuCompleted=120401898235, SwapBuffersCompleted=120171252419, DisplayPresentTime=35192962074024, CommandSubmissionCompleted=120126479943, 
-Cleared Reference was only reachable from finalizer (only reported once)
-Background concurrent mark compact GC freed 3854KB AllocSpace bytes, 7(212KB) LOS objects, 49% free, 4369KB/8739KB, paused 17.437ms,3.255ms total 640.364ms
-Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
-Error: Failed to fetch timeline: Token has expired
-Finished loading timeline.
-hide(ime(), fromIme=false)
-com.testapp.bluesky_api_test:3f46e263: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-AssetManager2(0x7be9a2d56718) locale list changing from [] to [en-US]
-ViewModel created.
-Fetching all groups from database.
-getAllGroups() called.
-Refreshing groups data.
-Fetching all groups from database.
-Verification of android.database.Cursor androidx.room.util.CursorUtil.copyAndClose(android.database.Cursor) took 100.622ms (1351.58 bytecodes/s) (0B arena alloc)
-Groups updated. Size: 1
-Group Name: Group1
-visibilityChanged oldVisibility=true newVisibility=false
-hide(ime(), fromIme=false)
-com.testapp.bluesky_api_test:e7f81947: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-Davey! duration=743ms; Flags=1, FrameTimelineVsyncId=11823, IntendedVsync=141900714783, Vsync=141917381449, InputEventId=0, HandleInputStart=141931717008, AnimationStart=141931723654, PerformTraversalsStart=141931728799, DrawStart=142337184307, FrameDeadline=141917381449, FrameStartTime=141931673187, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=142356725510, SyncStart=142357532010, IssueDrawCommandsStart=142359095503, SwapBuffers=142399976401, FrameCompleted=142645201640, DequeueBufferDuration=37495, QueueBufferDuration=1652932, GpuCompleted=142645201640, SwapBuffersCompleted=142627296966, DisplayPresentTime=0, CommandSubmissionCompleted=142399976401, 
-Skipped 53 frames!  The application may be doing too much work on its main thread.
-Davey! duration=1035ms; Flags=0, FrameTimelineVsyncId=11838, IntendedVsync=141950714781, Vsync=142834048079, InputEventId=0, HandleInputStart=142851739700, AnimationStart=142851742090, PerformTraversalsStart=142851836296, DrawStart=142905784467, FrameDeadline=142667381419, FrameStartTime=142848856733, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=142914943007, SyncStart=142914996575, IssueDrawCommandsStart=142915107491, SwapBuffers=142936769899, FrameCompleted=142986112699, DequeueBufferDuration=5466, QueueBufferDuration=289914, GpuCompleted=142986112699, SwapBuffersCompleted=142966638664, DisplayPresentTime=0, CommandSubmissionCompleted=142936769899, 
-Davey! duration=1107ms; Flags=0, FrameTimelineVsyncId=11838, IntendedVsync=141950714781, Vsync=142834048079, InputEventId=141894835, HandleInputStart=142851739700, AnimationStart=142851742090, PerformTraversalsStart=142851836296, DrawStart=142919241727, FrameDeadline=141967381447, FrameStartTime=142848856733, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=142919556813, SyncStart=142980747336, IssueDrawCommandsStart=142988286091, SwapBuffers=143061114039, FrameCompleted=143119254881, DequeueBufferDuration=62975, QueueBufferDuration=6447648, GpuCompleted=143119254881, SwapBuffersCompleted=143091946273, DisplayPresentTime=-60149509460972241, CommandSubmissionCompleted=143061114039, 
-visibilityChanged oldVisibility=true newVisibility=false
-hide(ime(), fromIme=false)
-com.testapp.bluesky_api_test:f600f852: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-Shutting down VM
-FATAL EXCEPTION: main
-Process: com.testapp.bluesky_api_test, PID: 2274
-android.content.ActivityNotFoundException: Unable to find explicit activity class {com.testapp.bluesky_api_test/com.testapp.bluesky_api_test.ui.PostSelectActivity}; have you declared this activity in your AndroidManifest.xml, or does your intent not match its declared <intent-filter>?
-	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:2423)
-	at android.app.Instrumentation.execStartActivity(Instrumentation.java:2000)
-	at android.app.Activity.startActivityForResult(Activity.java:5997)
-	at androidx.activity.ComponentActivity.startActivityForResult(ComponentActivity.kt:675)
-	at androidx.core.app.ActivityCompat.startActivityForResult(ActivityCompat.java:244)
-	at androidx.activity.ComponentActivity$activityResultRegistry$1.onLaunch(ComponentActivity.kt:223)
-	at androidx.activity.result.ActivityResultRegistry$register$2.launch(ActivityResultRegistry.kt:130)
-	at androidx.activity.result.ActivityResultLauncher.launch(ActivityResultLauncher.kt:37)
-	at com.testapp.bluesky_api_test.ui.GroupEditActivity.lambda$onCreate$2$com-testapp-bluesky_api_test-ui-GroupEditActivity(GroupEditActivity.java:114)
-	at com.testapp.bluesky_api_test.ui.GroupEditActivity$$ExternalSyntheticLambda2.onClick(D8$$SyntheticClass:0)
-	at android.view.View.performClick(View.java:8083)
-	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1218)
-	at android.view.View.performClickInternal(View.java:8060)
-	at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0)
-	at android.view.View$PerformClick.run(View.java:31549)
-	at android.os.Handler.handleCallback(Handler.java:995)
-	at android.os.Handler.dispatchMessage(Handler.java:103)
-	at android.os.Looper.loopOnce(Looper.java:248)
-	at android.os.Looper.loop(Looper.java:338)
-	at android.app.ActivityThread.main(ActivityThread.java:9067)
-	at java.lang.reflect.Method.invoke(Native Method)
-	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
-	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
-Sending signal. PID: 2274 SIG: 9
-Late-enabling -Xcheck:jni
-Using CollectorTypeCMC GC.
-Unexpected CPU variant for x86: x86_64.
-Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
-Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
-Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so using system ns (caller=<unknown>): ok
-type=1400 audit(0.0:134): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/1553d31e-agent.so" dev="dm-55" ino=368912 scontext=u:r:untrusted_app:s0:c218,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c218,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
-hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-c8049923.jar is in boot class path but is not in a known location
-Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
-Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
-Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
-Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
-Configuring clns-9 for other apk /data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~oLR2CyZpCyAjW45ntOAkEg==/com.testapp.bluesky_api_test-KW4fJgQ_EsLvuMdl-Ky1PA==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
-Compat change id reported: 202956589; UID 10218; state: ENABLED
-AssetManager2(0x7be9a2d47998) locale list changing from [] to [en-US]
-AssetManager2(0x7be9a2d49f18) locale list changing from [] to [en-US]
-Currently set values for:
-  angle_gl_driver_selection_pkgs=[]
-  angle_gl_driver_selection_values=[]
-com.testapp.bluesky_api_test is not listed in per-application setting
-ANGLE allowlist from config: 
-com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
-Neither updatable production driver nor prerelease driver is supported.
-Compat change id reported: 279646685; UID 10218; state: ENABLED
-Choreographer implicitly registered for the refresh rate.
-AssetManager2(0x7be9a2d53e78) locale list changing from [] to [en-US]
-Checking for metadata for AppLocalesMetadataHolderService : Service not found
-AssetManager2(0x7be9a2d47678) locale list changing from [] to [en-US]
-Opening libGLESv1_CM_emulation.so
-Opening libGLESv2_emulation.so
-Failed to initialize 101010-2 format, error = EGL_SUCCESS
-Pinning is deprecated since Android Q. Please use trim or other methods.
-Compat change id reported: 309578419; UID 10218; state: ENABLED
-Toggle override initialized to: OVERRIDE_UNSET
-hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
-Compat change id reported: 63938206; UID 10218; state: ENABLED
-ViewModel created.
-Fetching all groups from database.
-getAllGroups() called.
-Refreshing groups data.
-Fetching all groups from database.
-Compat change id reported: 352594277; UID 10218; state: ENABLED
-Compat change id reported: 349153669; UID 10218; state: ENABLED
-Unknown dataspace 0
-Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[GroupActivity]#0) as ready
-Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[GroupActivity]#1) as ready
-Davey! duration=1957ms; Flags=1, FrameTimelineVsyncId=13367, IntendedVsync=157934047475, Vsync=158100714135, InputEventId=0, HandleInputStart=158107328066, AnimationStart=158107330404, PerformTraversalsStart=158107331600, DrawStart=158633091028, FrameDeadline=157950714141, FrameStartTime=158103453862, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=158747976830, SyncStart=158820612542, IssueDrawCommandsStart=158821338089, SwapBuffers=159393970053, FrameCompleted=159963905134, DequeueBufferDuration=60284, QueueBufferDuration=117904396, GpuCompleted=159952617871, SwapBuffersCompleted=159963905134, DisplayPresentTime=0, CommandSubmissionCompleted=159393970053, 
-Skipped 117 frames!  The application may be doing too much work on its main thread.
-Groups updated. Size: 1
-Group Name: Group1
-Davey! duration=2052ms; Flags=0, FrameTimelineVsyncId=13406, IntendedVsync=158117380801, Vsync=160067380723, InputEventId=0, HandleInputStart=160074782684, AnimationStart=160074793821, PerformTraversalsStart=160087606973, DrawStart=160107297530, FrameDeadline=159984047393, FrameStartTime=160069687266, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=160114763467, SyncStart=160115454862, IssueDrawCommandsStart=160115661544, SwapBuffers=160119248023, FrameCompleted=160170537198, DequeueBufferDuration=6733, QueueBufferDuration=1658121, GpuCompleted=160170537198, SwapBuffersCompleted=160146087981, DisplayPresentTime=0, CommandSubmissionCompleted=160119248023, 
-Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
-hide(ime(), fromIme=false)
-com.testapp.bluesky_api_test:38536199: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-Installing profile for com.testapp.bluesky_api_test
-Background concurrent mark compact GC freed 2426KB AllocSpace bytes, 0(0B) LOS objects, 49% free, 3544KB/7089KB, paused 12.086ms,11.095ms total 167.864ms
+025-07-16 10:17:10.502  2672-2672  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-16 10:17:10.502  2672-2672  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-16 10:17:11.088  2672-2672  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~rnbtsaSP0weWQySqP_XpKw==/com.testapp.bluesky_api_test-afOBKTWg8zZCiJ-UnB0lyg==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~rnbtsaSP0weWQySqP_XpKw==/com.testapp.bluesky_api_test-afOBKTWg8zZCiJ-UnB0lyg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
+2025-07-16 10:17:11.091  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
+2025-07-16 10:17:11.101  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a9053898) locale list changing from [] to [en-US]
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
+2025-07-16 10:17:11.133  2672-2672  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-16 10:17:11.249  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
+2025-07-16 10:17:11.483  2672-2782  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
+2025-07-16 10:17:11.503  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a90541f8) locale list changing from [] to [en-US]
+2025-07-16 10:17:11.562  2672-2672  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-16 10:17:11.565  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a904cb38) locale list changing from [] to [en-US]
+2025-07-16 10:17:11.587  2672-2672  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-16 10:17:11.722  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
+2025-07-16 10:17:11.728  2672-2672  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-16 10:17:11.769  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-16 10:17:11.804  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:11.807  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:11.808  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:11.821  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
+2025-07-16 10:17:11.826  2672-2782  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
+2025-07-16 10:17:11.826  2672-2782  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
+2025-07-16 10:17:11.830  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
+2025-07-16 10:17:11.867  2672-2782  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+2025-07-16 10:17:11.869  2672-2782  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-16 10:17:11.902  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 303326708; UID 10215; state: ENABLED
+2025-07-16 10:17:12.155  2672-2672  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
+2025-07-16 10:17:12.171  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
+2025-07-16 10:17:13.366  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-16 10:17:13.367  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:a165ae4e: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-16 10:17:15.562  2672-2710  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+2025-07-16 10:17:16.668  2672-2672  AutofillManager         com.testapp.bluesky_api_test         I  showAutofillDialog() return false due to improve fill dialog
+2025-07-16 10:17:16.670  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:62664a52: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser true
+2025-07-16 10:17:16.678  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  show(ime(), fromIme=false)
+2025-07-16 10:17:16.679  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  Setting requestedVisibleTypes to -1 (was -9)
+2025-07-16 10:17:16.771  2672-3071  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
+2025-07-16 10:17:20.187  2672-3253  InteractionJankMonitor  com.testapp.bluesky_api_test         W  Initializing without READ_DEVICE_CONFIG permission. enabled=false, interval=1, missedFrameThreshold=3, frameTimeThreshold=64, package=com.testapp.bluesky_api_test
+2025-07-16 10:17:20.457  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:62664a52: onShown
+2025-07-16 10:17:31.456  2672-2672  AutofillManager         com.testapp.bluesky_api_test         I  showAutofillDialog() return false due to improve fill dialog
+2025-07-16 10:17:31.461  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:6dff311e: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser true
+2025-07-16 10:17:31.464  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  show(ime(), fromIme=false)
+2025-07-16 10:17:31.464  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:6dff311e: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+2025-07-16 10:17:31.504  2672-2672  AssistStructure         com.testapp.bluesky_api_test         I  Flattened final assist data: 1472 bytes, containing 1 windows, 6 views
+2025-07-16 10:17:31.712  2672-2672  RemoteInpu...ectionImpl com.testapp.bluesky_api_test         W  requestCursorUpdates on inactive InputConnection
+2025-07-16 10:17:31.808  2672-2672  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@af9cf3f
+2025-07-16 10:17:36.708  2672-2672  AutofillManager         com.testapp.bluesky_api_test         I  showAutofillDialog() return false due to improve fill dialog
+2025-07-16 10:17:36.712  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:2bcd3290: onRequestShow at ORIGIN_CLIENT reason SHOW_SOFT_INPUT fromUser true
+2025-07-16 10:17:36.713  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  show(ime(), fromIme=false)
+2025-07-16 10:17:36.713  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:2bcd3290: onCancelled at PHASE_CLIENT_APPLY_ANIMATION
+2025-07-16 10:17:40.993  2672-3916  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
+2025-07-16 10:17:40.993  2672-3916  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+2025-07-16 10:17:40.993  2672-3916  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+2025-07-16 10:17:42.987  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 3962KB AllocSpace bytes, 5(172KB) LOS objects, 49% free, 3902KB/7804KB, paused 5.505ms,16.039ms total 284.273ms
+2025-07-16 10:17:43.345  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a9053578) locale list changing from [] to [en-US]
+2025-07-16 10:17:43.585  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:43.602  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:43.611  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:43.624  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:43.798  2672-2672  MainFragment            com.testapp.bluesky_api_test         D  Loading timeline...
+2025-07-16 10:17:43.834  2672-2672  Choreographer           com.testapp.bluesky_api_test         I  Skipped 33 frames!  The application may be doing too much work on its main thread.
+2025-07-16 10:17:44.053  2672-2672  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-16 10:17:44.488  2672-2877  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1157ms; Flags=1, FrameTimelineVsyncId=15926, IntendedVsync=125810365091, Vsync=126360365069, InputEventId=0, HandleInputStart=126373992937, AnimationStart=126373994313, PerformTraversalsStart=126374147781, DrawStart=126747675326, FrameDeadline=125827031757, FrameStartTime=126373299291, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=126755872867, SyncStart=126802943552, IssueDrawCommandsStart=126804231817, SwapBuffers=126994168438, FrameCompleted=127015184182, DequeueBufferDuration=7920, QueueBufferDuration=2100034, GpuCompleted=127015184182, SwapBuffersCompleted=126998321154, DisplayPresentTime=0, CommandSubmissionCompleted=126994168438, 
+2025-07-16 10:17:44.523  2672-2672  Choreographer           com.testapp.bluesky_api_test         I  Skipped 40 frames!  The application may be doing too much work on its main thread.
+2025-07-16 10:17:44.568  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  system_server:6da231fa: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+2025-07-16 10:17:44.590  2672-2877  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=705ms; Flags=0, FrameTimelineVsyncId=16042, IntendedVsync=126393698401, Vsync=127060365041, InputEventId=0, HandleInputStart=127065253411, AnimationStart=127065255247, PerformTraversalsStart=127065887263, DrawStart=127070129994, FrameDeadline=127043698375, FrameStartTime=127062162611, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=127070429924, SyncStart=127071343967, IssueDrawCommandsStart=127071584657, SwapBuffers=127082899118, FrameCompleted=127099760613, DequeueBufferDuration=17279, QueueBufferDuration=5510694, GpuCompleted=127097146553, SwapBuffersCompleted=127099760613, DisplayPresentTime=0, CommandSubmissionCompleted=127082899118, 
+2025-07-16 10:17:45.042  2672-2672  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@af9cf3f
+2025-07-16 10:17:45.096  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:45.123  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-16 10:17:45.124  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:f81d024c: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-16 10:17:45.220  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 7.044ms
+2025-07-16 10:17:45.241  2672-2672  RemoteInpu...ectionImpl com.testapp.bluesky_api_test         W  requestCursorUpdates on inactive InputConnection
+2025-07-16 10:17:45.248  2672-2672  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-16 10:17:45.310  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:45.336  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  system_server:fb44dcb8: onCancelled at PHASE_CLIENT_ON_CONTROLS_CHANGED
+2025-07-16 10:17:45.525  2672-2672  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@661afbe
+2025-07-16 10:17:45.528  2672-2672  VRI[LoginActivity]      com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
+2025-07-16 10:17:45.611  2672-2672  AutofillManager         com.testapp.bluesky_api_test         I  onInvisibleForAutofill(): expiringResponse
+2025-07-16 10:17:45.622  2672-2672  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda13@e2f9449
+2025-07-16 10:17:45.643  2672-2672  ViewRootImpl            com.testapp.bluesky_api_test         D  Skipping stats log for color mode
+2025-07-16 10:17:45.687  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 2086KB AllocSpace bytes, 4(608KB) LOS objects, 49% free, 5601KB/10MB, paused 17.835ms,109.858ms total 785.039ms
+2025-07-16 10:17:46.033  2672-2672  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  sendCancelIfRunning: isInProgress=false callback=android.view.ImeBackAnimationController@661afbe
+2025-07-16 10:17:46.485  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:46.764  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:47.398  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:47.401  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:47.408  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.508  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.511  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.565  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.567  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.651  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.654  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:48.836  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:49.911  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 3985KB AllocSpace bytes, 6(1940KB) LOS objects, 49% free, 7476KB/14MB, paused 6.165ms,14.128ms total 168.055ms
+2025-07-16 10:17:50.028  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.265  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.330  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.332  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.336  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.429  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:50.447  2672-2672  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a9067118) locale list changing from [] to [en-US]
+2025-07-16 10:17:50.570  2672-2672  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:17:50.605  2672-2672  GroupViewModel          com.testapp.bluesky_api_test         D  ViewModel created.
+2025-07-16 10:17:50.610  2672-2672  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
+2025-07-16 10:17:50.635  2672-2672  GroupViewModel          com.testapp.bluesky_api_test         D  getAllGroups() called.
+2025-07-16 10:17:50.662  2672-2672  GroupViewModel          com.testapp.bluesky_api_test         D  Refreshing groups data.
+2025-07-16 10:17:50.663  2672-2672  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
+2025-07-16 10:17:51.396  2672-2672  GroupFragment           com.testapp.bluesky_api_test         D  Groups updated. Size: 0
+2025-07-16 10:17:51.567  2672-2672  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-16 10:17:51.568  2672-2672  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:6231415b: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-16 10:17:51.852  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:51.885  2672-2672  VRI[MainActivity]       com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
+2025-07-16 10:17:52.232  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:52.236  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:52.329  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:52.331  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.260  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 31.808ms
+2025-07-16 10:17:53.307  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.331  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 5061KB AllocSpace bytes, 8(2908KB) LOS objects, 49% free, 7877KB/15MB, paused 32.641ms,14.172ms total 172.955ms
+2025-07-16 10:17:53.444  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.486  2672-4237  GroupViewModel          com.testapp.bluesky_api_test         E  Failed to get or create user. Cannot create group.
+2025-07-16 10:17:53.508  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.521  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.711  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.712  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.715  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.726  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:53.791  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:54.835  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:54.887  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:54.915  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:54.975  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.078  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.081  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.084  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.091  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.756  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.852  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.860  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.866  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.885  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.905  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.906  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:55.916  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:56.826  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 5085KB AllocSpace bytes, 14(4204KB) LOS objects, 49% free, 7904KB/15MB, paused 237us,2.978ms total 259.571ms
+2025-07-16 10:17:56.931  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:56.957  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:56.967  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.086  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.093  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.110  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.118  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.125  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.127  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.128  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.129  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.144  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.145  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.147  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.175  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.176  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.177  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.179  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.183  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.187  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.197  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.212  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.214  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.238  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:58.247  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.078  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.086  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.101  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.104  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.117  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.125  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.131  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.136  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.146  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.147  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.147  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.151  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.159  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.160  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.166  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.168  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.168  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.175  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.176  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.197  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.198  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.198  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.207  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.212  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.216  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.218  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.219  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.225  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.227  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.228  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.236  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.243  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.243  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.246  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.246  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.247  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.247  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.255  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.264  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:17:59.265  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.205  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.214  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.282  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.362  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 4709KB AllocSpace bytes, 10(3044KB) LOS objects, 49% free, 9520KB/18MB, paused 2.943ms,18.970ms total 294.559ms
+2025-07-16 10:18:00.378  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.396  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.404  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.411  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.412  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.424  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.434  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.434  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.435  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.437  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.448  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.464  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.470  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.473  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.481  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.490  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.491  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.497  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:00.589  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:01.774  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:01.826  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:01.867  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:01.878  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:01.934  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.004  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.016  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.016  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.040  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.045  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.061  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.101  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:02.134  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.068  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.085  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.086  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.087  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.165  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.225  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.260  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.260  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.327  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.344  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.399  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.423  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.423  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.428  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.428  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.429  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.443  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.460  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:03.461  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.115  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.119  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.120  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.120  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.127  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.138  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.138  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.171  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.176  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.269  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.417  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.460  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.570  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.571  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.579  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.603  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.611  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.630  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.638  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.638  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.709  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.711  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.712  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.712  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.716  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.727  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.728  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.735  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.739  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.747  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.747  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.748  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:04.806  2672-2711  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 5717KB AllocSpace bytes, 14(4144KB) LOS objects, 49% free, 10MB/20MB, paused 12.708ms,5.007ms total 694.296ms
+2025-07-16 10:18:05.314  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.315  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.315  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.317  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.319  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.320  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.320  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.330  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.333  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.335  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.337  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.348  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.394  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.452  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.459  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.466  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.504  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.517  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.565  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.588  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.594  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.600  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.603  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.606  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.612  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.616  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.625  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.626  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.631  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.633  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.642  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.642  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.672  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.675  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:05.685  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.418  2672-4237  GroupViewModel          com.testapp.bluesky_api_test         E  Failed to get or create user. Cannot create group.
+2025-07-16 10:18:06.442  2672-4239  AndroidRuntime          com.testapp.bluesky_api_test         E  FATAL EXCEPTION: pool-11-thread-1
+                                                                                                    Process: com.testapp.bluesky_api_test, PID: 2672
+                                                                                                    android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: User.did (code 2067 SQLITE_CONSTRAINT_UNIQUE)
+                                                                                                    	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+                                                                                                    	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:985)
+                                                                                                    	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:825)
+                                                                                                    	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:89)
+                                                                                                    	at androidx.sqlite.db.framework.FrameworkSQLiteStatement.executeInsert(FrameworkSQLiteStatement.kt:42)
+                                                                                                    	at androidx.room.EntityInsertionAdapter.insertAndReturnId(EntityInsertionAdapter.kt:101)
+                                                                                                    	at com.testapp.bluesky_api_test.DataBaseManupilate.dao.UserDao_Impl.insert(UserDao_Impl.java:100)
+                                                                                                    	at com.testapp.bluesky_api_test.repository.UserRepository.lambda$insertUser$2$com-testapp-bluesky_api_test-repository-UserRepository(UserRepository.java:43)
+                                                                                                    	at com.testapp.bluesky_api_test.repository.UserRepository$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1119)
+2025-07-16 10:18:06.641  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.660  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.695  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.696  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.756  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.794  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.807  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.852  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.871  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.884  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.900  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.900  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.903  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.943  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:06.966  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:07.038  2672-4002  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-16 10:18:07.338  2672-4239  Process                 com.testapp.bluesky_api_test         I  Sending signal. PID: 2672 SIG: 9
+---------------------------- PROCESS ENDED (2672) for package com.testapp.bluesky_api_test ----------------------------
+2025-07-16 10:18:08.660  4521-4521  nativeloader            com.testapp.bluesky_api_test         D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+---------------------------- PROCESS STARTED (4521) for package com.testapp.bluesky_api_test ----------------------------
+2025-07-16 10:18:08.982  4521-4521  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-16 10:18:08.983  4521-4521  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-16 10:18:09.538  4521-4521  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~rnbtsaSP0weWQySqP_XpKw==/com.testapp.bluesky_api_test-afOBKTWg8zZCiJ-UnB0lyg==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~rnbtsaSP0weWQySqP_XpKw==/com.testapp.bluesky_api_test-afOBKTWg8zZCiJ-UnB0lyg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
+2025-07-16 10:18:09.542  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
+2025-07-16 10:18:09.564  4521-4521  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a9053898) locale list changing from [] to [en-US]
+2025-07-16 10:18:09.593  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
+2025-07-16 10:18:09.593  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
+2025-07-16 10:18:09.593  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
+2025-07-16 10:18:09.593  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
+2025-07-16 10:18:09.594  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
+2025-07-16 10:18:09.594  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
+2025-07-16 10:18:09.594  4521-4521  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-16 10:18:09.648  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
+2025-07-16 10:18:10.304  4521-4521  Choreographer           com.testapp.bluesky_api_test         I  Skipped 37 frames!  The application may be doing too much work on its main thread.
+2025-07-16 10:18:10.347  4521-4563  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
+2025-07-16 10:18:10.420  4521-4521  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a904b878) locale list changing from [] to [en-US]
+2025-07-16 10:18:10.504  4521-4521  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-16 10:18:10.506  4521-4521  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7b01a9050698) locale list changing from [] to [en-US]
+2025-07-16 10:18:10.595  4521-4521  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-16 10:18:11.226  4521-4563  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
+2025-07-16 10:18:11.227  4521-4563  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
+2025-07-16 10:18:11.291  4521-4563  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+2025-07-16 10:18:11.292  4521-4563  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-16 10:18:11.431  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
+2025-07-16 10:18:11.436  4521-4521  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-16 10:18:11.570  4521-4521  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-16 10:18:11.868  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
+2025-07-16 10:18:12.004  4521-4521  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:18:12.039  4521-4521  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:18:12.067  4521-4521  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:18:12.091  4521-4521  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-16 10:18:12.423  4521-4521  MainFragment            com.testapp.bluesky_api_test         D  Loading timeline...
+2025-07-16 10:18:12.489  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
+2025-07-16 10:18:12.577  4521-4521  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
+2025-07-16 10:18:12.606  4521-4521  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
+2025-07-16 10:18:13.177  4521-4585  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
+2025-07-16 10:18:13.177  4521-4585  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+2025-07-16 10:18:13.177  4521-4585  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+2025-07-16 10:18:13.216  4521-4521  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-16 10:18:13.534  4521-4585  luesky_api_test         com.testapp.bluesky_api_test         W  Verification of java.lang.Object io.ktor.client.HttpClient$4.invokeSuspend(java.lang.Object) took 109.288ms (969.91 bytecodes/s) (0B arena alloc)
+2025-07-16 10:18:13.748  4521-4607  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=961ms; Flags=1, FrameTimelineVsyncId=18832, IntendedVsync=155293697245, Vsync=155343697243, InputEventId=0, HandleInputStart=155357963047, AnimationStart=155357968361, PerformTraversalsStart=155357972136, DrawStart=155807760706, FrameDeadline=155310363911, FrameStartTime=155357903581, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=155873344979, SyncStart=155881334400, IssueDrawCommandsStart=155881669220, SwapBuffers=156238621851, FrameCompleted=156263284749, DequeueBufferDuration=7133, QueueBufferDuration=1047890, GpuCompleted=156263284749, SwapBuffersCompleted=156247749754, DisplayPresentTime=0, CommandSubmissionCompleted=156238621851, 
+2025-07-16 10:18:13.781  4521-4521  Choreographer           com.testapp.bluesky_api_test         I  Skipped 56 frames!  The application may be doing too much work on its main thread.
+2025-07-16 10:18:13.942  4521-4607  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1081ms; Flags=0, FrameTimelineVsyncId=18855, IntendedVsync=155377030575, Vsync=156310363871, InputEventId=0, HandleInputStart=156333420210, AnimationStart=156333425472, PerformTraversalsStart=156334087282, DrawStart=156366927756, FrameDeadline=156293697205, FrameStartTime=156312281662, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=156377854182, SyncStart=156379507864, IssueDrawCommandsStart=156379941405, SwapBuffers=156381786940, FrameCompleted=156460070290, DequeueBufferDuration=6321, QueueBufferDuration=53224599, GpuCompleted=156459917688, SwapBuffersCompleted=156460070290, DisplayPresentTime=0, CommandSubmissionCompleted=156381786940, 
+2025-07-16 10:18:14.127  4521-4521  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-16 10:18:14.129  4521-4521  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:fc18cf08: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-16 10:18:15.400  4521-4616  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test

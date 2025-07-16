@@ -70,4 +70,8 @@ public class AuthRepository {
     public String getDid() {
         return sharedPreferences.getString(KEY_DID, null);
     }
+
+    public String getHandle() {
+        return sharedPreferences.getString(KEY_HANDLE, null);
+    }
 }

@@ -16,15 +16,20 @@ import com.testapp.bluesky_api_test.ui.GroupAdapter;
 import com.testapp.bluesky_api_test.viewmodel.GroupViewModel;
 
 import android.content.Intent;
+import android.widget.EditText;
+import androidx.appcompat.app.AlertDialog;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
 
 import java.util.ArrayList;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class GroupFragment extends Fragment implements  BaseFragmentInterface {
 
     private GroupViewModel groupViewModel;
     private GroupAdapter groupAdapter;
     private RecyclerView recyclerView;
+    private FloatingActionButton fabAddGroup;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +63,8 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
         groupAdapter = new GroupAdapter(new ArrayList<>()); // 最初は空のリストで初期化
         recyclerView.setAdapter(groupAdapter);
 
+        fabAddGroup = view.findViewById(R.id.fab_add_group);
+
         groupAdapter.setOnItemClickListener(group -> {
             Intent intent = new Intent(getActivity(), com.testapp.bluesky_api_test.ui.GroupEditActivity.class);
             intent.putExtra("group_id", group.getId());
@@ -68,7 +75,29 @@ public class GroupFragment extends Fragment implements  BaseFragmentInterface {
 
     @Override
     public void initListeners() {
-        // No specific listeners yet
+        fabAddGroup.setOnClickListener(v -> showCreateGroupDialog());
+    }
+
+    private void showCreateGroupDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("New Group");
+
+        final EditText input = new EditText(requireContext());
+        input.setHint("Group Name");
+        builder.setView(input);
+
+        builder.setPositiveButton("Create", (dialog, which) -> {
+            String groupName = input.getText().toString().trim();
+            if (!groupName.isEmpty()) {
+                groupViewModel.createNewGroup(groupName);
+            } else {
+                // 名前が空の場合の処理（例: トースト表示など）
+                Log.d("GroupFragment", "Group name cannot be empty.");
+            }
+        });
+        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+        builder.show();
     }
 
     @Override

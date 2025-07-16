@@ -2,6 +2,8 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
@@ -12,7 +14,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "user_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("user_id")}
 )
 public class GroupEntity {
 
@@ -28,6 +31,7 @@ public class GroupEntity {
 	@ColumnInfo(name = "created_at")
 	private String created_at;
 
+	@Ignore
 	public GroupEntity() {}
 
 	public GroupEntity(int id, int user_id, String name, String created_at) {

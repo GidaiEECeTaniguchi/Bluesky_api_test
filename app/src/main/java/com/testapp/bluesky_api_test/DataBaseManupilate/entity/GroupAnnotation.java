@@ -2,8 +2,10 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Index;
 
 @Entity(
 	foreignKeys = {
@@ -12,7 +14,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "group_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("group_id")}
 )
 public class GroupAnnotation {
 
@@ -34,9 +37,10 @@ public class GroupAnnotation {
 	@ColumnInfo(name = "created_at")
 	private String created_at;
 
+	@Ignore
 	public GroupAnnotation() {}
 
-	// 新しいコンストラクタ
+	@Ignore
 	public GroupAnnotation(int group_id, String concept, String description, int post_id) {
 		this.group_id = group_id;
 		this.concept = concept;
@@ -44,6 +48,7 @@ public class GroupAnnotation {
 		this.post_id = post_id;
 		this.created_at = String.valueOf(System.currentTimeMillis()); // 現在時刻を適当に設定
 	}
+
 
 	public GroupAnnotation(int group_id, String concept, String description, String created_at) {
 		this.group_id = group_id;
