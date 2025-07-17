@@ -2,11 +2,15 @@ package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
+
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
+import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
@@ -17,6 +21,7 @@ public class AuthRepository {
     private static final String KEY_REFRESH_TOKEN = "refreshToken";
     private static final String KEY_DID = "did";
     private static final String KEY_HANDLE = "handle";
+    private static final String TAG = "AuthRepository";
 
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
@@ -41,7 +46,6 @@ public class AuthRepository {
         editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
         editor.putString(KEY_DID, data.getDid());
         editor.putString(KEY_HANDLE, data.getHandle());
-
         editor.apply();
     }
 
@@ -67,6 +71,39 @@ public class AuthRepository {
         }
         return null;
     }
+
+    // トークンをリフレッシュする
+    public boolean refreshToken() {
+        // Get the current AuthProvider
+        BearerTokenAuthProvider authProvider = getAuthProvider();
+        if (authProvider == null) {
+            Log.e(TAG, "No AuthProvider available for refresh.");
+            return false;
+        }
+
+        try {
+            Log.d(TAG, "Attempting to refresh token.");
+            // Use the AuthProvider to create the request
+            AuthRequest request = new AuthRequest(authProvider);
+
+            Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
+            ServerRefreshSessionResponse data = response.getData();
+
+            // 新しいトークンを保存
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
+            editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
+            editor.putString(KEY_DID, data.getDid());
+            editor.putString(KEY_HANDLE, data.getHandle());
+            editor.apply();
+            Log.d(TAG, "Token refreshed and saved successfully.");
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to refresh token", e);
+            return false;
+        }
+    }
+
     public String getDid() {
         return sharedPreferences.getString(KEY_DID, null);
     }
