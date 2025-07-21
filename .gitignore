@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+/kotlin_files_content_auth-sources.txt
+/kotlin_files_content_core-sources.txt
+/README.md
+/todo.txt
