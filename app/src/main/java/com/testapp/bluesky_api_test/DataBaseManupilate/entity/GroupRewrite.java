@@ -2,6 +2,8 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
@@ -12,7 +14,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "group_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("group_id")}
 )
 public class GroupRewrite {
 
@@ -34,6 +37,7 @@ public class GroupRewrite {
 	@ColumnInfo(name = "created_at")
 	private String created_at;
 
+	@Ignore
 	public GroupRewrite() {}
 
 	public GroupRewrite(int group_id, String matcher_text, String rewritten_text, String description, String created_at) {

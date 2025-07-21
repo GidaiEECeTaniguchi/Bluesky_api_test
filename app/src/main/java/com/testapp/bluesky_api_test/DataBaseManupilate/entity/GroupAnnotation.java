@@ -2,8 +2,10 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Index;
 
 @Entity(
 	foreignKeys = {
@@ -12,11 +14,12 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "group_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("group_id")}
 )
 public class GroupAnnotation {
 
-	@PrimaryKey(autoGenerate = false)
+	@PrimaryKey(autoGenerate = true)
 	private int id;
 
 	@ColumnInfo(name = "group_id")
@@ -28,10 +31,24 @@ public class GroupAnnotation {
 	@ColumnInfo(name = "description")
 	private String description;
 
+	@ColumnInfo(name = "post_id")
+	private int post_id; // 新しく追加
+
 	@ColumnInfo(name = "created_at")
 	private String created_at;
 
+	@Ignore
 	public GroupAnnotation() {}
+
+	@Ignore
+	public GroupAnnotation(int group_id, String concept, String description, int post_id) {
+		this.group_id = group_id;
+		this.concept = concept;
+		this.description = description;
+		this.post_id = post_id;
+		this.created_at = String.valueOf(System.currentTimeMillis()); // 現在時刻を適当に設定
+	}
+
 
 	public GroupAnnotation(int group_id, String concept, String description, String created_at) {
 		this.group_id = group_id;
@@ -66,6 +83,13 @@ public class GroupAnnotation {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getPost_id() {
+		return post_id;
+	}
+	public void setPost_id(int post_id) {
+		this.post_id = post_id;
 	}
 
 	public String getCreated_at() {

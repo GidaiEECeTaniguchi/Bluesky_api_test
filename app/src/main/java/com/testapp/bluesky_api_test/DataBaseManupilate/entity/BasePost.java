@@ -5,6 +5,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 import androidx.room.Index;
+import androidx.room.Ignore;
 
 @Entity(
     tableName = "base_posts",
@@ -22,7 +23,7 @@ import androidx.room.Index;
             onDelete = ForeignKey.CASCADE
         )
     },
-    indices = {@Index(value = {"uri"}, unique = true)}
+    indices = {@Index(value = {"uri"}, unique = true), @Index(value = {"user_id"}), @Index(value = {"author_id"})}
 )
 public class BasePost {
 
@@ -47,6 +48,7 @@ public class BasePost {
     @ColumnInfo(name = "created_at")
     private String created_at;
 
+    @Ignore
     public BasePost() {}
 
     public BasePost(String uri, String cid, int user_id, int author_id, String content, String created_at) {

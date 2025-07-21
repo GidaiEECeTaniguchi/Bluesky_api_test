@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/group_navigation"
+    app:startDestination="@id/navigation_group_list">
+
+    <!-- ここに GroupFragment を追加していく -->
+    <fragment
+        android:id="@+id/navigation_group_list"
+        android:name="com.testapp.bluesky_api_test.ui.fragment.GroupFragment"
+        android:label="グループ一覧"
+        tools:layout="@layout/fragment_group" />
+
+</navigation>

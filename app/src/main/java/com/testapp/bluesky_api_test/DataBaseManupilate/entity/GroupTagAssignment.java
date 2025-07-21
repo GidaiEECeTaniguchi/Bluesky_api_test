@@ -3,6 +3,8 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
+import androidx.room.Index;
 
 @Entity(
     primaryKeys = {"group_id", "tag_id"},
@@ -18,7 +20,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "tag_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("group_id"), @Index("tag_id")}
 )
 public class GroupTagAssignment {
 
@@ -30,6 +33,7 @@ public class GroupTagAssignment {
 	@ColumnInfo(name = "tag_id")
 	private int tag_id;
 
+	@Ignore
 	public GroupTagAssignment() {}
 
 	public GroupTagAssignment(int group_id, int tag_id) {

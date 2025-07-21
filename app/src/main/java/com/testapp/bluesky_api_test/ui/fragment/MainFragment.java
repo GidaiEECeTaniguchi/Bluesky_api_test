@@ -20,7 +20,7 @@ import com.testapp.bluesky_api_test.viewmodel.MainViewModel;
 
 import java.util.List;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements BaseFragmentInterface{
 
     private static final String TAG = "MainFragment";
     private MainViewModel mainViewModel;
@@ -28,30 +28,46 @@ public class MainFragment extends Fragment {
     private TextView statusTextView;
     // private RecyclerView timelineRecyclerView;
 
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_home, container, false);
+    }
 
-        // Initialize UI elements
-        statusTextView = root.findViewById(R.id.status_text_view);
-        // timelineRecyclerView = root.findViewById(R.id.timeline_recycler_view);
-        // Setup RecyclerView (e.g., set LayoutManager and Adapter)
-        // Example: timelineRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        // Example: timelineRecyclerView.setAdapter(new TimelineAdapter());
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Initialize MainViewModel with a custom factory
-        // The Application context is needed for BlueskyRepository
         mainViewModel = new ViewModelProvider(this, new MainViewModelFactory(requireContext().getApplicationContext()))
                 .get(MainViewModel.class);
 
-        // Observe LiveData from MainViewModel
+        initViews(view, savedInstanceState);
+        initListeners();
+        initObservers();
+        loadData();
+    }
+
+    @Override
+    public void initViews(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        statusTextView = view.findViewById(R.id.status_text_view);
+        // timelineRecyclerView = view.findViewById(R.id.timeline_recycler_view);
+        // Setup RecyclerView (e.g., set LayoutManager and Adapter)
+    }
+
+    @Override
+    public void initListeners() {
+        // Set any listeners here
+    }
+
+    @Override
+    public void initObservers() {
         mainViewModel.getTimelinePosts().observe(getViewLifecycleOwner(), posts -> {
             if (posts != null && !posts.isEmpty()) {
                 Log.d(TAG, "Timeline posts received: " + posts.size());
                 statusTextView.setText("Posts loaded: " + posts.size());
                 // Update RecyclerView adapter with new posts
-                // ((TimelineAdapter) timelineRecyclerView.getAdapter()).submitList(posts);
             } else {
                 Log.d(TAG, "No timeline posts received.");
                 statusTextView.setText("No posts to display.");
@@ -62,10 +78,8 @@ public class MainFragment extends Fragment {
             if (isLoading) {
                 Log.d(TAG, "Loading timeline...");
                 statusTextView.setText("Loading timeline...");
-                // Show loading indicator
             } else {
                 Log.d(TAG, "Finished loading timeline.");
-                // Hide loading indicator
             }
         });
 
@@ -73,16 +87,15 @@ public class MainFragment extends Fragment {
             if (errorMessage != null && !errorMessage.isEmpty()) {
                 Log.e(TAG, "Error: " + errorMessage);
                 statusTextView.setText("Error: " + errorMessage);
-                // Show error message to user
             } else {
-                statusTextView.setText(""); // Clear error message if no error
+                statusTextView.setText("");
             }
         });
+    }
 
-        // Fetch timeline data when the fragment is created
+    @Override
+    public void loadData() {
         mainViewModel.fetchTimeline();
-
-        return root;
     }
 
     // Custom ViewModelFactory for MainViewModel

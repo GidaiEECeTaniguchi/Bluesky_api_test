@@ -2,6 +2,7 @@ package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import androidx.security.crypto.EncryptedSharedPreferences;
 import androidx.security.crypto.MasterKeys;
 
@@ -16,6 +17,9 @@ import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
+
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
+import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
@@ -26,6 +30,7 @@ public class AuthRepository {
     private static final String KEY_REFRESH_TOKEN = "refreshToken";
     private static final String KEY_DID = "did";
     private static final String KEY_HANDLE = "handle";
+    private static final String TAG = "AuthRepository";
 
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
@@ -57,6 +62,12 @@ public class AuthRepository {
         Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
         ServerCreateSessionResponse data = response.getData();
 
+        // ログイン成功時の情報をログに出力
+        Log.d(TAG, "Login successful. AccessJwt: " + data.getAccessJwt());
+        Log.d(TAG, "Login successful. RefreshJwt: " + data.getRefreshJwt());
+        Log.d(TAG, "Login successful. DID: " + data.getDid());
+        Log.d(TAG, "Login successful. Handle: " + data.getHandle());
+
         // ユーザーがDBに存在するか確認し、存在しなければ追加
         User user = userDao.getUserByDid(data.getDid());
         if (user == null) {
@@ -64,13 +75,12 @@ public class AuthRepository {
             userDao.insert(user);
         }
 
-        // 取得したトークンと情報をEncryptedSharedPreferencesに保存
+        // 取得したトークンと情報をSharedPreferencesに保存
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
         editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
         editor.putString(KEY_DID, data.getDid());
         editor.putString(KEY_HANDLE, data.getHandle());
-
         editor.apply();
     }
 
@@ -96,7 +106,47 @@ public class AuthRepository {
         }
         return null;
     }
+
+    // トークンをリフレッシュする
+    public boolean refreshToken() {
+        // Get the current AuthProvider
+        BearerTokenAuthProvider authProvider = getAuthProvider();
+        if (authProvider == null) {
+            Log.e(TAG, "No AuthProvider available for refresh.");
+            return false;
+        }
+
+        try {
+            // トークンをログに出力
+            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessToken());
+            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshToken());
+
+            // Use the AuthProvider to create the request
+            AuthRequest request = new AuthRequest(authProvider);
+
+            Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
+            ServerRefreshSessionResponse data = response.getData();
+
+            // 新しいトークンを保存
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
+            editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
+            editor.putString(KEY_DID, data.getDid());
+            editor.putString(KEY_HANDLE, data.getHandle());
+            editor.apply();
+            Log.d(TAG, "Token refreshed and saved successfully.");
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to refresh token", e);
+            return false;
+        }
+    }
+
     public String getDid() {
         return sharedPreferences.getString(KEY_DID, null);
+    }
+
+    public String getHandle() {
+        return sharedPreferences.getString(KEY_HANDLE, null);
     }
 }

@@ -21,6 +21,9 @@ public interface AuthorDao {
     @Delete
     void delete(Author author);
 
+    @Query("DELETE FROM authors")
+    void deleteAll();
+
     @Query("SELECT * FROM authors WHERE id = :id")
     Author getAuthorById(int id);
 

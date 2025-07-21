@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.DataBaseManupilate.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +14,10 @@ import java.util.List;
 public interface GroupRefDao {
 
     @Query("SELECT * FROM GroupRef")
-    List<GroupRef> getAll();
+    LiveData<List<GroupRef>> getAll();
+
+    @Query("SELECT * FROM GroupRef WHERE group_id = :groupId")
+    List<GroupRef> getRefsByGroupId(int groupId);
 
     @Query("SELECT * FROM GroupRef WHERE id = :id")
     GroupRef getById(int id);
@@ -29,4 +33,7 @@ public interface GroupRefDao {
 
     @Delete
     void delete(GroupRef item);
+
+    @Query("DELETE FROM GroupRef")
+    void deleteAll();
 }

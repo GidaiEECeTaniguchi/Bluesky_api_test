@@ -2,8 +2,10 @@ package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
 
 @Entity(
     primaryKeys = {"post_id", "tag_id"},
@@ -19,7 +21,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "tag_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("post_id"), @Index("tag_id")}
 )
 public class TagAssignment {
 
@@ -31,6 +34,7 @@ public class TagAssignment {
 	@ColumnInfo(name = "tag_id")
 	private int tag_id;
 
+	@Ignore
 	public TagAssignment() {}
 
 	public TagAssignment(int post_id, int tag_id) {

@@ -15,6 +15,9 @@ public interface GroupMemberDao {
     @Query("SELECT * FROM GroupMember")
     List<GroupMember> getAll();
 
+    @Query("SELECT * FROM GroupMember WHERE group_id = :groupId")
+    List<GroupMember> getMembersByGroupId(int groupId);
+
     @Query("SELECT * FROM GroupMember")
     GroupMember getByComposite();
 
@@ -29,4 +32,7 @@ public interface GroupMemberDao {
 
     @Delete
     void delete(GroupMember item);
+
+    @Query("DELETE FROM GroupMember")
+    void deleteAll();
 }

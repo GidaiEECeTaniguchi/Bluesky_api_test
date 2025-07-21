@@ -1,6 +1,9 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
+
+import androidx.lifecycle.LiveData;
+
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
@@ -78,7 +81,7 @@ public class PostRepository {
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
-    public List<BasePost> getSavedPostsFromDb() {
+    public LiveData<List<BasePost>> getSavedPostsFromDb() {
         return basePostDao.getAll();
     }
 
@@ -88,6 +91,17 @@ public class PostRepository {
 
     public BasePost getPostByIdFromDb(int id) {
         return basePostDao.getById(id);
+    }
+    public List<BasePost> getPostsByUserIdFromDb(int userId) {
+        return basePostDao.getPostsByUserId(userId);
+    }
+
+            public List<BasePost> getPostsByAuthorIdFromDb(int authorId) {
+    return basePostDao.getPostsByAuthorId(authorId);
+ }
+
+    public LiveData<List<BasePost>> getAllPosts() {
+        return basePostDao.getAll();
     }
 
     private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
@@ -109,5 +123,10 @@ public class PostRepository {
             }
         }
         return blueskyPostInfos;
+    }
+
+    public void shutdown() {
+        // BlueskyOperations は ExecutorService を持っていないので、ここでは何もしない
+        // 必要であれば、BlueskyOperations 内部で ExecutorService を管理し、ここでシャットダウンを呼び出す
     }
 }

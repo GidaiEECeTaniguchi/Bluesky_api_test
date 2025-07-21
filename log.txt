@@ -1,0 +1,93 @@
+2025-07-21 11:30:45.829  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  Late-enabling -Xcheck:jni
+2025-07-21 11:30:46.023  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  Using CollectorTypeCMC GC.
+2025-07-21 11:30:46.050  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  Unexpected CPU variant for x86: x86_64.
+                                                                                                    Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+2025-07-21 11:30:46.154  2207-2207  nativeloader            com.testapp.bluesky_api_test         D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+2025-07-21 11:30:47.015  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 10.969ms
+2025-07-21 11:30:47.035  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 8.194ms
+2025-07-21 11:30:47.099  2207-2207  re-initialized>         com.testapp.bluesky_api_test         W  type=1400 audit(0.0:94): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so" dev="dm-55" ino=361149 scontext=u:r:untrusted_app:s0:c215,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c215,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
+2025-07-21 11:30:47.171  2207-2207  nativeloader            com.testapp.bluesky_api_test         D  Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so using system ns (caller=<unknown>): ok
+2025-07-21 11:30:47.274  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-07dd17c6.jar is in boot class path but is not in a known location
+2025-07-21 11:30:47.382  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+2025-07-21 11:30:47.382  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+2025-07-21 11:30:47.493  2207-2207  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-21 11:30:47.493  2207-2207  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-21 11:30:49.357  2207-2207  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~9J7ir9GtFA5LIeLf9j7Z_w==/com.testapp.bluesky_api_test-8xmRHSgiw6XaiE_lMS99eQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~9J7ir9GtFA5LIeLf9j7Z_w==/com.testapp.bluesky_api_test-8xmRHSgiw6XaiE_lMS99eQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
+2025-07-21 11:30:49.363  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
+2025-07-21 11:30:49.385  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x71e2dd30c878) locale list changing from [] to [en-US]
+2025-07-21 11:30:49.388  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x71e2dd3106f8) locale list changing from [] to [en-US]
+2025-07-21 11:30:49.434  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
+2025-07-21 11:30:49.434  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
+2025-07-21 11:30:49.434  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
+2025-07-21 11:30:49.434  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
+2025-07-21 11:30:49.435  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
+2025-07-21 11:30:49.435  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
+2025-07-21 11:30:49.435  2207-2207  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-21 11:30:49.493  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
+2025-07-21 11:30:49.525  2207-2500  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
+2025-07-21 11:30:49.526  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x71e2dd3135d8) locale list changing from [] to [en-US]
+2025-07-21 11:30:49.591  2207-2207  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-21 11:30:49.594  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x71e2dd310d38) locale list changing from [] to [en-US]
+2025-07-21 11:30:49.614  2207-2207  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-21 11:30:49.800  2207-2500  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
+2025-07-21 11:30:49.800  2207-2500  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
+2025-07-21 11:30:50.101  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
+2025-07-21 11:30:50.105  2207-2207  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-21 11:30:50.207  2207-2207  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-21 11:30:50.328  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:50.334  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:50.336  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:50.344  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
+2025-07-21 11:30:50.381  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
+2025-07-21 11:30:50.518  2207-2500  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+2025-07-21 11:30:50.519  2207-2500  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-21 11:30:50.553  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 303326708; UID 10215; state: ENABLED
+2025-07-21 11:30:51.345  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:51.411  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:51.438  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:51.463  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 11:30:51.727  2207-2207  MainFragment            com.testapp.bluesky_api_test         D  Loading timeline...
+2025-07-21 11:30:51.771  2207-2207  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
+2025-07-21 11:30:51.779  2207-2207  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
+2025-07-21 11:30:52.009  2207-2559  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
+2025-07-21 11:30:52.009  2207-2559  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+2025-07-21 11:30:52.009  2207-2559  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+2025-07-21 11:30:52.220  2207-2207  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-21 11:30:52.662  2207-2287  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=842ms; Flags=1, FrameTimelineVsyncId=9416, IntendedVsync=50844542704, Vsync=50927876034, InputEventId=0, HandleInputStart=50929662201, AnimationStart=50929664801, PerformTraversalsStart=50929665513, DrawStart=51329578041, FrameDeadline=50861209370, FrameStartTime=50929635861, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=51402503343, SyncStart=51406409749, IssueDrawCommandsStart=51406777880, SwapBuffers=51629263823, FrameCompleted=51691361566, DequeueBufferDuration=6432, QueueBufferDuration=52784729, GpuCompleted=51691231074, SwapBuffersCompleted=51691361566, DisplayPresentTime=0, CommandSubmissionCompleted=51629263823, 
+2025-07-21 11:30:52.688  2207-2207  Choreographer           com.testapp.bluesky_api_test         I  Skipped 46 frames!  The application may be doing too much work on its main thread.
+2025-07-21 11:30:52.749  2207-2279  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=806ms; Flags=0, FrameTimelineVsyncId=9447, IntendedVsync=50961209366, Vsync=51727876002, InputEventId=0, HandleInputStart=51731465637, AnimationStart=51731466982, PerformTraversalsStart=51732158155, DrawStart=51741737990, FrameDeadline=51711209336, FrameStartTime=51729143461, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=51743810254, SyncStart=51753157908, IssueDrawCommandsStart=51753578912, SwapBuffers=51757950067, FrameCompleted=51776999733, DequeueBufferDuration=10911, QueueBufferDuration=343981, GpuCompleted=51776760470, SwapBuffersCompleted=51776999733, DisplayPresentTime=0, CommandSubmissionCompleted=51757950067, 
+2025-07-21 11:30:52.954  2207-2207  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-21 11:30:52.969  2207-2207  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:179093bb: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-21 11:30:53.940  2207-2559  MainViewModel           com.testapp.bluesky_api_test         E  ATProtocolException in fetchTimeline: Token has expired, Status: 400, Body: {"error":"ExpiredToken","message":"Token has expired"}
+                                                                                                    work.socialhub.kbsky.ATProtocolException: Token has expired
+                                                                                                    	at work.socialhub.kbsky.internal.share._InternalUtility.handleError(_InternalUtility.kt:112)
+                                                                                                    	at work.socialhub.kbsky.internal.app.bsky._FeedResource.getTimeline(_FeedResource.kt:604)
+                                                                                                    	at com.testapp.bluesky_api_test.bluesky.BlueskyOperations.fetchTimeline(BlueskyOperations.java:47)
+                                                                                                    	at com.testapp.bluesky_api_test.repository.PostRepository.fetchTimelineFromApi(PostRepository.java:75)
+                                                                                                    	at com.testapp.bluesky_api_test.viewmodel.MainViewModel.lambda$fetchTimeline$1$com-testapp-bluesky_api_test-viewmodel-MainViewModel(MainViewModel.java:60)
+                                                                                                    	at com.testapp.bluesky_api_test.viewmodel.MainViewModel$$ExternalSyntheticLambda1.run(D8$$SyntheticClass:0)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1119)
+2025-07-21 11:30:53.941  2207-2559  MainViewModel           com.testapp.bluesky_api_test         D  Access token expired, attempting to refresh.
+2025-07-21 11:30:53.941  2207-2559  AuthRepository          com.testapp.bluesky_api_test         D  Attempting to refresh token with Access Token: eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFUzI1NksifQ.eyJzY29wZSI6ImNvbS5hdHByb3RvLmFjY2VzcyIsInN1YiI6ImRpZDpwbGM6dnk1bHdoZGFjd3lzcnZ4aHFubHdvZnM0IiwiaWF0IjoxNzUyNjI5MjkzLCJleHAiOjE3NTI2MzY0OTMsImF1ZCI6ImRpZDp3ZWI6aHlncm9waG9ydXMudXMtd2VzdC5ob3N0LmJza3kubmV0d29yayJ9.dDDWRYiBia40uYzKmkAj8k9_s7nW2mOgef9AJ1W8llVZZiZuKT-Fk1azKD7faFBq3aVoyef7krA2UogvOro6YQ
+2025-07-21 11:30:53.944  2207-2559  AuthRepository          com.testapp.bluesky_api_test         D  Attempting to refresh token with Refresh Token: eyJ0eXAiOiJyZWZyZXNoK2p3dCIsImFsZyI6IkVTMjU2SyJ9.eyJzY29wZSI6ImNvbS5hdHByb3RvLnJlZnJlc2giLCJzdWIiOiJkaWQ6cGxjOnZ5NWx3aGRhY3d5c3J2eGhxbmx3b2ZzNCIsImF1ZCI6ImRpZDp3ZWI6YnNreS5zb2NpYWwiLCJqdGkiOiJMQ2Y5R09VUG5xL1RRUHJSRWVGWWlTczY4UktrZ3prMGc3TFBkN096Y09jIiwiaWF0IjoxNzUyNjI5MjkzLCJleHAiOjE3NjA0MDUyOTN9.GslANg_-xayptx8L0O7JIjHPGkVYY0A2Dgp0pHHh24EO5cMoMBqdYjd0Kk1N_UAjLHaINk1cN403TVNYibf6mA
+2025-07-21 11:30:53.944  2207-2207  MainFragment            com.testapp.bluesky_api_test         D  Finished loading timeline.
+2025-07-21 11:30:54.191  2207-2559  AuthRepository          com.testapp.bluesky_api_test         E  Failed to refresh token
+                                                                                                    work.socialhub.kbsky.ATProtocolException: Token has expired
+                                                                                                    	at work.socialhub.kbsky.internal.share._InternalUtility.handleError(_InternalUtility.kt:112)
+                                                                                                    	at work.socialhub.kbsky.internal.com.atproto._ServerResource.refreshSession(_ServerResource.kt:205)
+                                                                                                    	at com.testapp.bluesky_api_test.repository.AuthRepository.refreshToken(AuthRepository.java:98)
+                                                                                                    	at com.testapp.bluesky_api_test.viewmodel.MainViewModel.lambda$fetchTimeline$0$com-testapp-bluesky_api_test-viewmodel-MainViewModel(MainViewModel.java:90)
+                                                                                                    	at com.testapp.bluesky_api_test.viewmodel.MainViewModel$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1119)
+2025-07-21 11:30:54.193  2207-2207  MainFragment            com.testapp.bluesky_api_test         E  Error: セッションの更新に失敗しました。再度ログインしてください。
+2025-07-21 11:30:54.511  2207-2207  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-21 11:30:55.127  2207-2266  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+2025-07-21 11:30:55.481  2207-2780  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
+2025-07-21 11:31:20.056  2207-2267  luesky_api_test         com.testapp.bluesky_api_test         W  Cleared Reference was only reachable from finalizer (only reported once)
+2025-07-21 11:31:20.129  2207-2267  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 4527KB AllocSpace bytes, 7(212KB) LOS objects, 49% free, 4901KB/9802KB, paused 37.361ms,3.970ms total 153.141ms
+2025-07-21 11:31:47.030  2207-2207  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-21 11:31:47.031  2207-2207  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:4b3873c5: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN

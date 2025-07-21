@@ -1,5 +1,6 @@
 package com.testapp.bluesky_api_test.DataBaseManupilate.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface GroupEntityDao {
 
     @Query("SELECT * FROM GroupEntity")
-    List<GroupEntity> getAll();
+    LiveData<List<GroupEntity>> getAll();
 
     @Query("SELECT * FROM GroupEntity WHERE id = :id")
     GroupEntity getById(int id);
@@ -24,8 +25,11 @@ public interface GroupEntityDao {
     void insertAll(GroupEntity... items);
 
     @Insert
-    void insert(GroupEntity item);
+    long insert(GroupEntity item);
 
     @Delete
     void delete(GroupEntity item);
+
+    @Query("DELETE FROM GroupEntity")
+    void deleteAll();
 }
