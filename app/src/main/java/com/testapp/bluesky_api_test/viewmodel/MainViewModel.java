@@ -67,10 +67,11 @@ public class MainViewModel extends ViewModel {
                     // DIDは後で取得するか、必要に応じて更新
                     Author author = authorRepository.getAuthorByHandleFromDb(postInfo.getAuthorHandle());
                     if (author == null) {
-                        author = new Author(postInfo.getAuthorHandle(), "");
-                        authorRepository.insertAuthorToDb(author);
-                        // DBから再度取得して、IDがセットされたAuthorを取得する
-                        author = authorRepository.getAuthorByHandleFromDb(postInfo.getAuthorHandle());
+                        author = authorRepository.insertAuthorToDb(new Author(postInfo.getAuthorHandle(), ""));
+                        if (author == null) {
+                            android.util.Log.e("MainViewModel", "Failed to insert author: " + postInfo.getAuthorHandle());
+                            continue; // Skip this post if author cannot be saved
+                        }
                     }
 
                     // BasePostを保存

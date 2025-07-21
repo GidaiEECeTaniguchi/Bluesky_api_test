@@ -47,22 +47,29 @@ public class AuthorRepository {
      * 既に存在するhandleまたはdidを持つAuthorは挿入されません。
      * @param author 挿入するAuthorオブジェクト
      */
-    public void insertAuthorToDb(Author author) {
-        executorService.execute(() -> {
-            try {
-                Author existingAuthorByHandle = authorDao.getAuthorByHandle(author.getHandle());
-                Author existingAuthorByDid = authorDao.getAuthorByDid(author.getDid());
+    public Author insertAuthorToDb(Author author) {
+        try {
+            Author existingAuthorByHandle = authorDao.getAuthorByHandle(author.getHandle());
+            Author existingAuthorByDid = authorDao.getAuthorByDid(author.getDid());
 
-                if (existingAuthorByHandle == null && existingAuthorByDid == null) {
-                    long id = authorDao.insert(author);
-                    Log.d(TAG, "Author inserted with ID: " + id + ", Handle: " + author.getHandle());
+            if (existingAuthorByHandle == null && existingAuthorByDid == null) {
+                long id = authorDao.insert(author);
+                Log.d(TAG, "Author inserted with ID: " + id + ", Handle: " + author.getHandle());
+                // 挿入されたAuthorをID付きで再取得して返す
+                return authorDao.getAuthorByHandle(author.getHandle());
+            } else {
+                Log.d(TAG, "Author already exists: " + author.getHandle() + " or " + author.getDid());
+                // 既存のAuthorを返す
+                if (existingAuthorByHandle != null) {
+                    return existingAuthorByHandle;
                 } else {
-                    Log.d(TAG, "Author already exists: " + author.getHandle() + " or " + author.getDid());
+                    return existingAuthorByDid;
                 }
-            } catch (Exception e) {
-                Log.e(TAG, "Error inserting author: " + author.getHandle(), e);
             }
-        });
+        } catch (Exception e) {
+            Log.e(TAG, "Error inserting author: " + author.getHandle(), e);
+            return null; // エラー時はnullを返す
+        }
     }
 
     /**
