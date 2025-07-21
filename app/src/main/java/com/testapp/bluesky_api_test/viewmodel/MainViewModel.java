@@ -80,17 +80,24 @@ public class MainViewModel extends ViewModel {
                 }
 
             } catch (Exception e) {
-                if (e instanceof work.socialhub.kbsky.ATProtocolException && e.getMessage() != null && e.getMessage().contains("Token has expired")) {
-                    android.util.Log.d("MainViewModel", "Access token expired, attempting to refresh.");
-                    executorService.execute(() -> {
-                        boolean refreshed = authRepository.refreshToken();
-                        if (refreshed) {
-                            android.util.Log.d("MainViewModel", "Token refreshed successfully, retrying fetchTimeline.");
-                            fetchTimeline(); // トークン更新後、再試行
-                        } else {
-                            _errorMessage.postValue("セッションの更新に失敗しました。再度ログインしてください。");
-                        }
-                    });
+                if (e instanceof work.socialhub.kbsky.ATProtocolException) {
+                    work.socialhub.kbsky.ATProtocolException atException = (work.socialhub.kbsky.ATProtocolException) e;
+                    android.util.Log.e("MainViewModel", "ATProtocolException in fetchTimeline: " + atException.getMessage() + ", Status: " + atException.getStatus() + ", Body: " + atException.getBody(), atException);
+
+                    if (atException.getMessage() != null && atException.getMessage().contains("Token has expired")) {
+                        android.util.Log.d("MainViewModel", "Access token expired, attempting to refresh.");
+                        executorService.execute(() -> {
+                            boolean refreshed = authRepository.refreshToken();
+                            if (refreshed) {
+                                android.util.Log.d("MainViewModel", "Token refreshed successfully, retrying fetchTimeline.");
+                                fetchTimeline(); // トークン更新後、再試行
+                            } else {
+                                _errorMessage.postValue("セッションの更新に失敗しました。再度ログインしてください。");
+                            }
+                        });
+                    } else {
+                        _errorMessage.postValue("Failed to fetch timeline: " + atException.getMessage());
+                    }
                 } else {
                     android.util.Log.e("MainViewModel", "Exception in fetchTimeline", e);
                     _errorMessage.postValue("Failed to fetch timeline: " + e.toString());

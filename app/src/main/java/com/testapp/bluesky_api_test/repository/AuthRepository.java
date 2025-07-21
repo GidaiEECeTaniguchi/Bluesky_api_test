@@ -40,6 +40,12 @@ public class AuthRepository {
         Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
         ServerCreateSessionResponse data = response.getData();
 
+        // ログイン成功時の情報をログに出力
+        Log.d(TAG, "Login successful. AccessJwt: " + data.getAccessJwt());
+        Log.d(TAG, "Login successful. RefreshJwt: " + data.getRefreshJwt());
+        Log.d(TAG, "Login successful. DID: " + data.getDid());
+        Log.d(TAG, "Login successful. Handle: " + data.getHandle());
+
         // 取得したトークンと情報をSharedPreferencesに保存
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
@@ -82,7 +88,10 @@ public class AuthRepository {
         }
 
         try {
-            Log.d(TAG, "Attempting to refresh token.");
+            // トークンをログに出力
+            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessTokenJwt());
+            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshTokenJwt());
+
             // Use the AuthProvider to create the request
             AuthRequest request = new AuthRequest(authProvider);
 
