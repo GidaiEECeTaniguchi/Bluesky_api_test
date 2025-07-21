@@ -28,8 +28,11 @@ public interface UserDao {
     void insertAll(User... items);
 
     @Insert
-    void insert(User item);
+    long insert(User item);
 
     @Delete
     void delete(User item);
+
+    @Query("DELETE FROM User")
+    void deleteAll();
 }

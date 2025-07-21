@@ -17,6 +17,9 @@ import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
+
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
+import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
@@ -56,26 +59,14 @@ public class AuthRepository {
         request.setIdentifier(handle);
         request.setPassword(password);
 
-        Response<ServerCreateSessionResponse> response;
-        try {
-            response = bluesky.server().createSession(request);
-        } catch (Exception e) {
-            Log.e(TAG, "Bluesky login failed: " + e.getMessage(), e);
-            throw e;
-        }
+        Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
         ServerCreateSessionResponse data = response.getData();
 
-        if (data == null) {
-            // データがnullの場合、JSONエラーレスポンスを確認
-            if (response.getJson() != null) {
-                Log.e(TAG, "Bluesky login error: " + response.getJson());
-                throw new Exception("Login failed: " + response.getJson());
-            } else {
-                // JSONエラーレスポンスもnullの場合の一般的なエラー
-                Log.e(TAG, "Bluesky login response data is null and no specific JSON error.");
-                throw new Exception("Login failed: No data in response.");
-            }
-        }
+        // ログイン成功時の情報をログに出力
+        Log.d(TAG, "Login successful. AccessJwt: " + data.getAccessJwt());
+        Log.d(TAG, "Login successful. RefreshJwt: " + data.getRefreshJwt());
+        Log.d(TAG, "Login successful. DID: " + data.getDid());
+        Log.d(TAG, "Login successful. Handle: " + data.getHandle());
 
         // ユーザーがDBに存在するか確認し、存在しなければ追加
         User user = userDao.getUserByDid(data.getDid());
@@ -84,13 +75,12 @@ public class AuthRepository {
             userDao.insert(user);
         }
 
-        // 取得したトークンと情報をEncryptedSharedPreferencesに保存
+        // 取得したトークンと情報をSharedPreferencesに保存
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
         editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
         editor.putString(KEY_DID, data.getDid());
         editor.putString(KEY_HANDLE, data.getHandle());
-
         editor.apply();
     }
 
@@ -116,7 +106,47 @@ public class AuthRepository {
         }
         return null;
     }
+
+    // トークンをリフレッシュする
+    public boolean refreshToken() {
+        // Get the current AuthProvider
+        BearerTokenAuthProvider authProvider = getAuthProvider();
+        if (authProvider == null) {
+            Log.e(TAG, "No AuthProvider available for refresh.");
+            return false;
+        }
+
+        try {
+            // トークンをログに出力
+            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessToken());
+            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshToken());
+
+            // Use the AuthProvider to create the request
+            AuthRequest request = new AuthRequest(authProvider);
+
+            Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
+            ServerRefreshSessionResponse data = response.getData();
+
+            // 新しいトークンを保存
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
+            editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
+            editor.putString(KEY_DID, data.getDid());
+            editor.putString(KEY_HANDLE, data.getHandle());
+            editor.apply();
+            Log.d(TAG, "Token refreshed and saved successfully.");
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to refresh token", e);
+            return false;
+        }
+    }
+
     public String getDid() {
         return sharedPreferences.getString(KEY_DID, null);
+    }
+
+    public String getHandle() {
+        return sharedPreferences.getString(KEY_HANDLE, null);
     }
 }

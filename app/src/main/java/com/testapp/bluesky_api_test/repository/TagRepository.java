@@ -6,6 +6,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.TagDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Tag;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -51,6 +52,14 @@ public class TagRepository {
      */
     public Tag getTagByName(String name) {
         return tagDao.getTagByName(name);
+    }
+
+    public List<Tag> getAllTagsFromDb() {
+        return tagDao.getAll();
+    }
+
+    public List<Tag> getTagsByIdsFromDb(List<Integer> ids) {
+        return tagDao.loadAllByIds(ids);
     }
     /*シャットダウン処理
      * 

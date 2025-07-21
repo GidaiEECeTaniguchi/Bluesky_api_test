@@ -15,6 +15,9 @@ public interface GroupTagAssignmentDao {
     @Query("SELECT * FROM GroupTagAssignment")
     List<GroupTagAssignment> getAll();
 
+    @Query("SELECT * FROM GroupTagAssignment WHERE group_id = :groupId")
+    List<GroupTagAssignment> getTagAssignmentsByGroupId(int groupId);
+
     @Query("SELECT * FROM GroupTagAssignment ")
     GroupTagAssignment getByComposite();
 

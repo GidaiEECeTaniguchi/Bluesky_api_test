@@ -62,6 +62,19 @@ public class GroupTagAssignmentRepository {
        //お疲れ様でした。
        return basePost;
     }
+
+    public List<GroupTagAssignment> getAllGroupTagAssignmentsFromDb() {
+        return groupTagAssignmentDao.getAll();
+    }
+
+    public List<GroupTagAssignment> getAllGroupTagAssignmentsByIdsFromDb() {
+        return groupTagAssignmentDao.loadAllByIds();
+    }
+
+    public List<GroupTagAssignment> getTagAssignmentsByGroupId(int groupId) {
+        return groupTagAssignmentDao.getTagAssignmentsByGroupId(groupId);
+    }
+
     /*シャットダウン処理*/
     public void shutdown() {
         executorService.shutdown();

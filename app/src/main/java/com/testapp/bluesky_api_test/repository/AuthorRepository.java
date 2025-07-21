@@ -46,23 +46,31 @@ public class AuthorRepository {
      * 単一のAuthorをデータベースに挿入します。
      * 既に存在するhandleまたはdidを持つAuthorは挿入されません。
      * @param author 挿入するAuthorオブジェクト
+     * @return 挿入または取得されたAuthorオブジェクト（IDがセットされたもの）
      */
-    public void insertAuthorToDb(Author author) {
-        executorService.execute(() -> {
-            try {
-                Author existingAuthorByHandle = authorDao.getAuthorByHandle(author.getHandle());
-                Author existingAuthorByDid = authorDao.getAuthorByDid(author.getDid());
+    public Author insertAuthorToDb(Author author) {
+        try {
+            Author existingAuthorByHandle = authorDao.getAuthorByHandle(author.getHandle());
+            Author existingAuthorByDid = authorDao.getAuthorByDid(author.getDid());
 
-                if (existingAuthorByHandle == null && existingAuthorByDid == null) {
-                    long id = authorDao.insert(author);
-                    Log.d(TAG, "Author inserted with ID: " + id + ", Handle: " + author.getHandle());
+            if (existingAuthorByHandle == null && existingAuthorByDid == null) {
+                long id = authorDao.insert(author);
+                Log.d(TAG, "Author inserted with ID: " + id + ", Handle: " + author.getHandle());
+                // 挿入されたAuthorをID付きで再取得して返す
+                return authorDao.getAuthorByHandle(author.getHandle());
+            } else {
+                Log.d(TAG, "Author already exists: " + author.getHandle() + " or " + author.getDid());
+                // 既存のAuthorを返す
+                if (existingAuthorByHandle != null) {
+                    return existingAuthorByHandle;
                 } else {
-                    Log.d(TAG, "Author already exists: " + author.getHandle() + " or " + author.getDid());
+                    return existingAuthorByDid;
                 }
-            } catch (Exception e) {
-                Log.e(TAG, "Error inserting author: " + author.getHandle(), e);
             }
-        });
+        } catch (Exception e) {
+            Log.e(TAG, "Error inserting author: " + author.getHandle(), e);
+            return null; // エラー時はnullを返す
+        }
     }
 
     /**
@@ -92,12 +100,12 @@ public class AuthorRepository {
         return authorDao.getAuthorByHandle(handle);
     }
 
-    public Author getAuthorByDidFromDb(String did) {
-        return authorDao.getAuthorByDid(did);
+    public Author getAuthorByIdFromDb(int id) {
+        return authorDao.getAuthorById(id);
     }
 
-    public long insertAuthor(Author author) {
-        return authorDao.insert(author);
+    public List<Author> getAllAuthorsFromDb() {
+        return authorDao.getAllAuthors();
     }
 
     /**

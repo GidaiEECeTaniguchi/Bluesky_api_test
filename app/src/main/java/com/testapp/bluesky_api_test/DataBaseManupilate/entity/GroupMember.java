@@ -7,6 +7,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.ColumnInfo;
+import androidx.room.Ignore;
+import androidx.room.Index;
 
 @Entity(
     primaryKeys = {"group_id", "post_id"},
@@ -21,7 +23,8 @@ import androidx.room.ColumnInfo;
 			parentColumns = "id",
 			childColumns = "post_id",
 			onDelete = ForeignKey.CASCADE)
-	}
+	},
+	indices = {@Index("group_id"), @Index("post_id")}
 )
 public class GroupMember {
 
@@ -34,6 +37,7 @@ public class GroupMember {
 	@ColumnInfo(name = "order")
 	private int order;
 
+	@Ignore
 	public GroupMember() {}
 
 	public GroupMember(int group_id, int post_id, int order) {

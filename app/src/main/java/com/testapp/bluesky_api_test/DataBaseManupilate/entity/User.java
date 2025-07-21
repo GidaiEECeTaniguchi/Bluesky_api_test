@@ -1,6 +1,7 @@
 package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 import androidx.room.Index;
@@ -9,7 +10,7 @@ import androidx.annotation.NonNull;
 @Entity(indices = {@Index(value = {"did"}, unique = true)})
 public class User {
 
-	@PrimaryKey(autoGenerate = false)
+	@PrimaryKey(autoGenerate = true)
 	private int id;
 
 	@ColumnInfo(name = "name")
@@ -19,6 +20,7 @@ public class User {
 	@ColumnInfo(name = "did")
 	private String did;
 
+	@Ignore
 	public User() {}
 
 	public User(String name, @NonNull String did) {

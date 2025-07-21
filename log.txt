@@ -1,0 +1,666 @@
+2025-07-21 13:06:34.323   772-1270  TransitionController    system_server                        E  Set visible without transition ActivityRecord{107088774 u0 com.testapp.bluesky_api_test/.ui.LoginActivity t9} playing=true caller=com.android.server.wm.EnsureActivitiesVisibleHelper.makeVisibleAndRestartIfNeeded:246 
+2025-07-21 13:06:34.853  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  Late-enabling -Xcheck:jni
+2025-07-21 13:06:34.888  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  Using CollectorTypeCMC GC.
+2025-07-21 13:06:34.889  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         W  Unexpected CPU variant for x86: x86_64.
+                                                                                                    Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+2025-07-21 13:06:34.928  2369-2369  nativeloader            com.testapp.bluesky_api_test         D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+2025-07-21 13:06:35.328  2369-2369  nativeloader            com.testapp.bluesky_api_test         D  Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so using system ns (caller=<unknown>): ok
+2025-07-21 13:06:35.321  2369-2369  re-initialized>         com.testapp.bluesky_api_test         W  type=1400 audit(0.0:94): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so" dev="dm-55" ino=361615 scontext=u:r:untrusted_app:s0:c215,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c215,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
+2025-07-21 13:06:35.447  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         W  hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-07dd17c6.jar is in boot class path but is not in a known location
+2025-07-21 13:06:35.477  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+2025-07-21 13:06:35.477  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+2025-07-21 13:06:35.593  2369-2369  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-21 13:06:35.594  2369-2369  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-21 13:06:36.458  2369-2369  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~cxUcGqEwjtUk6eO0Aar1Ng==/com.testapp.bluesky_api_test-SbCnRnFgHeQortGeRW525A==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~cxUcGqEwjtUk6eO0Aar1Ng==/com.testapp.bluesky_api_test-SbCnRnFgHeQortGeRW525A==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
+2025-07-21 13:06:36.470  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
+2025-07-21 13:06:36.480  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x769e83e1f6f8) locale list changing from [] to [en-US]
+2025-07-21 13:06:36.493  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x769e83e23898) locale list changing from [] to [en-US]
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
+2025-07-21 13:06:36.529  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
+2025-07-21 13:06:36.530  2369-2369  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-21 13:06:36.675  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
+2025-07-21 13:06:36.771  2369-2518  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
+2025-07-21 13:06:36.789  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x769e83e1ed98) locale list changing from [] to [en-US]
+2025-07-21 13:06:36.900  2369-2518  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
+2025-07-21 13:06:36.901  2369-2518  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
+2025-07-21 13:06:36.919  2369-2369  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-21 13:06:36.921  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x769e83e21c78) locale list changing from [] to [en-US]
+2025-07-21 13:06:36.985  2369-2518  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+2025-07-21 13:06:36.986  2369-2518  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-21 13:06:37.039  2369-2369  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-21 13:06:37.387  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
+2025-07-21 13:06:37.396  2369-2369  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-21 13:06:37.519  2369-2369  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-21 13:06:37.559  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:37.562  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:37.566  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:37.591  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
+2025-07-21 13:06:37.603  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
+2025-07-21 13:06:37.645  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 303326708; UID 10215; state: ENABLED
+2025-07-21 13:06:38.370  2369-2369  EngineFactory           com.testapp.bluesky_api_test         I  Provider GmsCore_OpenSSL not available
+2025-07-21 13:06:38.922  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:39.017  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:39.042  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:39.075  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
+2025-07-21 13:06:39.591  2369-2369  MainFragment            com.testapp.bluesky_api_test         D  Loading timeline...
+2025-07-21 13:06:39.630  2369-2369  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
+2025-07-21 13:06:39.660  2369-2369  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
+2025-07-21 13:06:39.991  2369-2369  RecyclerView            com.testapp.bluesky_api_test         E  No adapter attached; skipping layout
+2025-07-21 13:06:40.335  2369-2619  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
+2025-07-21 13:06:40.336  2369-2619  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+2025-07-21 13:06:40.336  2369-2619  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+2025-07-21 13:06:40.408  2369-2388  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=701ms; Flags=1, FrameTimelineVsyncId=11075, IntendedVsync=50407660524, Vsync=50440993856, InputEventId=0, HandleInputStart=50444995835, AnimationStart=50444999142, PerformTraversalsStart=50445001783, DrawStart=50738416599, FrameDeadline=50424327190, FrameStartTime=50444957057, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=50802617569, SyncStart=50805465765, IssueDrawCommandsStart=50806470633, SwapBuffers=51083215480, FrameCompleted=51112042096, DequeueBufferDuration=4551, QueueBufferDuration=795591, GpuCompleted=51112042096, SwapBuffersCompleted=51087922670, DisplayPresentTime=0, CommandSubmissionCompleted=51083215480, 
+2025-07-21 13:06:40.417  2369-2369  Choreographer           com.testapp.bluesky_api_test         I  Skipped 41 frames!  The application may be doing too much work on its main thread.
+2025-07-21 13:06:41.037  2369-2369  Choreographer           com.testapp.bluesky_api_test         I  Skipped 35 frames!  The application may be doing too much work on its main thread.
+2025-07-21 13:06:41.043  2369-2646  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1296ms; Flags=0, FrameTimelineVsyncId=11112, IntendedVsync=50457660522, Vsync=51140993828, InputEventId=0, HandleInputStart=51145454157, AnimationStart=51145480066, PerformTraversalsStart=51148130956, DrawStart=51154942252, FrameDeadline=51140993828, FrameStartTime=51141568725, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=51160863054, SyncStart=51161186358, IssueDrawCommandsStart=51161990799, SwapBuffers=51165192550, FrameCompleted=51754236682, DequeueBufferDuration=9000, QueueBufferDuration=585931708, GpuCompleted=51753837997, SwapBuffersCompleted=51754236682, DisplayPresentTime=0, CommandSubmissionCompleted=51165192550, 
+2025-07-21 13:06:41.391  2369-2369  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
+2025-07-21 13:06:41.398  2369-2369  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:5cff6842: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+2025-07-21 13:06:42.183  2369-2768  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
+2025-07-21 13:06:43.891  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:43.920  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:43.934  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:43.976  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.243  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.254  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.316  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.327  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.349  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.371  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.443  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.506  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.678  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.687  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.764  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.952  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.959  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:44.975  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.000  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         W  Cleared Reference was only reachable from finalizer (only reported once)
+2025-07-21 13:06:45.004  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.033  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.057  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.087  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 6487KB AllocSpace bytes, 33(1644KB) LOS objects, 49% free, 6270KB/12MB, paused 18.730ms,7.613ms total 190.732ms
+2025-07-21 13:06:45.136  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.364  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.371  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:45.515  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:46.259  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:46.275  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:46.427  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:50.254  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:50.300  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:50.309  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:50.316  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:51.408  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 8.599ms
+2025-07-21 13:06:51.477  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 3084KB AllocSpace bytes, 8(2664KB) LOS objects, 49% free, 6770KB/13MB, paused 9.749ms,19.105ms total 217.381ms
+2025-07-21 13:06:51.736  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:51.742  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:51.826  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:51.847  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:52.502  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:52.591  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:52.681  2369-2383  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
+2025-07-21 13:06:53.678  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:53.703  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:53.715  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.338  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.347  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.373  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.385  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.938  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:54.953  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:56.118  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 3940KB AllocSpace bytes, 6(1916KB) LOS objects, 49% free, 8238KB/16MB, paused 8.582ms,8.115ms total 138.385ms
+2025-07-21 13:06:56.258  2113-2425  Finsky                  com.android.vending                  E  [53] ItemStore: getItems RPC failed for item com.testapp.bluesky_api_test
+2025-07-21 13:06:56.636  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:56.864  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:57.872  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:57.915  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:57.933  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:57.935  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:58.054  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:58.127  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:58.969  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:58.970  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.028  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.030  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.087  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.180  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.190  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 4500KB AllocSpace bytes, 10(3440KB) LOS objects, 49% free, 8390KB/16MB, paused 258us,5.456ms total 100.731ms
+2025-07-21 13:06:59.193  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.194  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.810  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.813  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.815  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.819  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.827  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.847  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.874  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.883  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:06:59.889  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.591  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.595  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.598  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.605  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.642  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.769  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.774  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.776  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:00.808  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:01.578  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:01.579  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:01.604  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:01.675  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 13.536ms
+2025-07-21 13:07:01.831  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:01.883  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 4889KB AllocSpace bytes, 10(3216KB) LOS objects, 49% free, 10MB/20MB, paused 13.928ms,26.862ms total 329.792ms
+2025-07-21 13:07:02.676  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.687  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.747  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.755  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.780  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.794  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.821  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.838  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.840  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.854  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.878  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.879  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:02.881  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.495  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.501  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.503  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.517  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.520  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.527  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.539  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.559  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.566  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.607  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.609  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.645  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.650  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.658  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.659  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.663  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.665  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.667  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.669  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.671  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.672  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.673  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.673  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.674  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.675  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.677  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.678  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.680  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.681  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.682  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.686  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.688  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.689  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.690  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.697  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.700  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.702  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.704  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.704  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.705  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.706  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.711  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.712  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.714  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.718  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.719  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:03.721  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.485  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.486  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.490  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.491  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.515  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.517  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.554  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.567  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.569  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.570  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.571  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.573  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.574  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.575  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.578  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.579  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.581  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.582  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.587  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.589  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.591  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.591  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.595  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.597  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:04.598  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.252  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 6141KB AllocSpace bytes, 16(4660KB) LOS objects, 49% free, 10MB/21MB, paused 3.920ms,2.660ms total 109.548ms
+2025-07-21 13:07:05.254  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.279  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.295  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.304  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.309  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.329  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.353  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.359  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.359  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.362  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.367  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:05.375  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.061  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.094  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.246  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.254  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.261  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.265  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.322  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.337  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.338  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:06.339  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.055  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.055  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.071  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.075  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.076  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.078  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.079  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.079  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.082  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.082  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.085  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.086  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.087  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.087  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.088  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.088  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.090  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.091  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.099  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.101  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.105  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.120  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.125  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.134  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.136  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.777  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.793  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.794  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.818  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.819  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.827  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.877  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.879  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.882  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.888  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.891  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.898  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.910  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.914  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.930  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.933  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.934  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.934  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.936  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.947  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.948  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.954  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.955  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.959  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.961  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.961  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.962  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.962  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.963  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.966  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.974  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.990  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.993  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.994  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:07.999  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.001  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.003  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.013  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.014  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.015  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.022  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.023  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.024  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.030  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.752  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.754  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.761  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.763  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.767  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.769  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.815  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.835  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.854  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.862  2369-2384  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 6321KB AllocSpace bytes, 16(4776KB) LOS objects, 49% free, 12MB/24MB, paused 351us,5.064ms total 138.893ms
+2025-07-21 13:07:08.872  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.873  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.879  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.882  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.887  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.897  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.899  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.906  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.919  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.922  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.930  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.931  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:08.934  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:09.993  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.022  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.065  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.069  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.070  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.071  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.075  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.095  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.099  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.112  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.118  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.118  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.120  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.129  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.131  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.141  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.142  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.143  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.158  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.160  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.167  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.168  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.181  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.188  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.194  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.194  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.195  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.196  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.202  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.203  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.205  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.207  2369-2619  System.out              com.testapp.bluesky_api_test         I  [Warning] Unknown Item type: app.bsky.feed.threadgate#followerRule (ThreadgateAllowUnion)
+2025-07-21 13:07:10.229  2369-2369  MainFragment            com.testapp.bluesky_api_test         D  Timeline posts received: 1863
+2025-07-21 13:07:10.530  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:10.600  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:10.646  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.672  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.691  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.727  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.730  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: lowbrow22.bsky.social or 
+2025-07-21 13:07:10.765  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.774  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.779  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:10.813  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:10.816  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bestofbluesky.bsky.social or 
+2025-07-21 13:07:10.842  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.847  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:10.855  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.920  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.983  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:10.993  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.012  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.115  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.121  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.163  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.187  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.192  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.200  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:11.204  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.215  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.229  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.234  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.237  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.245  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.257  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.267  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.287  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.306  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.314  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.346  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.348  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.358  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.369  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.374  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kickbackcommittee.bsky.social or 
+2025-07-21 13:07:11.380  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.386  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.394  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.403  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.411  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.450  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.470  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.540  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.544  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.552  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.570  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.583  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.585  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.589  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.600  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.605  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.606  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: rose.bsky.team or 
+2025-07-21 13:07:11.611  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.617  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:11.621  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.627  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.630  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.631  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.633  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.635  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.687  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.715  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.731  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:11.739  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:11.746  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:11.753  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.778  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.780  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.811  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.819  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: jay.bsky.team or 
+2025-07-21 13:07:11.828  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.833  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.842  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: harry.bsky.team or 
+2025-07-21 13:07:11.848  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:11.852  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:11.861  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:11.925  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:11.927  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:11.959  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.963  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:11.969  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: dongame6.bsky.social or 
+2025-07-21 13:07:11.998  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.007  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.010  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:12.015  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.071  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.077  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.100  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.107  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.112  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:12.116  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.121  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.152  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.185  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.191  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.259  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.265  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.267  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.278  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.314  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.372  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.381  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.386  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.395  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.396  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.412  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: matsuu.bsky.social or 
+2025-07-21 13:07:12.431  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.465  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.509  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.510  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.516  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.522  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.527  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: baldanders.info or 
+2025-07-21 13:07:12.531  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.574  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.579  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.581  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.583  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.585  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: jellypoptv.bsky.social or 
+2025-07-21 13:07:12.604  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.611  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: 47news.jp or 
+2025-07-21 13:07:12.625  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.656  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.714  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.722  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.723  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.726  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.734  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.736  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.750  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.755  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.765  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.766  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.767  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.775  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.782  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.785  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.786  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.786  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.795  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.800  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.802  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.806  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.817  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.821  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.822  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.826  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.829  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.829  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.837  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.839  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.850  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:12.856  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: vscode.dev or 
+2025-07-21 13:07:12.862  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:12.879  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.911  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.916  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.934  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:12.947  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:12.984  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.003  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.080  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.086  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.142  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:13.300  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.341  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.354  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: freedomcat.com or 
+2025-07-21 13:07:13.365  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.375  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.386  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.396  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: atasinti.bsky.social or 
+2025-07-21 13:07:13.454  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.466  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.482  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.494  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: dmikurube.bsky.social or 
+2025-07-21 13:07:13.550  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: rose.bsky.team or 
+2025-07-21 13:07:13.604  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.615  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.627  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: davis.social or 
+2025-07-21 13:07:13.643  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:13.655  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:13.669  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:13.679  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: thelouvreof.bsky.social or 
+2025-07-21 13:07:13.695  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.786  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.797  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.851  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.864  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.927  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.939  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:13.942  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.947  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:13.951  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:13.962  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:13.970  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:13.975  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.020  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.041  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.051  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.062  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.077  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.078  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.126  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.127  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.147  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.151  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.156  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.158  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.170  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.196  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.325  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.328  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.342  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.350  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.359  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.383  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: fsei.bsky.social or 
+2025-07-21 13:07:14.387  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.397  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.402  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.409  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.415  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: securitylab.github.com or 
+2025-07-21 13:07:14.421  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.427  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.433  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.447  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.449  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: keityo99.bsky.social or 
+2025-07-21 13:07:14.470  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.502  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.511  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.547  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.565  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.570  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.574  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.585  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.590  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.595  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.625  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.668  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.693  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.701  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.729  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.734  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.754  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.755  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: igalog.bsky.social or 
+2025-07-21 13:07:14.759  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
+2025-07-21 13:07:14.764  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.766  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.771  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.779  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.785  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: bsky.app or 
+2025-07-21 13:07:14.794  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.807  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.810  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.812  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.844  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.868  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.870  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.876  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: iskj.bsky.social or 
+2025-07-21 13:07:14.888  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.913  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: kimehito.bsky.social or 
+2025-07-21 13:07:14.952  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.958  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.965  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:14.989  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: twada.bsky.social or 
+2025-07-21 13:07:14.993  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: moja.blue or 
+2025-07-21 13:07:15.001  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: moja.blue or 
+2025-07-21 13:07:15.006  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: moja.blue or 
+2025-07-21 13:07:15.063  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:15.116  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: hyuki.net or 
+2025-07-21 13:07:15.157  2369-2619  AuthorRepository        com.testapp.bluesky_api_test         D  Author already exists: github.com or 
