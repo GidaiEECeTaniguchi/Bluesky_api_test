@@ -118,8 +118,8 @@ public class AuthRepository {
 
         try {
             // トークンをログに出力
-            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessToken());
-            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshToken());
+            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessTokenJwt());
+            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshTokenJwt());
 
             // Use the AuthProvider to create the request
             AuthRequest request = new AuthRequest(authProvider);

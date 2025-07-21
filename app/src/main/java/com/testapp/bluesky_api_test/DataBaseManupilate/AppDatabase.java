@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.testapp.bluesky_api_test.DataBaseManupilate.converter.DateConverter;
+
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupAnnotationDao;
@@ -33,7 +33,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
 
 @Database(entities = {User.class, Author.class, BasePost.class, GroupEntity.class, GroupMember.class, GroupRef.class, GroupAnnotation.class, GroupRewrite.class, Tag.class, TagAssignment.class, GroupTagAssignment.class},
         version = 1, exportSchema = false)
-@TypeConverters({DateConverter.class})
+
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract AuthorDao authorDao();

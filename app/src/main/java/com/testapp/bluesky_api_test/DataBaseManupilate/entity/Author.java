@@ -1,6 +1,7 @@
 package com.testapp.bluesky_api_test.DataBaseManupilate.entity;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 
@@ -16,6 +17,7 @@ public class Author {
     @ColumnInfo(name = "did")
     private String did;
 
+    @Ignore
     public Author() {}
 
     public Author(String handle, String did) {

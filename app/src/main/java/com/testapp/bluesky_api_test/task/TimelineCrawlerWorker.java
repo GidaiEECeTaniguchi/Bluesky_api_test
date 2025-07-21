@@ -75,8 +75,11 @@ public class TimelineCrawlerWorker extends Worker {
                             // Authorの正しいコンストラクタを使ってインスタンスを作成
                             author = new Author(postView.getAuthor().getHandle(), postView.getAuthor().getDid());
                             // setDisplayName, setAvatar は存在しないので削除
-                            long authorId = authorRepository.insertAuthor(author);
-                            author.setId((int) authorId);
+                            author = authorRepository.insertAuthorToDb(author);
+                            if (author == null) {
+                                Log.e(TAG, "Failed to insert author: " + postView.getAuthor().getHandle());
+                                continue; // Skip this post if author cannot be saved
+                            }
                         }
 
                         String content = postContent.getText() != null ? postContent.getText() : "";

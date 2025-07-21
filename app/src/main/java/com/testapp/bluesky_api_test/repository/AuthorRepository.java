@@ -100,6 +100,10 @@ public class AuthorRepository {
         return authorDao.getAuthorByHandle(handle);
     }
 
+    public Author getAuthorByDidFromDb(String did) {
+        return authorDao.getAuthorByDid(did);
+    }
+
     public Author getAuthorByIdFromDb(int id) {
         return authorDao.getAuthorById(id);
     }

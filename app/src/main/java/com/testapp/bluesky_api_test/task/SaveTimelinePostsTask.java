@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
 import com.testapp.bluesky_api_test.repository.PostRepository;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
 
@@ -51,8 +52,7 @@ public class SaveTimelinePostsTask extends AsyncTask<List<FeedDefsFeedViewPost>,
                         Author author = authorRepository.getAuthorByDidFromDb(postView.getAuthor().getDid());
                         if (author == null) {
                             author = new Author(postView.getAuthor().getHandle(), postView.getAuthor().getDid());
-                            long authorId = authorRepository.insertAuthor(author);
-                            author.setId((int) authorId);
+                            author = authorRepository.insertAuthorToDb(author);
                         }
 
                         String content = postContent.getText() != null ? postContent.getText() : "";
