@@ -46,4 +46,7 @@ public interface BasePostDao {
 
     @Query("SELECT COUNT(*) FROM base_posts")
     int getPostCount();
+
+    @Query("SELECT * FROM base_posts WHERE uri = :uri")
+    BasePost getPostByUri(String uri);
 }

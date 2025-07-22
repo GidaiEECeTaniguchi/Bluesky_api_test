@@ -138,6 +138,13 @@ public class AuthRepository {
             return true;
         } catch (Exception e) {
             Log.e(TAG, "Failed to refresh token", e);
+            // リフレッシュトークンも失効している場合は、保存されている情報をクリアしてログアウトさせる
+            if (e instanceof work.socialhub.kbsky.ATProtocolException) {
+                if (e.getMessage() != null && e.getMessage().contains("ExpiredToken")) {
+                    Log.d(TAG, "Refresh token has expired. Logging out.");
+                    logout();
+                }
+            }
             return false;
         }
     }
