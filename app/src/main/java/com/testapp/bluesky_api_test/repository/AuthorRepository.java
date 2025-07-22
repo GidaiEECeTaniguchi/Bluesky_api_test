@@ -46,6 +46,7 @@ public class AuthorRepository {
      * 単一のAuthorをデータベースに挿入します。
      * 既に存在するhandleまたはdidを持つAuthorは挿入されません。
      * @param author 挿入するAuthorオブジェクト
+     * @return 挿入または取得されたAuthorオブジェクト（IDがセットされたもの）
      */
     public Author insertAuthorToDb(Author author) {
         try {
@@ -97,6 +98,10 @@ public class AuthorRepository {
      */
     public Author getAuthorByHandleFromDb(String handle) {
         return authorDao.getAuthorByHandle(handle);
+    }
+
+    public Author getAuthorByDidFromDb(String did) {
+        return authorDao.getAuthorByDid(did);
     }
 
     public Author getAuthorByIdFromDb(int id) {

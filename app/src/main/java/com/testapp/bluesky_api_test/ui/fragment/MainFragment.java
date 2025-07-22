@@ -10,9 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import androidx.lifecycle.ViewModelProvider;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.testapp.bluesky_api_test.R;
+import com.testapp.bluesky_api_test.task.TimelineCrawlerWorker;
 import com.testapp.bluesky_api_test.repository.AuthRepository;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
 import com.testapp.bluesky_api_test.repository.PostRepository;
@@ -96,6 +102,11 @@ public class MainFragment extends Fragment implements BaseFragmentInterface{
     @Override
     public void loadData() {
         mainViewModel.fetchTimeline();
+
+        // For debugging: Enqueue the worker to run immediately
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(TimelineCrawlerWorker.class).build();
+        WorkManager.getInstance(requireContext()).enqueue(workRequest);
+        Log.d(TAG, "TimelineCrawlerWorker enqueued for immediate execution.");
     }
 
     // Custom ViewModelFactory for MainViewModel

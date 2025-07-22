@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.security.crypto)
+    implementation(libs.lifecycle.viewmodel.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -80,5 +81,9 @@ dependencies {
     val nav_version = "2.7.7" // 最新バージョンは適宜確認してください
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    // WorkManager
+    val work_version = "2.9.0" // 最新バージョンは適宜確認してください
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 
 }

@@ -86,7 +86,10 @@ public class PostRepository {
     }
 
     public long insertPostToDb(BasePost post) {
-        return basePostDao.insert(post);
+        if (basePostDao.getPostByUri(post.getUri()) == null) {
+            return basePostDao.insert(post);
+        }
+        return -1; // Indicate that the post was not inserted (e.g., already exists)
     }
 
     public BasePost getPostByIdFromDb(int id) {
@@ -102,6 +105,18 @@ public class PostRepository {
 
     public LiveData<List<BasePost>> getAllPosts() {
         return basePostDao.getAll();
+    }
+
+    public void insertAllPosts(List<BasePost> posts) {
+        List<BasePost> postsToInsert = new ArrayList<>();
+        for (BasePost post : posts) {
+            if (basePostDao.getPostByUri(post.getUri()) == null) {
+                postsToInsert.add(post);
+            }
+        }
+        if (!postsToInsert.isEmpty()) {
+            basePostDao.insertAll(postsToInsert.toArray(new BasePost[0]));
+        }
     }
 
     private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
