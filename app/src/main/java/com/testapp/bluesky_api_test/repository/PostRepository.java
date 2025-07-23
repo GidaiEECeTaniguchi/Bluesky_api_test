@@ -14,6 +14,8 @@ import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 import java.time.Instant;
 import java.util.Date;
+
+import work.socialhub.kbsky.auth.AuthProvider;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
@@ -71,12 +73,12 @@ public class PostRepository {
         }
     }
 
-    public List<BlueskyPostInfo> fetchTimelineFromApi(BearerTokenAuthProvider authProvider) throws Exception {
+    public List<BlueskyPostInfo> fetchTimelineFromApi(AuthProvider authProvider) throws Exception {
         List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchTimeline(authProvider);
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }
 
-    public List<BlueskyPostInfo> fetchAuthorFeedFromApi(BearerTokenAuthProvider authProvider, String actorIdentifier) throws Exception {
+    public List<BlueskyPostInfo> fetchAuthorFeedFromApi(AuthProvider authProvider, String actorIdentifier) throws Exception {
         List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
         return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
     }

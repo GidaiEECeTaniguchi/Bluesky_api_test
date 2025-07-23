@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.security.crypto)
     implementation(libs.lifecycle.viewmodel.android)
+    implementation(libs.mediation.test.suite)
+    implementation(libs.play.services.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -85,5 +87,12 @@ dependencies {
     // WorkManager
     val work_version = "2.9.0" // 最新バージョンは適宜確認してください
     implementation("androidx.work:work-runtime-ktx:$work_version")
+
+    // Gson for JSON serialization
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Cryptography for kbsky
+    implementation("dev.whyoleg.cryptography:cryptography-core:0.1.0")
+    implementation("dev.whyoleg.cryptography:cryptography-provider-jdk:0.1.0")
 
 }

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import work.socialhub.kbsky.BlueskyTypes;
+import work.socialhub.kbsky.auth.AuthProvider;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.embed.EmbedRecordViewRecord;
 import work.socialhub.kbsky.model.app.bsky.embed.EmbedVideoView;
@@ -52,7 +53,7 @@ public class TimelineCrawlerWorker extends Worker {
         Log.d(TAG, "TimelineCrawlerWorker started.");
 
         AuthRepository authRepository = new AuthRepository(context);
-        BearerTokenAuthProvider authProvider = authRepository.getAuthProvider(); // getLoginSession -> getAuthProvider
+        AuthProvider authProvider = authRepository.getAuthProvider(); // getLoginSession -> getAuthProvider
 
         if (authProvider == null) {
             Log.e(TAG, "User not logged in. Worker stopping.");

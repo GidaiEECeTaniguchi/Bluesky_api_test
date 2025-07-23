@@ -9,7 +9,9 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+
+import work.socialhub.kbsky.auth.AuthProvider;
+
 import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
 
 import java.util.List;
@@ -36,7 +38,7 @@ public class AuthorRepository {
      * @param userDid ユーザーのDID
      * @return フォローしているユーザーのリスト
      */
-    public List<ActorDefsProfileView> fetchAndSaveFollowingFromApi(BearerTokenAuthProvider authProvider, String userDid) {
+    public List<ActorDefsProfileView> fetchAndSaveFollowingFromApi(AuthProvider authProvider, String userDid) {
         List<ActorDefsProfileView> followingProfiles = blueskyOperations.fetchAllFollowingUsers(authProvider, userDid);
         saveFollowingAuthorsToDb(followingProfiles);
         return followingProfiles;

@@ -8,7 +8,7 @@ import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 import com.testapp.bluesky_api_test.repository.AuthRepository;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
 import com.testapp.bluesky_api_test.repository.PostRepository;
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+import work.socialhub.kbsky.auth.AuthProvider;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
 
@@ -50,7 +50,7 @@ public class MainViewModel extends ViewModel {
         executorService.execute(() -> {
             try {
                 // 認証情報を取得
-                BearerTokenAuthProvider authProvider = authRepository.getAuthProvider();
+                AuthProvider authProvider = authRepository.getAuthProvider();
                 if (authProvider == null) {
                     _errorMessage.postValue("ログインしていません。");
                     return;

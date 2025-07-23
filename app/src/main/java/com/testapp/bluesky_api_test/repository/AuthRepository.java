@@ -9,6 +9,7 @@ import androidx.security.crypto.MasterKeys;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.UserDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
+import com.testapp.bluesky_api_test.util.SessionManager;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -21,139 +22,92 @@ import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRes
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
 import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+import work.socialhub.kbsky.auth.AuthProvider;
+import work.socialhub.kbsky.auth.OAuthContext;
+import work.socialhub.kbsky.auth.OAuthProvider;
+import work.socialhub.kbsky.auth.api.entity.oauth.OAuthRefreshTokenRequest;
+import work.socialhub.kbsky.auth.api.entity.oauth.OAuthTokenResponse;
 
 public class AuthRepository {
 
-    private static final String PREF_NAME = "EncryptedAuthPrefs";
-    private static final String KEY_ACCESS_TOKEN = "accessToken";
-    private static final String KEY_REFRESH_TOKEN = "refreshToken";
-    private static final String KEY_DID = "did";
-    private static final String KEY_HANDLE = "handle";
     private static final String TAG = "AuthRepository";
 
-    private final SharedPreferences sharedPreferences;
+    private final SessionManager sessionManager;
     private final Bluesky bluesky;
     private final UserDao userDao;
 
     public AuthRepository(Context context) {
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-            this.sharedPreferences = EncryptedSharedPreferences.create(
-                    PREF_NAME,
-                    masterKeyAlias,
-                    context,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException("Could not create EncryptedSharedPreferences", e);
-        }
+        this.sessionManager = new SessionManager(context);
         this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
         this.userDao = AppDatabaseSingleton.getInstance(context).userDao();
     }
 
-    // ログイン処理
-    public void login(String handle, String password) throws Exception {
-        ServerCreateSessionRequest request = new ServerCreateSessionRequest();
-        request.setIdentifier(handle);
-        request.setPassword(password);
-
-        Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
-        ServerCreateSessionResponse data = response.getData();
-
-        // ログイン成功時の情報をログに出力
-        Log.d(TAG, "Login successful. AccessJwt: " + data.getAccessJwt());
-        Log.d(TAG, "Login successful. RefreshJwt: " + data.getRefreshJwt());
-        Log.d(TAG, "Login successful. DID: " + data.getDid());
-        Log.d(TAG, "Login successful. Handle: " + data.getHandle());
-
-        // ユーザーがDBに存在するか確認し、存在しなければ追加
-        User user = userDao.getUserByDid(data.getDid());
-        if (user == null) {
-            user = new User(data.getHandle(), data.getDid());
-            userDao.insert(user);
-        }
-
-        // 取得したトークンと情報をSharedPreferencesに保存
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
-        editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
-        editor.putString(KEY_DID, data.getDid());
-        editor.putString(KEY_HANDLE, data.getHandle());
-        editor.apply();
-    }
-
     // ログアウト処理
     public void logout() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-        editor.apply();
+        sessionManager.clearSession();
     }
 
     // ログイン済みかチェック
     public boolean isLoggedIn() {
-        return sharedPreferences.getString(KEY_ACCESS_TOKEN, null) != null;
+        return sessionManager.isLoggedIn();
     }
 
     // 保存された認証情報からAuthProviderを取得
-    public BearerTokenAuthProvider getAuthProvider() {
-        String accessToken = sharedPreferences.getString(KEY_ACCESS_TOKEN, null);
-        String refreshToken = sharedPreferences.getString(KEY_REFRESH_TOKEN, null);
+    public AuthProvider getAuthProvider() {
+        String accessToken = sessionManager.getAccessToken();
+        String refreshToken = sessionManager.getRefreshToken();
+        OAuthContext context = sessionManager.getOauthContext();
 
-        if (accessToken != null && refreshToken != null) {
-            return new BearerTokenAuthProvider(accessToken, refreshToken);
+        if (accessToken != null && refreshToken != null && context != null) {
+            return new OAuthProvider(accessToken, refreshToken, context);
         }
         return null;
     }
 
     // トークンをリフレッシュする
     public boolean refreshToken() {
-        // Get the current AuthProvider
-        BearerTokenAuthProvider authProvider = getAuthProvider();
-        if (authProvider == null) {
-            Log.e(TAG, "No AuthProvider available for refresh.");
+        OAuthContext context = sessionManager.getOauthContext();
+        if (context == null) {
+            Log.e(TAG, "No OAuthContext available for refresh.");
             return false;
         }
 
         try {
-            // トークンをログに出力
-            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessTokenJwt());
-            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshTokenJwt());
+            // kbskyのAuthインスタンスを取得（PDS_URLは適切に設定する必要がある）
+            work.socialhub.kbsky.auth.Auth auth = work.socialhub.kbsky.auth.AuthFactory.INSTANCE.instance("https://bsky.social");
 
-            // Use the AuthProvider to create the request
-            AuthRequest request = new AuthRequest(authProvider);
+            // リフレッシュトークンリクエストを作成
+            OAuthRefreshTokenRequest request = new OAuthRefreshTokenRequest(null); // AuthProviderは後で設定される
 
-            Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
-            ServerRefreshSessionResponse data = response.getData();
+            // トークンリフレッシュを実行
+            Response<OAuthTokenResponse> response = auth.oauth().refreshTokenRequest(context, request);
 
             // 新しいトークンを保存
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
-            editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
-            editor.putString(KEY_DID, data.getDid());
-            editor.putString(KEY_HANDLE, data.getHandle());
-            editor.apply();
+            OAuthTokenResponse data = response.getData();
+            sessionManager.saveSession(data.getAccessToken(), data.getRefreshToken(), data.getSub(), context);
+
             Log.d(TAG, "Token refreshed and saved successfully.");
             return true;
+
         } catch (Exception e) {
             Log.e(TAG, "Failed to refresh token", e);
-            // リフレッシュトークンも失効している場合は、保存されている情報をクリアしてログアウトさせる
             if (e instanceof work.socialhub.kbsky.ATProtocolException) {
-                if (e.getMessage() != null && e.getMessage().contains("ExpiredToken")) {
-                    Log.d(TAG, "Refresh token has expired. Logging out.");
-                    logout();
-                }
+                // エラーレスポンスを詳しく見て、リフレッシュトークン自体が失効しているか判断する
+                // 例: e.getResponse().getError().equals("invalid_grant")
+                Log.d(TAG, "Refresh token might be expired. Logging out.");
+                logout();
             }
             return false;
         }
     }
 
     public String getDid() {
-        return sharedPreferences.getString(KEY_DID, null);
+        return sessionManager.getUserDid();
     }
 
     public String getHandle() {
-        return sharedPreferences.getString(KEY_HANDLE, null);
+        // HandleはDIDから取得するか、別途保存する必要があります。
+        // 現状はDIDを返していますが、必要に応じて修正してください。
+        return sessionManager.getUserDid();
     }
 }

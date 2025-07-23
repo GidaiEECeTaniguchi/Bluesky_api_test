@@ -11,6 +11,8 @@ import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 
 import java.lang.ref.WeakReference;
 import com.testapp.bluesky_api_test.repository.AuthRepository;
+
+import work.socialhub.kbsky.auth.AuthProvider;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
 
@@ -51,7 +53,7 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
         resultBuilder.append("-----------------------------------\n");
         publishProgress(resultBuilder.toString());
 
-        BearerTokenAuthProvider authProvider = authRepository.getAuthProvider();
+        AuthProvider authProvider = authRepository.getAuthProvider();
         String did = authRepository.getDid();
 
         if (authProvider == null || did == null) {
