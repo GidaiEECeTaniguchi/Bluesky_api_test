@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
     private OAuthContext context;
 
     // 仮の値を設定。後で正式なものに置き換える必要があります。
-    private static final String CLIENT_ID = "https://your-domain.com/client-metadata.json";
+    private static final String CLIENT_ID = "https://my-aether-six.vercel.app/client-metadata.json";
     private static final String REDIRECT_URI = "https://example.com/callback";
     private static final String PDS_URL = "https://bsky.social";
 
