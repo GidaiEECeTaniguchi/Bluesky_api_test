@@ -32,7 +32,8 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="example.com" android:pathPrefix="/callback" />
+                <data android:scheme="https" android:host="my-aether-six.vercel.app" android:pathPrefix="/callback" />
+                <data android:scheme="myaether" android:host="callback" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity"

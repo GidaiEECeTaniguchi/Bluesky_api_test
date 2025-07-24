@@ -17,6 +17,7 @@ import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.util.SessionManager;
 // import com.testapp.bluesky_api_test.viewmodel.LoginViewModel;
 
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,6 +31,7 @@ import work.socialhub.kbsky.auth.api.entity.oauth.OAuthAuthorizationCodeTokenReq
 import work.socialhub.kbsky.auth.api.entity.oauth.OAuthPushedAuthorizationRequest;
 import work.socialhub.kbsky.auth.api.entity.oauth.OAuthPushedAuthorizationResponse;
 import work.socialhub.kbsky.auth.api.entity.oauth.OAuthTokenResponse;
+import work.socialhub.kbsky.auth.domain.OAuthScopes;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // 仮の値を設定。後で正式なものに置き換える必要があります。
     private static final String CLIENT_ID = "https://my-aether-six.vercel.app/client-metadata.json";
-    private static final String REDIRECT_URI = "https://example.com/callback";
+    private static final String REDIRECT_URI = "https://my-aether-six.vercel.app/callback.html";
     private static final String PDS_URL = "https://bsky.social";
 
 
@@ -78,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 // 3. Pushed Authorization Request の実行
                 try {
                     OAuthPushedAuthorizationRequest parRequest = new OAuthPushedAuthorizationRequest();
+                    parRequest.setScope(Arrays.asList(OAuthScopes.ATProto.getValue(), OAuthScopes.TransitionGeneric.getValue(), OAuthScopes.TransitionChatBsky.getValue()));
                     Response<OAuthPushedAuthorizationResponse> parResponse = auth.oauth().pushedAuthorizationRequest(context, parRequest);
                     String requestUri = parResponse.getData().getRequestUri();
 
