@@ -13,7 +13,6 @@ import work.socialhub.kbsky.api.entity.app.bsky.graph.GraphGetFollowsResponse;
 import work.socialhub.kbsky.api.entity.app.bsky.feed.FeedGetTimelineRequest;
 import work.socialhub.kbsky.api.entity.app.bsky.feed.FeedGetTimelineResponse;
 import work.socialhub.kbsky.api.entity.share.Response;
-import work.socialhub.kbsky.auth.AuthProvider;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
 import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
@@ -32,7 +31,7 @@ public class BlueskyOperations {
      * @return 投稿情報オブジェクトのリスト
      * @throws Exception API呼び出し中にエラーが発生した場合
      */
-    public List<FeedDefsFeedViewPost> fetchTimeline(AuthProvider authProvider) throws Exception {
+    public List<FeedDefsFeedViewPost> fetchTimeline(BearerTokenAuthProvider authProvider) throws Exception {
         if (authProvider == null) {
             throw new IllegalStateException("ログインしていません。");
         }
@@ -64,7 +63,7 @@ public class BlueskyOperations {
      * @return 投稿情報オブジェクトのリスト
      * @throws Exception API呼び出し中にエラーが発生した場合
      */
-    public List<FeedDefsFeedViewPost> fetchAuthorFeed(AuthProvider authProvider,String actorIdentifier) throws Exception {
+    public List<FeedDefsFeedViewPost> fetchAuthorFeed(BearerTokenAuthProvider authProvider,String actorIdentifier) throws Exception {
         if(authProvider == null){
             throw new IllegalStateException("ログインしてないよ");
         }
@@ -94,7 +93,7 @@ public class BlueskyOperations {
      * @param userDid 情報を取得したいユーザーのDID
      * @return フォローしているユーザーのActorDefsProfileViewリスト
      */
-    public List<ActorDefsProfileView> fetchAllFollowingUsers(AuthProvider authProvider, String userDid) {
+    public List<ActorDefsProfileView> fetchAllFollowingUsers(BearerTokenAuthProvider authProvider, String userDid) {
         if (authProvider == null || userDid == null) {
             Log.e(TAG, "エラー: ログインしていません。またはユーザーDIDが指定されていません。");
             return new ArrayList<>();

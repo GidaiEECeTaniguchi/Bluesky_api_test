@@ -14,8 +14,6 @@ constraintlayout = "2.2.1"
 roomVersion = "2.6.1"
 securityCrypto = "1.0.0"
 lifecycleViewmodelAndroid = "2.9.1"
-mediationTestSuite = "3.0.0"
-playServicesAuth = "21.3.0"
 
 [libraries]
 at-protocol-java = { module = "com.github.TomCools:AT-Protocol-Java", version.ref = "atProtocolJava" }
@@ -34,8 +32,6 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVer
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
 lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
-mediation-test-suite = { group = "com.google.android.ads", name = "mediation-test-suite", version.ref = "mediationTestSuite" }
-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

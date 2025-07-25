@@ -1,173 +1,97 @@
-
 package com.testapp.bluesky_api_test.ui;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-
+import com.testapp.bluesky_api_test.ui.MainActivity;
 import com.testapp.bluesky_api_test.R;
-import com.testapp.bluesky_api_test.util.SessionManager;
-// import com.testapp.bluesky_api_test.viewmodel.LoginViewModel;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import work.socialhub.kbsky.ATProtocolException;
-import work.socialhub.kbsky.api.entity.share.Response;
-import work.socialhub.kbsky.auth.Auth;
-import work.socialhub.kbsky.auth.AuthFactory;
-import work.socialhub.kbsky.auth.OAuthContext;
-import work.socialhub.kbsky.auth.api.entity.oauth.BuildAuthorizationUrlRequest;
-import work.socialhub.kbsky.auth.api.entity.oauth.OAuthAuthorizationCodeTokenRequest;
-import work.socialhub.kbsky.auth.api.entity.oauth.OAuthPushedAuthorizationRequest;
-import work.socialhub.kbsky.auth.api.entity.oauth.OAuthPushedAuthorizationResponse;
-import work.socialhub.kbsky.auth.api.entity.oauth.OAuthTokenResponse;
-
+import com.testapp.bluesky_api_test.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private EditText etHandle;
+    private EditText etPassword;
     private Button btnLogin;
-    private SessionManager sessionManager;
-
-    // OAuth 関連の情報を保持
-    private Auth auth;
-    private OAuthContext context;
-
-    // 仮の値を設定。後で正式なものに置き換える必要があります。
-    private static final String CLIENT_ID = "https://your-domain.com/client-metadata.json";
-    private static final String REDIRECT_URI = "https://example.com/callback";
-    private static final String PDS_URL = "https://bsky.social";
-
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login); // XMLファイル名を activity_login.xml と想定
 
-        sessionManager = new SessionManager(this);
+        // ViewModelを初期化
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        // すでにログイン済みかチェック
-        if (sessionManager.isLoggedIn()) {
-            navigateToMain();
-            return; // LoginActivityのUIは表示しない
-        }
-
-        setContentView(R.layout.activity_login);
-
+        // UIコンポーネントを初期化
+        etHandle = findViewById(R.id.etHandle);
+        etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(v -> initiateOAuthFlow());
+
+        // ログインボタンのクリックリスナーを設定
+        btnLogin.setOnClickListener(v -> {
+            String handle = etHandle.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
+
+            if (handle.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "ユーザー名とパスワードを入力してください", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // ViewModelにログイン処理を依頼
+            loginViewModel.login(handle, password);
+        });
+
+        // ViewModelのログイン結果を監視
+        observeViewModel();
+
+        // アプリ起動時にすでにログイン済みかチェック
+        loginViewModel.checkIfAlreadyLoggedIn();
     }
 
-    private void initiateOAuthFlow() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            try {
-                // 1. Auth インスタンスと OAuthContext の作成
-                auth = AuthFactory.INSTANCE.instance(PDS_URL);
-                context = new OAuthContext();
-                context.setClientId(CLIENT_ID);
-                context.setRedirectUri(REDIRECT_URI);
+    private void observeViewModel() {
+        // ログイン処理の結果を監視
+        loginViewModel.getLoginResult().observe(this, result -> {
+            if (result == null) return;
 
-                // 3. Pushed Authorization Request の実行
-                try {
-                    OAuthPushedAuthorizationRequest parRequest = new OAuthPushedAuthorizationRequest();
-                    Response<OAuthPushedAuthorizationResponse> parResponse = auth.oauth().pushedAuthorizationRequest(context, parRequest);
-                    String requestUri = parResponse.getData().getRequestUri();
+            // ログイン中のUI制御（例: ボタンを無効化）
+            setLoading(result.isLoading());
 
-                    // 4. 認可URLの構築
-                    BuildAuthorizationUrlRequest buildAuthUrlRequest = new BuildAuthorizationUrlRequest();
-                    buildAuthUrlRequest.setRequestUri(requestUri);
-                    String authorizationUrl = auth.oauth().buildAuthorizationUrl(context, buildAuthUrlRequest);
+            // エラーがあれば表示
+            if (result.getError() != null) {
+                Toast.makeText(this, "エラー: " + result.getError(), Toast.LENGTH_LONG).show();
+            }
 
-                    // 5. ブラウザで認可URLを開く
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(authorizationUrl));
-                    startActivity(intent);
+            // ログインに成功したらMainActivityに遷移
+            if (result.isSuccess()) {
+                Toast.makeText(this, "ログイン成功！", Toast.LENGTH_SHORT).show();
+                navigateToMain();
+            }
+        });
 
-                } catch (ATProtocolException e) {
-                    // エラー処理
-                    String errorMessage;
-                    if (e.getResponse() != null) {
-                        errorMessage = "Pushed Authorization Requestに失敗しました: " + e.getResponse().messageForDisplay();
-                    } else {
-                        errorMessage = "Pushed Authorization Requestに失敗しました: " + e.getMessage();
-                    }
-                    Log.e("LoginActivity", errorMessage, e);
-                    runOnUiThread(() -> Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show());
-                }
-
-            } catch (Exception e) {
-                Log.e("LoginActivity", "OAuthフローの開始中にエラーが発生", e);
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, "エラーが発生しました。", Toast.LENGTH_LONG).show());
+        // ログイン済みチェックの結果を監視
+        loginViewModel.getIsLoggedIn().observe(this, isLoggedIn -> {
+            if (isLoggedIn) {
+                // すでにログイン済みなら直接MainActivityへ
+                navigateToMain();
             }
         });
     }
 
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Uri uri = intent.getData();
-        if (uri != null && uri.toString().startsWith(REDIRECT_URI)) {
-            String code = uri.getQueryParameter("code");
-            String state = uri.getQueryParameter("state");
-
-            if (code != null) {
-                exchangeCodeForToken(code, state);
-            } else {
-                Toast.makeText(this, "認可に失敗しました。", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void exchangeCodeForToken(String code, String state) {
-        // TODO: state の検証
-
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            try {
-                OAuthAuthorizationCodeTokenRequest tokenRequest = new OAuthAuthorizationCodeTokenRequest();
-                tokenRequest.setCode(code);
-
-                Response<OAuthTokenResponse> tokenResponse = auth.oauth().authorizationCodeTokenRequest(context, tokenRequest);
-
-                String accessToken = tokenResponse.getData().getAccessToken();
-                String refreshToken = tokenResponse.getData().getRefreshToken();
-                String userDid = tokenResponse.getData().getSub();
-
-                // セッション情報を保存
-                sessionManager.saveSession(accessToken, refreshToken, userDid, context);
-
-                runOnUiThread(() -> {
-                    Toast.makeText(this, "ログイン成功！", Toast.LENGTH_SHORT).show();
-                    navigateToMain();
-                });
-
-            } catch (ATProtocolException e) {
-                String errorMessage;
-                if (e.getResponse() != null) {
-                    errorMessage = "トークンの取得に失敗しました: " + e.getResponse().messageForDisplay();
-                } else {
-                    errorMessage = "トークンの取得に失敗しました: " + e.getMessage();
-                }
-                Log.e("LoginActivity", errorMessage, e);
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show());
-            } catch (Exception e) {
-                Log.e("LoginActivity", "トークン交換中に予期せぬエラーが発生", e);
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, "エラーが発生しました。", Toast.LENGTH_LONG).show());
-            }
-        });
+    private void setLoading(boolean isLoading) {
+        btnLogin.setEnabled(!isLoading);
+        // XMLにProgressBarを追加した場合、ここで表示/非表示を切り替えると良い
+        // progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
     private void navigateToMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
-        finish();
+        finish(); // ログイン画面に戻らないように終了する
     }
 }
