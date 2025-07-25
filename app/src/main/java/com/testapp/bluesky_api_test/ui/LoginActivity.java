@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // 仮の値を設定。後で正式なものに置き換える必要があります。
     private static final String CLIENT_ID = "https://my-aether-six.vercel.app/client-metadata.json";
-    private static final String REDIRECT_URI = "https://my-aether-six.vercel.app/callback.html";
+    private static final String REDIRECT_URI = "https://my-aether-six.vercel.app/api/callback";
     private static final String PDS_URL = "https://bsky.social";
 
 
@@ -116,56 +116,51 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        setIntent(intent);
+        Log.d("LoginActivity", "onNewIntent called");
+
         Uri uri = intent.getData();
-        if (uri != null && uri.toString().startsWith(REDIRECT_URI)) {
-            String code = uri.getQueryParameter("code");
-            String state = uri.getQueryParameter("state");
+        Log.d("LoginActivity", "Received URI: " + (uri != null ? uri.toString() : "null"));
 
-            if (code != null) {
-                exchangeCodeForToken(code, state);
-            } else {
-                Toast.makeText(this, "認可に失敗しました。", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+        if (uri != null && "myaether".equals(uri.getScheme()) && "callback".equals(uri.getHost())) {
+            // サーバーからのリダイレクトを受け取る
+            String accessToken = uri.getQueryParameter("access_token");
+            String refreshToken = uri.getQueryParameter("refresh_token");
+            String userDid = uri.getQueryParameter("user_did");
+            String state = uri.getQueryParameter("state"); // 必要であればstateの検証も行う
 
-    private void exchangeCodeForToken(String code, String state) {
-        // TODO: state の検証
+            Log.d("LoginActivity", "Access Token: " + accessToken);
+            Log.d("LoginActivity", "Refresh Token: " + refreshToken);
+            Log.d("LoginActivity", "User DID: " + userDid);
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(() -> {
-            try {
-                OAuthAuthorizationCodeTokenRequest tokenRequest = new OAuthAuthorizationCodeTokenRequest();
-                tokenRequest.setCode(code);
-
-                Response<OAuthTokenResponse> tokenResponse = auth.oauth().authorizationCodeTokenRequest(context, tokenRequest);
-
-                String accessToken = tokenResponse.getData().getAccessToken();
-                String refreshToken = tokenResponse.getData().getRefreshToken();
-                String userDid = tokenResponse.getData().getSub();
+            if (accessToken != null && refreshToken != null && userDid != null) {
+                // TODO: state の検証
 
                 // セッション情報を保存
+                // contextはinitiateOAuthFlowで初期化されているはず
+                if (context == null) {
+                    // initiateOAuthFlowが呼ばれていない場合（例：アプリがバックグラウンドから復帰した場合）
+                    // contextを再生成する必要があるかもしれない
+                    auth = AuthFactory.INSTANCE.instance(PDS_URL);
+                    context = new OAuthContext();
+                    context.setClientId(CLIENT_ID);
+                    context.setRedirectUri(REDIRECT_URI);
+                }
                 sessionManager.saveSession(accessToken, refreshToken, userDid, context);
 
-                runOnUiThread(() -> {
-                    Toast.makeText(this, "ログイン成功！", Toast.LENGTH_SHORT).show();
-                    navigateToMain();
-                });
+                Toast.makeText(this, "ログイン成功！", Toast.LENGTH_SHORT).show();
+                navigateToMain();
 
-            } catch (ATProtocolException e) {
-                String errorMessage;
-                if (e.getResponse() != null) {
-                    errorMessage = "トークンの取得に失敗しました: " + e.getResponse().messageForDisplay();
-                } else {
-                    errorMessage = "トークンの取得に失敗しました: " + e.getMessage();
-                }
-                Log.e("LoginActivity", errorMessage, e);
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show());
-            } catch (Exception e) {
-                Log.e("LoginActivity", "トークン交換中に予期せぬエラーが発生", e);
-                runOnUiThread(() -> Toast.makeText(LoginActivity.this, "エラーが発生しました。", Toast.LENGTH_LONG).show());
+            } else {
+                // エラー処理
+                String error = uri.getQueryParameter("error");
+                String errorDescription = uri.getQueryParameter("error_description");
+                Log.e("LoginActivity", "OAuth Error: " + error + ", Description: " + errorDescription);
+                Toast.makeText(this, "ログインに失敗しました: " + (errorDescription != null ? errorDescription : "不明なエラー"), Toast.LENGTH_LONG).show();
             }
-        });
+        } else {
+            Log.w("LoginActivity", "Received an unexpected URI: " + (uri != null ? uri.toString() : "null"));
+        }
     }
 
     private void navigateToMain() {

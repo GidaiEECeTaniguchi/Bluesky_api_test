@@ -9,7 +9,6 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bluesky_api_test"
@@ -19,23 +18,38 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3940256099942544~3419835294"/>
 
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
 
-
-
-        <activity android:name=".ui.LoginActivity"
-            android:exported="true">
+            <!-- メインランチャー用 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+            <!-- HTTPSリダイレクト用（Webページ経由） -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="my-aether-six.vercel.app"
+                    android:pathPrefix="/callback" />
+            </intent-filter>
+
+            <!-- カスタムスキーム用（JavaScript経由） -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="my-aether-six.vercel.app" android:pathPrefix="/callback" />
-                <data android:scheme="myaether" android:host="callback" />
+                <data android:scheme="myaether"
+                    android:host="callback" />
             </intent-filter>
+
         </activity>
+
         <activity android:name=".ui.MainActivity"
             android:exported="false"></activity>
         <activity android:name=".ui.GroupActivity"

@@ -1,89 +1,22 @@
-2025-07-24 15:27:34.173  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  Late-enabling -Xcheck:jni
-2025-07-24 15:27:34.222  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  Using CollectorTypeCMC GC.
-2025-07-24 15:27:34.222  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         W  Unexpected CPU variant for x86: x86_64.
-                                                                                                    Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
-2025-07-24 15:27:34.275  2215-2215  nativeloader            com.testapp.bluesky_api_test         D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
-2025-07-24 15:27:34.871  2215-2215  nativeloader            com.testapp.bluesky_api_test         D  Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so using system ns (caller=<unknown>): ok
-2025-07-24 15:27:34.843  2215-2215  re-initialized>         com.testapp.bluesky_api_test         W  type=1400 audit(0.0:94): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so" dev="dm-55" ino=362397 scontext=u:r:untrusted_app:s0:c215,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c215,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
-2025-07-24 15:27:34.943  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         W  hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-07dd17c6.jar is in boot class path but is not in a known location
-2025-07-24 15:27:36.278  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
-2025-07-24 15:27:36.278  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
-2025-07-24 15:27:36.344  2215-2215  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
-2025-07-24 15:27:36.345  2215-2215  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
-2025-07-24 15:27:37.166  2215-2215  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~7iWXzs47hXOgxEnpILxFvw==/com.testapp.bluesky_api_test-sW_6HC9r4BOm1ox69YROcQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~7iWXzs47hXOgxEnpILxFvw==/com.testapp.bluesky_api_test-sW_6HC9r4BOm1ox69YROcQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
-2025-07-24 15:27:37.168  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
-2025-07-24 15:27:37.177  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9febe58) locale list changing from [] to [en-US]
-2025-07-24 15:27:37.184  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9fec498) locale list changing from [] to [en-US]
-2025-07-24 15:27:37.196  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
-2025-07-24 15:27:37.196  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
-2025-07-24 15:27:37.197  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
-2025-07-24 15:27:37.197  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
-2025-07-24 15:27:37.197  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
-2025-07-24 15:27:37.197  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
-2025-07-24 15:27:37.197  2215-2215  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
-2025-07-24 15:27:37.233  2215-2215  WM-WrkMgrInitializer    com.testapp.bluesky_api_test         D  Initializing WorkManager with default configuration.
-2025-07-24 15:27:37.275  2215-2215  WM-PackageManagerHelper com.testapp.bluesky_api_test         D  Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
-2025-07-24 15:27:37.275  2215-2215  WM-Schedulers           com.testapp.bluesky_api_test         D  Created SystemJobScheduler and enabled SystemJobService
-2025-07-24 15:27:37.297  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
-2025-07-24 15:27:37.422  2215-2475  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
-2025-07-24 15:27:37.451  2215-2471  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system/framework/org.apache.http.legacy.jar
-2025-07-24 15:27:37.451  2215-2471  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system/framework/com.android.media.remotedisplay.jar
-2025-07-24 15:27:37.451  2215-2471  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system/framework/com.android.location.provider.jar
-2025-07-24 15:27:37.451  2215-2471  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
-2025-07-24 15:27:37.451  2215-2471  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
-2025-07-24 15:27:37.489  2215-2484  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
-2025-07-24 15:27:37.494  2215-2471  luesky_api_test         com.testapp.bluesky_api_test         W  Loading /data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/oat/x86_64/base.odex non-executable as it requires an image which we failed to load
-2025-07-24 15:27:37.510  2215-2471  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-10 for other apk /data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/lib/x86_64:/data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
-2025-07-24 15:27:37.517  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9fedd98) locale list changing from [] to [en-US]
-2025-07-24 15:27:37.571  2215-2215  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
-2025-07-24 15:27:37.576  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9ff44b8) locale list changing from [] to [en-US]
-2025-07-24 15:27:37.720  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
-2025-07-24 15:27:37.729  2215-2215  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
-2025-07-24 15:27:37.779  2215-2471  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9fef9b8) locale list changing from [] to [en-US]
-2025-07-24 15:27:37.794  2215-2215  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
-2025-07-24 15:27:37.832  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
-2025-07-24 15:27:37.848  2215-2475  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 311402873; UID 10215; state: ENABLED
-2025-07-24 15:27:37.853  2215-2475  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 323349338; UID 10215; state: ENABLED
-2025-07-24 15:27:37.944  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
-2025-07-24 15:27:37.991  2215-2215  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
-2025-07-24 15:27:38.039  2215-2215  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
-2025-07-24 15:27:38.044  2215-2484  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
-2025-07-24 15:27:38.064  2215-2484  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
-2025-07-24 15:27:38.176  2215-2484  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
-2025-07-24 15:27:38.176  2215-2484  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
-2025-07-24 15:27:38.212  2215-2548  DynamiteModule          com.testapp.bluesky_api_test         W  Local module descriptor class for com.google.android.gms.measurement.dynamite not found.
-2025-07-24 15:27:38.409  2215-2471  luesky_api_test         com.testapp.bluesky_api_test         W  ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*867641888]{PCL[/system/framework/org.apache.http.legacy.jar*4247870504]#PCL[/system/framework/com.android.media.remotedisplay.jar*487574312]#PCL[/system/framework/com.android.location.provider.jar*1570284764]#PCL[/system_ext/framework/androidx.window.extensions.jar*1030441313]#PCL[/system_ext/framework/androidx.window.sidecar.jar*3860983653]} | DLC[];PCL[])
-2025-07-24 15:27:38.431  2215-2471  DynamiteModule          com.testapp.bluesky_api_test         I  Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:250505301
-2025-07-24 15:27:38.432  2215-2471  DynamiteModule          com.testapp.bluesky_api_test         I  Selected remote version of com.google.android.gms.ads.dynamite, version >= 250505301
-2025-07-24 15:27:38.432  2215-2471  DynamiteModule          com.testapp.bluesky_api_test         V  Dynamite loader version >= 2, using loadModule2NoCrashUtils
-2025-07-24 15:27:38.450  2215-2548  DynamiteModule          com.testapp.bluesky_api_test         I  Considering local module com.google.android.gms.measurement.dynamite:0 and remote module com.google.android.gms.measurement.dynamite:153
-2025-07-24 15:27:38.453  2215-2548  DynamiteModule          com.testapp.bluesky_api_test         I  Selected remote version of com.google.android.gms.measurement.dynamite, version >= 153
-2025-07-24 15:27:38.453  2215-2548  DynamiteModule          com.testapp.bluesky_api_test         V  Dynamite loader version >= 2, using loadModule2NoCrashUtils
-2025-07-24 15:27:38.476  2215-2215  Choreographer           com.testapp.bluesky_api_test         I  Skipped 70 frames!  The application may be doing too much work on its main thread.
-2025-07-24 15:27:38.634  2215-2548  System                  com.testapp.bluesky_api_test         W  ClassLoader referenced unknown path: 
-2025-07-24 15:27:38.635  2215-2548  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-11 for other apk . target_sdk_version=36, uses_libraries=, library_path=/data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/lib/x86_64:/data/app/~~cGbSZox2SjbnLrOq4DIBDg==/com.google.android.gms-arP-Zm0TbzOIt5vD-4JI9g==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
-2025-07-24 15:27:38.749  2215-2548  luesky_api_test         com.testapp.bluesky_api_test         W  ClassLoaderContext classpath size mismatch. expected=1, found=2 (DLC[];PCL[base.apk*867641888]{PCL[/system/framework/org.apache.http.legacy.jar*4247870504]#PCL[/system/framework/com.android.media.remotedisplay.jar*487574312]#PCL[/system/framework/com.android.location.provider.jar*1570284764]#PCL[/system_ext/framework/androidx.window.extensions.jar*1030441313]#PCL[/system_ext/framework/androidx.window.sidecar.jar*3860983653]} | DLC[];PCL[/data/data/com.testapp.bluesky_api_test/code_cache/.overlay/base.apk/classes6.dex*1589171142:/data/app/~~7iWXzs47hXOgxEnpILxFvw==/com.testapp.bluesky_api_test-sW_6HC9r4BOm1ox69YROcQ==/base.apk*3010032143]{PCL[/system_ext/framework/androidx.window.extensions.jar*1030441313]#PCL[/system_ext/framework/androidx.window.sidecar.jar*3860983653]})
-2025-07-24 15:27:38.774  2215-2548  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9ff0f98) locale list changing from [] to [en-US]
-2025-07-24 15:27:38.774  2215-2548  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9ff31f8) locale list changing from [] to [en-US]
-2025-07-24 15:27:38.832  2215-2548  DynamiteModule          com.testapp.bluesky_api_test         W  Local module descriptor class for com.google.android.gms.measurement.dynamite not found.
-2025-07-24 15:27:39.031  2215-2471  luesky_api_test         com.testapp.bluesky_api_test         W  ClassLoaderContext classpath size mismatch. expected=1, found=2 (DLC[];PCL[base.apk*867641888]{PCL[/system/framework/org.apache.http.legacy.jar*4247870504]#PCL[/system/framework/com.android.media.remotedisplay.jar*487574312]#PCL[/system/framework/com.android.location.provider.jar*1570284764]#PCL[/system_ext/framework/androidx.window.extensions.jar*1030441313]#PCL[/system_ext/framework/androidx.window.sidecar.jar*3860983653]} | DLC[];PCL[/data/data/com.testapp.bluesky_api_test/code_cache/.overlay/base.apk/classes6.dex*1589171142:/data/app/~~7iWXzs47hXOgxEnpILxFvw==/com.testapp.bluesky_api_test-sW_6HC9r4BOm1ox69YROcQ==/base.apk*3010032143]{PCL[/system_ext/framework/androidx.window.extensions.jar*1030441313]#PCL[/system_ext/framework/androidx.window.sidecar.jar*3860983653]})
-2025-07-24 15:27:39.148  2215-2471  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7061c9ff60d8) locale list changing from [] to [en-US]
-2025-07-24 15:27:39.153  2215-2215  Choreographer           com.testapp.bluesky_api_test         I  Skipped 38 frames!  The application may be doing too much work on its main thread.
-2025-07-24 15:27:39.342  2215-2215  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
-2025-07-24 15:27:39.342  2215-2215  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:1aef1ed9: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-2025-07-24 15:27:40.115  2215-2580  luesky_api_test         com.testapp.bluesky_api_test         E  No package ID 6a found for resource ID 0x6a0b000f.
-2025-07-24 15:27:40.126  2215-2580  FA                      com.testapp.bluesky_api_test         I  App measurement initialized, version: 131000
-2025-07-24 15:27:40.126  2215-2580  FA                      com.testapp.bluesky_api_test         I  To enable debug logging run: adb shell setprop log.tag.FA VERBOSE
-2025-07-24 15:27:40.126  2215-2580  FA                      com.testapp.bluesky_api_test         I  To enable faster debug mode event logging run:
-                                                                                                      adb shell setprop debug.firebase.analytics.app com.testapp.bluesky_api_test
-2025-07-24 15:27:40.158  2215-2580  FA                      com.testapp.bluesky_api_test         E  Missing google_app_id. Firebase Analytics disabled. See https://goo.gl/NAOOOI
-2025-07-24 15:27:40.158  2215-2580  FA                      com.testapp.bluesky_api_test         E  Uploading is not possible. App measurement disabled
-2025-07-24 15:27:42.132  2215-2232  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
-2025-07-24 15:27:44.269  2215-2892  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
-2025-07-24 15:28:13.054  2215-3920  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): No SLF4J providers were found.
-2025-07-24 15:28:13.054  2215-3920  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): Defaulting to no-operation (NOP) logger implementation
-2025-07-24 15:28:13.054  2215-3920  System.err              com.testapp.bluesky_api_test         W  SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
-2025-07-24 15:28:14.447  2215-3941  FA                      com.testapp.bluesky_api_test         I  Tag Manager is not found and thus will not be used
-2025-07-24 15:28:14.451  2215-3941  FA                      com.testapp.bluesky_api_test         E  Missing google_app_id. Firebase Analytics disabled. See https://goo.gl/NAOOOI
-2025-07-24 15:28:15.450  2215-2215  VRI[LoginActivity]      com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
-2025-07-24 15:28:16.499  2215-3941  FA                      com.testapp.bluesky_api_test         I  Application backgrounded at: timestamp_millis: 1753338494495
+[21:53:38.449] Running build in Washington, D.C., USA (East) – iad1
+[21:53:38.449] Build machine configuration: 2 cores, 8 GB
+[21:53:38.502] Cloning github.com/GidaiEECeTaniguchi/My-Aether (Branch: main, Commit: eabf9d5)
+[21:53:39.135] Cloning completed: 632.000ms
+[21:53:39.640] Restored build cache from previous deployment (EqSRqA5XCnm7reUxe2Miygvzj4CR)
+[21:53:42.398] Running "vercel build"
+[21:53:42.950] Vercel CLI 44.5.0
+[21:53:43.587] Installing dependencies...
+[21:53:44.691] 
+[21:53:44.692] up to date in 778ms
+[21:53:44.692] 
+[21:53:44.692] 18 packages are looking for funding
+[21:53:44.693]   run `npm fund` for details
+[21:53:45.215] Warning: Node.js functions are compiled from ESM to CommonJS. If this is not intended, add "type": "module" to your package.json file.
+[21:53:45.216] Compiling "callback.js" from ESM to CommonJS...
+[21:53:45.353] Build Completed in /vercel/output [2s]
+[21:53:45.391] Deploying outputs...
+[21:53:48.257] 
+[21:53:48.400] Deployment completed
+[21:53:50.825] Uploading build cache [3.63 MB]...
+[21:53:51.055] Build cache uploaded: 239.605ms
+[21:53:53.251] Exiting build container
