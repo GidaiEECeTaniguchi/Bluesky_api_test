@@ -23,7 +23,6 @@ log.txt
 /edit1.pngZone.Identifier
 /edit2.pngZone.Identifier
 /dblog.txt
-about_clientID.md
-about_redirect.md
-client-metadata.json
-/.webfiles
+/dblog.txt
+/about_clientID.md
+/about_redirect.md
