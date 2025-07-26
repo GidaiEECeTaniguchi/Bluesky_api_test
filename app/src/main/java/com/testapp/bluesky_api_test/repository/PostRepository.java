@@ -10,6 +10,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.PostWithAuthorName;
 import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 import java.time.Instant;
@@ -102,6 +103,10 @@ public class PostRepository {
             public List<BasePost> getPostsByAuthorIdFromDb(int authorId) {
     return basePostDao.getPostsByAuthorId(authorId);
  }
+
+    public LiveData<List<PostWithAuthorName>> getAllPostsWithAuthorName() {
+        return basePostDao.getAllPostsWithAuthorName();
+    }
 
     public LiveData<List<BasePost>> getAllPosts() {
         return basePostDao.getAll();

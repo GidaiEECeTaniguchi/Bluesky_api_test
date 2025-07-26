@@ -63,7 +63,7 @@ public class GroupEditActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("グループ編集");
         groupNameTextView = findViewById(R.id.group_name_text_view);
         groupMembersRecyclerView = findViewById(R.id.group_members_recycler_view);
         groupAnnotationsRecyclerView = findViewById(R.id.group_annotations_recycler_view);

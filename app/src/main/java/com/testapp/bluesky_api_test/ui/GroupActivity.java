@@ -15,6 +15,7 @@ public class GroupActivity extends AppCompatActivity {
         
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("グループ管理");
 
         // 戻るボタンを有効にする
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

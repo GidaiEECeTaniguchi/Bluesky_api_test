@@ -9,26 +9,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.PostWithAuthorName;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<BasePost> postList;
+    private List<PostWithAuthorName> postList;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onItemClick(BasePost post);
+        void onItemClick(PostWithAuthorName post);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
-    public PostAdapter(List<BasePost> postList) {
+    public PostAdapter(List<PostWithAuthorName> postList) {
         this.postList = postList;
     }
 
-    public void setPostList(List<BasePost> newPostList) {
+    public void setPostList(List<PostWithAuthorName> newPostList) {
         Log.d("PostAdapter", "Setting new post list. Count: " + newPostList.size());
         this.postList.clear();
         this.postList.addAll(newPostList);
@@ -44,14 +45,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        BasePost post = postList.get(position);
-        holder.contentTextView.setText(post.getContent());
-        holder.authorTextView.setText("Author ID: " + post.getAuthor_id()); // 仮の表示
-        holder.timestampTextView.setText(post.getCreated_at()); // 仮の表示
+        PostWithAuthorName postWithAuthorName = postList.get(position);
+        holder.contentTextView.setText(postWithAuthorName.content);
+        holder.authorTextView.setText("Author: " + postWithAuthorName.authorHandle);
+        holder.timestampTextView.setText(postWithAuthorName.created_at);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
-                listener.onItemClick(post);
+                listener.onItemClick(postWithAuthorName);
             }
         });
     }

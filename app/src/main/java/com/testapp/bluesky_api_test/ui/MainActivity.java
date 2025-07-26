@@ -2,6 +2,7 @@ package com.testapp.bluesky_api_test.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         buttonToGroup.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, GroupActivity.class);
             startActivity(intent);
+        });
+
+        // ナビゲーションの遷移を監視し、ボタンの表示/非表示を切り替える
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.navigation_home) {
+                buttonToGroup.setVisibility(View.VISIBLE);
+            } else {
+                buttonToGroup.setVisibility(View.GONE);
+            }
         });
     }
 }

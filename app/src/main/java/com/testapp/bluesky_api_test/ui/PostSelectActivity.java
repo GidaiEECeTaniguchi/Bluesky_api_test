@@ -35,9 +35,9 @@ public class PostSelectActivity extends AppCompatActivity {
         postAdapter = new PostAdapter(new ArrayList<>());
         recyclerView.setAdapter(postAdapter);
 
-        postAdapter.setOnItemClickListener(post -> {
+        postAdapter.setOnItemClickListener(postWithAuthorName -> {
             Intent resultIntent = new Intent();
-            resultIntent.putExtra(EXTRA_SELECTED_POST_ID, post.getId());
+            resultIntent.putExtra(EXTRA_SELECTED_POST_ID, postWithAuthorName.id);
             setResult(RESULT_OK, resultIntent);
             finish();
         });

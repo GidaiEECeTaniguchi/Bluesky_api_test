@@ -7,6 +7,7 @@ import androidx.room.Update;
 import androidx.room.Delete;
 
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.PostWithAuthorName;
 
 import java.util.List;
 
@@ -40,6 +41,9 @@ public interface BasePostDao {
 
     @Query("SELECT * FROM base_posts ORDER BY created_at DESC")
     LiveData<List<BasePost>> getAll();
+
+    @Query("SELECT bp.*, a.handle AS authorHandle FROM base_posts bp INNER JOIN authors a ON bp.author_id = a.id ORDER BY bp.created_at DESC")
+    LiveData<List<PostWithAuthorName>> getAllPostsWithAuthorName();
 
     @Query("SELECT * FROM base_posts ORDER BY created_at DESC LIMIT :limit OFFSET :offset")
     List<BasePost> getPagedPosts(int limit, int offset);
