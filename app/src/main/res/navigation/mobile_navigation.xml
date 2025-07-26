@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.testapp.bluesky_api_test.ui.fragment.ProfileFragment"
-        android:label="プロフィール"
-        tools:layout="@layout/fragment_profile" />
+        android:name="com.testapp.bluesky_api_test.ui.fragment.UserManagementFragment"
+        android:label="ユーザー管理"
+        tools:layout="@layout/fragment_user_management" />
 
     
 
