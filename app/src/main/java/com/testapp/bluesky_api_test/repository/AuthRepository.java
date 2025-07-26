@@ -19,6 +19,7 @@ import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionReq
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
 
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
+import com.testapp.bluesky_api_test.bluesky.NoDPoPAuthProvider;
 import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
@@ -109,20 +110,18 @@ public class AuthRepository {
 
     // トークンをリフレッシュする
     public boolean refreshToken() {
-        // Get the current AuthProvider
-        BearerTokenAuthProvider authProvider = getAuthProvider();
-        if (authProvider == null) {
-            Log.e(TAG, "No AuthProvider available for refresh.");
+        String currentRefreshToken = sharedPreferences.getString(KEY_REFRESH_TOKEN, null);
+        if (currentRefreshToken == null) {
+            Log.e(TAG, "No refresh token available.");
             return false;
         }
 
         try {
-            // トークンをログに出力
-            Log.d(TAG, "Attempting to refresh token with Access Token: " + authProvider.getAccessTokenJwt());
-            Log.d(TAG, "Attempting to refresh token with Refresh Token: " + authProvider.getRefreshTokenJwt());
+            // リフレッシュトークン専用のAuthProviderを作成
+            NoDPoPAuthProvider refreshOnlyAuthProvider = new NoDPoPAuthProvider(null, currentRefreshToken);
 
-            // Use the AuthProvider to create the request
-            AuthRequest request = new AuthRequest(authProvider);
+            // AuthRequestにリフレッシュトークン専用のAuthProviderを渡す
+            AuthRequest request = new AuthRequest(refreshOnlyAuthProvider);
 
             Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
             ServerRefreshSessionResponse data = response.getData();

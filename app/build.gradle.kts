@@ -64,6 +64,7 @@ dependencies {
     implementation (libs.kotlin.stdlib.jdk8)
     implementation(libs.core.jvm)
     implementation(libs.auth.jvm)
+    implementation("work.socialhub:khttpclient:0.0.5")
     // ==== Room の追加 ====
 
 
