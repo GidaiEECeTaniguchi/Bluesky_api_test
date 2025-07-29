@@ -6,18 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
 import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupEntityDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupMemberDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupAnnotationDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupRefDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.GroupTagAssignmentDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupEntity;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupMember;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupAnnotation;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupRef;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.GroupTagAssignment;
+import com.testapp.bluesky_api_test.DataBaseManupilate.dao.*;
+import com.testapp.bluesky_api_test.DataBaseManupilate.entity.*;
 import com.testapp.bluesky_api_test.repository.GroupAnnotationRepository;
 import com.testapp.bluesky_api_test.repository.GroupRefRepository;
 import com.testapp.bluesky_api_test.repository.GroupTagAssignmentRepository;
@@ -34,10 +24,13 @@ public class GroupEditViewModel extends AndroidViewModel {
     private MutableLiveData<List<GroupAnnotation>> groupAnnotations;
     private MutableLiveData<List<GroupRef>> groupRefs;
     private MutableLiveData<List<GroupTagAssignment>> groupTagAssignments;
+    private MutableLiveData<List<Tag>> allTags;
 
     private GroupEntityDao groupEntityDao;
     private GroupMemberDao groupMemberDao;
     private BasePostDao basePostDao;
+    private TagDao tagDao;
+    private TagAssignmentDao tagAssignmentDao;
     private GroupAnnotationRepository groupAnnotationRepository;
     private GroupRefRepository groupRefRepository;
     private GroupTagAssignmentRepository groupTagAssignmentRepository;
@@ -51,36 +44,51 @@ public class GroupEditViewModel extends AndroidViewModel {
         groupAnnotations = new MutableLiveData<>();
         groupRefs = new MutableLiveData<>();
         groupTagAssignments = new MutableLiveData<>();
+        allTags = new MutableLiveData<>();
 
         AppDatabase db = AppDatabaseSingleton.getInstance(application);
         groupEntityDao = db.groupEntityDao();
         groupMemberDao = db.groupMemberDao();
         basePostDao = db.basePostDao();
+        tagDao = db.tagDao();
+        tagAssignmentDao = db.tagAssignmentDao();
         groupAnnotationRepository = new GroupAnnotationRepository(application);
         groupRefRepository = new GroupRefRepository(application);
         groupTagAssignmentRepository = new GroupTagAssignmentRepository(application);
 
         executorService = Executors.newSingleThreadExecutor();
+        loadAllTags();
     }
 
-    public LiveData<GroupEntity> getGroup() {
-        return group;
+    public LiveData<GroupEntity> getGroup() { return group; }
+    public LiveData<List<BasePost>> getGroupMembers() { return groupMembers; }
+    public LiveData<List<GroupAnnotation>> getGroupAnnotations() { return groupAnnotations; }
+    public LiveData<List<GroupRef>> getGroupRefs() { return groupRefs; }
+    public LiveData<List<GroupTagAssignment>> getGroupTagAssignments() { return groupTagAssignments; }
+    public LiveData<List<Tag>> getAllTags() { return allTags; }
+
+    public void loadAllTags() {
+        executorService.execute(() -> {
+            List<Tag> tags = tagDao.getAll();
+            allTags.postValue(tags);
+        });
     }
 
-    public LiveData<List<BasePost>> getGroupMembers() {
-        return groupMembers;
+    public void createTag(String tagName) {
+        executorService.execute(() -> {
+            Tag newTag = new Tag(tagName, ""); // scopeは今は空
+            tagDao.insert(newTag);
+            loadAllTags(); // タグリストを再読み込みしてUIを更新
+        });
     }
 
-    public LiveData<List<GroupAnnotation>> getGroupAnnotations() {
-        return groupAnnotations;
-    }
-
-    public LiveData<List<GroupRef>> getGroupRefs() {
-        return groupRefs;
-    }
-
-    public LiveData<List<GroupTagAssignment>> getGroupTagAssignments() {
-        return groupTagAssignments;
+    public void assignTagsToPost(int postId, List<Integer> tagIds) {
+        executorService.execute(() -> {
+            for (Integer tagId : tagIds) {
+                TagAssignment newAssignment = new TagAssignment(postId, tagId);
+                tagAssignmentDao.insert(newAssignment);
+            }
+        });
     }
 
     public void loadGroupAndMembers(int groupId) {

@@ -3,7 +3,7 @@ package com.testapp.bluesky_api_test.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +19,12 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
 
     private List<BasePost> postList;
     private boolean isEditMode = false;
+    private OnEditButtonClickListener listener;
+
+    // クリックイベントをActivityに伝えるためのインターフェース
+    public interface OnEditButtonClickListener {
+        void onEditClick(int postId);
+    }
 
     /**
      * コンストラクタ。
@@ -26,6 +32,10 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
      */
     public GroupMemberAdapter(List<BasePost> postList) {
         this.postList = postList;
+    }
+
+    public void setOnEditButtonClickListener(OnEditButtonClickListener listener) {
+        this.listener = listener;
     }
 
     public void setEditMode(boolean isEditMode) {
@@ -44,10 +54,16 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
     public void onBindViewHolder(@NonNull GroupMemberViewHolder holder, int position) {
         BasePost post = postList.get(position);
         holder.postContentTextView.setText(post.getContent());
-        // 他の情報を表示する場合はここに追加
 
         // 編集モードに応じて編集ボタンの表示を切り替える
         holder.editButton.setVisibility(isEditMode ? View.VISIBLE : View.GONE);
+
+        // 編集ボタンのクリックリスナーを設定
+        holder.editButton.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onEditClick(post.getId());
+            }
+        });
     }
 
     @Override
@@ -60,7 +76,7 @@ public class GroupMemberAdapter extends RecyclerView.Adapter<GroupMemberAdapter.
      */
     static class GroupMemberViewHolder extends RecyclerView.ViewHolder {
         TextView postContentTextView;
-        ImageView editButton;
+        ImageButton editButton;
 
         GroupMemberViewHolder(View itemView) {
             super(itemView);

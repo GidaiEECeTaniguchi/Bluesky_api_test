@@ -15,6 +15,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,8 +30,9 @@ import com.testapp.bluesky_api_test.ui.GroupTagAssignmentAdapter;
 import com.testapp.bluesky_api_test.ui.PostSelectActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class GroupEditActivity extends AppCompatActivity {
+public class GroupEditActivity extends AppCompatActivity implements GroupMemberAdapter.OnEditButtonClickListener, TagSelectionDialogFragment.TagSelectionListener, TagSelectionDialogFragment.OnAddNewTagRequestListener, AddNewTagDialogFragment.AddNewTagDialogListener {
 
     private GroupEditViewModel groupEditViewModel;
     private TextView groupNameTextView;
@@ -51,7 +53,7 @@ public class GroupEditActivity extends AppCompatActivity {
     private Button addRefsButton;
 
     private boolean isEditMode = false;
-    private int currentGroupId = -1; 
+    private int currentGroupId = -1;
 
     private ActivityResultLauncher<Intent> selectPostLauncher;
     private ActivityResultLauncher<String[]> openFileLauncher;
@@ -74,6 +76,26 @@ public class GroupEditActivity extends AppCompatActivity {
         addPostsButton = findViewById(R.id.add_posts_button);
         addRefsButton = findViewById(R.id.add_refs_button);
 
+        setupLaunchers();
+        setupButtons();
+        setupRecyclerViews();
+
+        groupEditViewModel = new ViewModelProvider(this).get(GroupEditViewModel.class);
+
+        int groupId = getIntent().getIntExtra("group_id", -1);
+        String groupName = getIntent().getStringExtra("group_name");
+
+        currentGroupId = groupId;
+
+        if (groupId != -1) {
+            groupNameTextView.setText(groupName);
+            groupEditViewModel.loadGroupAndMembers(groupId);
+        }
+
+        observeViewModel();
+    }
+
+    private void setupLaunchers() {
         selectPostLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -94,7 +116,7 @@ public class GroupEditActivity extends AppCompatActivity {
                 uri -> {
                     if (uri != null) {
                         getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        
+
                         String fileName = "Unknown";
                         try (android.database.Cursor cursor = getContentResolver().query(uri, null, null, null, null)) {
                             if (cursor != null && cursor.moveToFirst()) {
@@ -112,8 +134,9 @@ public class GroupEditActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
 
-
+    private void setupButtons() {
         addPostsButton.setOnClickListener(v -> {
             Intent intent = new Intent(GroupEditActivity.this, PostSelectActivity.class);
             selectPostLauncher.launch(intent);
@@ -125,9 +148,12 @@ public class GroupEditActivity extends AppCompatActivity {
             intent.setType("*/*");
             openFileLauncher.launch(new String[]{"*/*"});
         });
+    }
 
+    private void setupRecyclerViews() {
         groupMembersRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         groupMemberAdapter = new GroupMemberAdapter(new ArrayList<>());
+        groupMemberAdapter.setOnEditButtonClickListener(this);
         groupMembersRecyclerView.setAdapter(groupMemberAdapter);
 
         groupAnnotationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -141,19 +167,9 @@ public class GroupEditActivity extends AppCompatActivity {
         groupTagAssignmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         groupTagAssignmentAdapter = new GroupTagAssignmentAdapter(new ArrayList<>());
         groupTagAssignmentsRecyclerView.setAdapter(groupTagAssignmentAdapter);
+    }
 
-        groupEditViewModel = new ViewModelProvider(this).get(GroupEditViewModel.class);
-
-        int groupId = getIntent().getIntExtra("group_id", -1);
-        String groupName = getIntent().getStringExtra("group_name");
-
-        currentGroupId = groupId;
-
-        if (groupId != -1) {
-            groupNameTextView.setText(groupName);
-            groupEditViewModel.loadGroupAndMembers(groupId);
-        }
-
+    private void observeViewModel() {
         groupEditViewModel.getGroup().observe(this, groupEntity -> {
             if (groupEntity != null) {
                 groupNameTextView.setText(groupEntity.getName());
@@ -162,6 +178,7 @@ public class GroupEditActivity extends AppCompatActivity {
 
         groupEditViewModel.getGroupMembers().observe(this, basePosts -> {
             groupMemberAdapter = new GroupMemberAdapter(basePosts);
+            groupMemberAdapter.setOnEditButtonClickListener(this);
             groupMembersRecyclerView.setAdapter(groupMemberAdapter);
         });
 
@@ -179,6 +196,29 @@ public class GroupEditActivity extends AppCompatActivity {
             groupTagAssignmentAdapter = new GroupTagAssignmentAdapter(groupTagAssignments);
             groupTagAssignmentsRecyclerView.setAdapter(groupTagAssignmentAdapter);
         });
+    }
+
+    @Override
+    public void onEditClick(int postId) {
+        DialogFragment dialogFragment = TagSelectionDialogFragment.newInstance(postId);
+        dialogFragment.show(getSupportFragmentManager(), "TagSelectionDialog");
+    }
+
+    @Override
+    public void onTagsSelected(int postId, List<Integer> selectedTagIds) {
+        groupEditViewModel.assignTagsToPost(postId, selectedTagIds);
+        Toast.makeText(this, selectedTagIds.size() + " tags assigned.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAddNewTagRequest() {
+        DialogFragment newTagDialog = new AddNewTagDialogFragment();
+        newTagDialog.show(getSupportFragmentManager(), "AddNewTagDialog");
+    }
+
+    @Override
+    public void onDialogPositiveClick(String tagName) {
+        groupEditViewModel.createTag(tagName);
     }
 
     @Override
