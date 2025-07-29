@@ -53,9 +53,29 @@
         android:layout_height="49dp"
         android:background="@drawable/button_rectangular_background"
         android:text="グループ"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.306"
+        app:layout_constraintBottom_toTopOf="@+id/button_to_post" />
+
+    <Button
+        android:id="@+id/button_to_post"
+        android:layout_width="182dp"
+        android:layout_height="49dp"
+        android:background="@drawable/button_rectangular_background"
+        android:text="投稿一覧"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_to_group"
+        app:layout_constraintBottom_toTopOf="@+id/button_to_tags" />
+
+    <Button
+        android:id="@+id/button_to_tags"
+        android:layout_width="182dp"
+        android:layout_height="49dp"
+        android:background="@drawable/button_rectangular_background"
+        android:text="タグ一覧"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_to_post"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

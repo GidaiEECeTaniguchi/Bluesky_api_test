@@ -1,125 +1,26 @@
-2025-07-29 21:24:38.282  2131-2131  GroupViewModel          com.testapp.bluesky_api_test         D  ViewModel created.
-2025-07-29 21:24:38.559  2131-2131  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
-2025-07-29 21:24:38.574  2131-2131  GroupViewModel          com.testapp.bluesky_api_test         D  getAllGroups() called.
-2025-07-29 21:24:38.588  2131-2131  GroupViewModel          com.testapp.bluesky_api_test         D  Refreshing groups data.
-2025-07-29 21:24:38.590  2131-2131  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
-2025-07-29 21:24:38.870  2131-2131  GroupFragment           com.testapp.bluesky_api_test         D  Groups updated. Size: 1
-2025-07-29 21:24:38.871  2131-2131  GroupFragment           com.testapp.bluesky_api_test         D  Group Name: AAA
-2025-07-29 21:24:39.365  2131-2131  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
-2025-07-29 21:24:39.367  2131-2131  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:287d9815: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-2025-07-29 21:24:39.569  2131-2131  VRI[MainActivity]       com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
-2025-07-29 21:24:42.320  2131-2131  Choreographer           com.testapp.bluesky_api_test         I  Skipped 31 frames!  The application may be doing too much work on its main thread.
-2025-07-29 21:24:42.366  2131-2131  VRI[GroupActivity]      com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
-2025-07-29 21:24:42.516  2131-2131  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
-2025-07-29 21:24:42.517  2131-2131  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:5cf6b63a: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-2025-07-29 21:24:47.392  2131-2131  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  OnBackInvokedCallback is not enabled for the application.
-                                                                                                    Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
-2025-07-29 21:24:47.921  2131-2131  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  OnBackInvokedCallback is not enabled for the application.
-                                                                                                    Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
-2025-07-29 21:24:49.550  2131-2131  AndroidRuntime          com.testapp.bluesky_api_test         D  Shutting down VM
-2025-07-29 21:24:49.587  2131-2131  AndroidRuntime          com.testapp.bluesky_api_test         E  FATAL EXCEPTION: main
-                                                                                                    Process: com.testapp.bluesky_api_test, PID: 2131
-                                                                                                    java.lang.IllegalStateException: Fragment TagSelectionDialogFragment{9a72825} (4d03cf64-5962-4a7c-b610-6c85398e2898) not associated with a fragment manager.
-                                                                                                    	at androidx.fragment.app.Fragment.getParentFragmentManager(Fragment.java:1112)
-                                                                                                    	at com.testapp.bluesky_api_test.ui.TagSelectionDialogFragment.lambda$onCreateDialog$0$com-testapp-bluesky_api_test-ui-TagSelectionDialogFragment(TagSelectionDialogFragment.java:61)
-                                                                                                    	at com.testapp.bluesky_api_test.ui.TagSelectionDialogFragment$$ExternalSyntheticLambda0.onClick(D8$$SyntheticClass:0)
-                                                                                                    	at androidx.appcompat.app.AlertController$ButtonHandler.handleMessage(AlertController.java:167)
-                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:110)
+2025-07-29 21:47:53.904  2422-2422  AndroidRuntime          com.testapp.bluesky_api_test         E  FATAL EXCEPTION: main
+                                                                                                    Process: com.testapp.bluesky_api_test, PID: 2422
+                                                                                                    android.content.ActivityNotFoundException: Unable to find explicit activity class {com.testapp.bluesky_api_test/com.testapp.bluesky_api_test.ui.PostViewActivity}; have you declared this activity in your AndroidManifest.xml, or does your intent not match its declared <intent-filter>?
+                                                                                                    	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:2423)
+                                                                                                    	at android.app.Instrumentation.execStartActivity(Instrumentation.java:2000)
+                                                                                                    	at android.app.Activity.startActivityForResult(Activity.java:5997)
+                                                                                                    	at androidx.activity.ComponentActivity.startActivityForResult(ComponentActivity.kt:675)
+                                                                                                    	at android.app.Activity.startActivityForResult(Activity.java:5954)
+                                                                                                    	at androidx.activity.ComponentActivity.startActivityForResult(ComponentActivity.kt:660)
+                                                                                                    	at android.app.Activity.startActivity(Activity.java:6457)
+                                                                                                    	at android.app.Activity.startActivity(Activity.java:6424)
+                                                                                                    	at com.testapp.bluesky_api_test.ui.MainActivity.lambda$onCreate$1$com-testapp-bluesky_api_test-ui-MainActivity(MainActivity.java:54)
+                                                                                                    	at com.testapp.bluesky_api_test.ui.MainActivity$$ExternalSyntheticLambda1.onClick(D8$$SyntheticClass:0)
+                                                                                                    	at android.view.View.performClick(View.java:8083)
+                                                                                                    	at com.google.android.material.button.MaterialButton.performClick(MaterialButton.java:1218)
+                                                                                                    	at android.view.View.performClickInternal(View.java:8060)
+                                                                                                    	at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0)
+                                                                                                    	at android.view.View$PerformClick.run(View.java:31549)
+                                                                                                    	at android.os.Handler.handleCallback(Handler.java:995)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:103)
                                                                                                     	at android.os.Looper.loopOnce(Looper.java:248)
                                                                                                     	at android.os.Looper.loop(Looper.java:338)
                                                                                                     	at android.app.ActivityThread.main(ActivityThread.java:9067)
                                                                                                     	at java.lang.reflect.Method.invoke(Native Method)
                                                                                                     	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
                                                                                                     	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
-2025-07-29 21:24:50.338  2131-2131  Process                 com.testapp.bluesky_api_test         I  Sending signal. PID: 2131 SIG: 9
-2025-07-29 21:24:50.931  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  Late-enabling -Xcheck:jni
-2025-07-29 21:24:51.095  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  Using CollectorTypeCMC GC.
-2025-07-29 21:24:51.100  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         W  Unexpected CPU variant for x86: x86_64.
-                                                                                                    Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
-2025-07-29 21:24:51.162  3579-3579  nativeloader            com.testapp.bluesky_api_test         D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
-2025-07-29 21:24:51.331  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         W  Suspending all threads took: 9.295ms
-2025-07-29 21:24:51.385  3579-3579  nativeloader            com.testapp.bluesky_api_test         D  Load /data/user/0/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so using system ns (caller=<unknown>): ok
-2025-07-29 21:24:51.348  3579-3579  re-initialized>         com.testapp.bluesky_api_test         W  type=1400 audit(0.0:99): avc:  granted  { execute } for  path="/data/data/com.testapp.bluesky_api_test/code_cache/startup_agents/9758b833-agent.so" dev="dm-55" ino=58786 scontext=u:r:untrusted_app:s0:c215,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c215,c256,c512,c768 tclass=file app=com.testapp.bluesky_api_test
-2025-07-29 21:24:51.406  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         W  hiddenapi: DexFile /data/data/com.testapp.bluesky_api_test/code_cache/.studio/instruments-07dd17c6.jar is in boot class path but is not in a known location
-2025-07-29 21:24:52.747  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
-2025-07-29 21:24:52.747  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
-2025-07-29 21:24:52.865  3579-3579  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
-2025-07-29 21:24:52.865  3579-3579  ApplicationLoaders      com.testapp.bluesky_api_test         D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
-2025-07-29 21:24:53.495  3579-3579  nativeloader            com.testapp.bluesky_api_test         D  Configuring clns-9 for other apk /data/app/~~gxHLHIKOh3GIQA0emYnEjw==/com.testapp.bluesky_api_test--0TKFQ4AdAs1P7J5HjI5zQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~gxHLHIKOh3GIQA0emYnEjw==/com.testapp.bluesky_api_test--0TKFQ4AdAs1P7J5HjI5zQ==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.testapp.bluesky_api_test
-2025-07-29 21:24:53.499  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 202956589; UID 10215; state: ENABLED
-2025-07-29 21:24:53.507  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7255a9c1d898) locale list changing from [] to [en-US]
-2025-07-29 21:24:53.517  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7255a9c12358) locale list changing from [] to [en-US]
-2025-07-29 21:24:53.592  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Currently set values for:
-2025-07-29 21:24:53.595  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_pkgs=[]
-2025-07-29 21:24:53.595  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V    angle_gl_driver_selection_values=[]
-2025-07-29 21:24:53.596  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in per-application setting
-2025-07-29 21:24:53.597  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V  ANGLE allowlist from config: 
-2025-07-29 21:24:53.597  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V  com.testapp.bluesky_api_test is not listed in ANGLE allowlist or settings, returning default
-2025-07-29 21:24:53.597  3579-3579  GraphicsEnvironment     com.testapp.bluesky_api_test         V  Neither updatable production driver nor prerelease driver is supported.
-2025-07-29 21:24:53.678  3579-3579  WM-WrkMgrInitializer    com.testapp.bluesky_api_test         D  Initializing WorkManager with default configuration.
-2025-07-29 21:24:54.122  3579-3579  WM-PackageManagerHelper com.testapp.bluesky_api_test         D  Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
-2025-07-29 21:24:54.123  3579-3579  WM-Schedulers           com.testapp.bluesky_api_test         D  Created SystemJobScheduler and enabled SystemJobService
-2025-07-29 21:24:54.325  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 279646685; UID 10215; state: ENABLED
-2025-07-29 21:24:55.258  3579-3579  Choreographer           com.testapp.bluesky_api_test         I  Skipped 51 frames!  The application may be doing too much work on its main thread.
-2025-07-29 21:24:55.309  3579-3713  DisplayManager          com.testapp.bluesky_api_test         I  Choreographer implicitly registered for the refresh rate.
-2025-07-29 21:24:55.338  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7255a9c13f78) locale list changing from [] to [en-US]
-2025-07-29 21:24:55.368  3579-3687  ashmem                  com.testapp.bluesky_api_test         E  Pinning is deprecated since Android Q. Please use trim or other methods.
-2025-07-29 21:24:55.459  3579-3713  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv1_CM_emulation.so
-2025-07-29 21:24:55.459  3579-3713  EGL_emulation           com.testapp.bluesky_api_test         I  Opening libGLESv2_emulation.so
-2025-07-29 21:24:55.521  3579-3713  HWUI                    com.testapp.bluesky_api_test         W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
-2025-07-29 21:24:55.522  3579-3713  HWUI                    com.testapp.bluesky_api_test         W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
-2025-07-29 21:24:56.602  3579-3579  AppCompatDelegate       com.testapp.bluesky_api_test         D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
-2025-07-29 21:24:56.606  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7255a9c15558) locale list changing from [] to [en-US]
-2025-07-29 21:24:56.821  3579-3687  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 311402873; UID 10215; state: ENABLED
-2025-07-29 21:24:56.821  3579-3687  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 323349338; UID 10215; state: ENABLED
-2025-07-29 21:24:57.695  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 309578419; UID 10215; state: ENABLED
-2025-07-29 21:24:57.700  3579-3579  DesktopModeFlags        com.testapp.bluesky_api_test         D  Toggle override initialized to: OVERRIDE_UNSET
-2025-07-29 21:24:57.827  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
-2025-07-29 21:24:58.118  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 63938206; UID 10215; state: ENABLED
-2025-07-29 21:24:58.618  3579-3579  HWUI                    com.testapp.bluesky_api_test         W  Image decoding logging dropped!
-2025-07-29 21:24:58.823  3579-3579  GroupViewModel          com.testapp.bluesky_api_test         D  ViewModel created.
-2025-07-29 21:25:00.436  3579-3579  EngineFactory           com.testapp.bluesky_api_test         I  Provider GmsCore_OpenSSL not available
-2025-07-29 21:25:01.452  3579-3579  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
-2025-07-29 21:25:01.488  3579-3579  GroupViewModel          com.testapp.bluesky_api_test         D  getAllGroups() called.
-2025-07-29 21:25:01.595  3579-3579  GroupViewModel          com.testapp.bluesky_api_test         D  Refreshing groups data.
-2025-07-29 21:25:01.595  3579-3579  GroupEntityRepository   com.testapp.bluesky_api_test         D  Fetching all groups from database.
-2025-07-29 21:25:01.635  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 352594277; UID 10215; state: ENABLED
-2025-07-29 21:25:01.703  3579-3579  CompatChangeReporter    com.testapp.bluesky_api_test         D  Compat change id reported: 349153669; UID 10215; state: ENABLED
-2025-07-29 21:25:01.721  3579-3579  HWUI                    com.testapp.bluesky_api_test         W  Unknown dataspace 0
-2025-07-29 21:25:01.954  3579-3848  ProfileInstaller        com.testapp.bluesky_api_test         D  Installing profile for com.testapp.bluesky_api_test
-2025-07-29 21:25:02.611  3579-3579  GroupFragment           com.testapp.bluesky_api_test         D  Groups updated. Size: 1
-2025-07-29 21:25:02.612  3579-3579  GroupFragment           com.testapp.bluesky_api_test         D  Group Name: AAA
-2025-07-29 21:25:02.641  3579-3598  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=711ms; Flags=1, FrameTimelineVsyncId=15774, IntendedVsync=125358222588, Vsync=125424889252, InputEventId=0, HandleInputStart=125435007500, AnimationStart=125435128000, PerformTraversalsStart=125435238400, DrawStart=125718277100, FrameDeadline=125374889254, FrameStartTime=125434882900, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=125752722700, SyncStart=125786773600, IssueDrawCommandsStart=125787386000, SwapBuffers=126087393700, FrameCompleted=126103366200, DequeueBufferDuration=96400, QueueBufferDuration=7253900, GpuCompleted=126102827700, SwapBuffersCompleted=126103366200, DisplayPresentTime=0, CommandSubmissionCompleted=126087393700, 
-2025-07-29 21:25:02.759  3579-3579  Choreographer           com.testapp.bluesky_api_test         I  Skipped 47 frames!  The application may be doing too much work on its main thread.
-2025-07-29 21:25:03.091  3579-3598  HWUI                    com.testapp.bluesky_api_test         I  Davey! duration=1103ms; Flags=0, FrameTimelineVsyncId=15797, IntendedVsync=125458222584, Vsync=126241555886, InputEventId=0, HandleInputStart=126259171400, AnimationStart=126259565400, PerformTraversalsStart=126261554000, DrawStart=126475373500, FrameDeadline=126124889224, FrameStartTime=126255503700, FrameInterval=16666666, WorkloadTarget=16666666, SyncQueued=126484115000, SyncStart=126486427300, IssueDrawCommandsStart=126487118700, SwapBuffers=126551142900, FrameCompleted=126564468900, DequeueBufferDuration=94000, QueueBufferDuration=4252000, GpuCompleted=126563983700, SwapBuffersCompleted=126564468900, DisplayPresentTime=0, CommandSubmissionCompleted=126551142900, 
-2025-07-29 21:25:03.153  3579-3579  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
-2025-07-29 21:25:03.157  3579-3579  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:98621ea7: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-2025-07-29 21:25:04.723  3579-3592  luesky_api_test         com.testapp.bluesky_api_test         I  Background concurrent mark compact GC freed 3147KB AllocSpace bytes, 14(472KB) LOS objects, 49% free, 4102KB/8205KB, paused 12.803ms,7.273ms total 209.540ms
-2025-07-29 21:25:09.542  3579-3591  luesky_api_test         com.testapp.bluesky_api_test         I  Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()
-2025-07-29 21:26:08.848  3579-3579  luesky_api_test         com.testapp.bluesky_api_test         I  AssetManager2(0x7255a9c1e838) locale list changing from [] to [en-US]
-2025-07-29 21:26:09.542  3579-3579  InsetsController        com.testapp.bluesky_api_test         D  hide(ime(), fromIme=false)
-2025-07-29 21:26:09.543  3579-3579  ImeTracker              com.testapp.bluesky_api_test         I  com.testapp.bluesky_api_test:da9ad5dd: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
-2025-07-29 21:26:09.756  3579-3579  VRI[GroupActivity]      com.testapp.bluesky_api_test         D  visibilityChanged oldVisibility=true newVisibility=false
-2025-07-29 21:26:12.090  3579-3579  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  OnBackInvokedCallback is not enabled for the application.
-                                                                                                    Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
-2025-07-29 21:26:12.188  3579-3579  WindowOnBackDispatcher  com.testapp.bluesky_api_test         W  OnBackInvokedCallback is not enabled for the application.
-                                                                                                    Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
-2025-07-29 21:26:13.540  3579-3579  AndroidRuntime          com.testapp.bluesky_api_test         D  Shutting down VM
-2025-07-29 21:26:13.558  3579-3579  AndroidRuntime          com.testapp.bluesky_api_test         E  FATAL EXCEPTION: main
-                                                                                                    Process: com.testapp.bluesky_api_test, PID: 3579
-                                                                                                    java.lang.IllegalStateException: Fragment TagSelectionDialogFragment{33ae634} (bb6d5e7c-f8a9-4d50-bb8b-715d039fe6fa) not associated with a fragment manager.
-                                                                                                    	at androidx.fragment.app.Fragment.getParentFragmentManager(Fragment.java:1112)
-                                                                                                    	at com.testapp.bluesky_api_test.ui.TagSelectionDialogFragment.lambda$onCreateDialog$0$com-testapp-bluesky_api_test-ui-TagSelectionDialogFragment(TagSelectionDialogFragment.java:61)
-                                                                                                    	at com.testapp.bluesky_api_test.ui.TagSelectionDialogFragment$$ExternalSyntheticLambda0.onClick(D8$$SyntheticClass:0)
-                                                                                                    	at androidx.appcompat.app.AlertController$ButtonHandler.handleMessage(AlertController.java:167)
-                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:110)
-                                                                                                    	at android.os.Looper.loopOnce(Looper.java:248)
-                                                                                                    	at android.os.Looper.loop(Looper.java:338)
-                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:9067)
-                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
-                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
-                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
-2025-07-29 21:26:18.909  3579-3588  luesky_api_test         com.testapp.bluesky_api_test         I  Thread[2,tid=3588,WaitingInMainSignalCatcherLoop,Thread*=0x7256e9c1a2c0,peer=0x20024b8,"Signal Catcher"]: reacting to signal 3
-2025-07-29 21:26:18.910  3579-3588  luesky_api_test         com.testapp.bluesky_api_test         I  
-2025-07-29 21:26:19.493  3579-3713  BLASTBufferQueue        com.testapp.bluesky_api_test         E  epoll_wait error while waiting for buffer release. errno=4 message='Interrupted system call'
-2025-07-29 21:26:19.574  3579-3588  luesky_api_test         com.testapp.bluesky_api_test         I  Wrote stack traces to tombstoned
