@@ -1,0 +1,162 @@
+package com.aether.myaether.repository;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
+
+import com.aether.myaether.DataBaseManupilate.AppDatabaseSingleton;
+import com.aether.myaether.DataBaseManupilate.dao.UserDao;
+import com.aether.myaether.DataBaseManupilate.entity.User;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+
+import dagger.hilt.android.qualifiers.ApplicationContext;
+import work.socialhub.kbsky.Bluesky;
+import work.socialhub.kbsky.BlueskyFactory;
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionResponse;
+
+import work.socialhub.kbsky.api.entity.com.atproto.server.ServerRefreshSessionResponse;
+import com.aether.myaether.bluesky.NoDPoPAuthProvider;
+import work.socialhub.kbsky.api.entity.share.AuthRequest;
+import work.socialhub.kbsky.api.entity.share.Response;
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+
+import javax.inject.Inject;
+
+public class AuthRepository {
+
+    private static final String PREF_NAME = "EncryptedAuthPrefs";
+    private static final String KEY_ACCESS_TOKEN = "accessToken";
+    private static final String KEY_REFRESH_TOKEN = "refreshToken";
+    private static final String KEY_DID = "did";
+    private static final String KEY_HANDLE = "handle";
+    private static final String TAG = "AuthRepository";
+
+    private final SharedPreferences sharedPreferences;
+    private final Bluesky bluesky;
+    private final UserDao userDao;
+
+
+    public AuthRepository(Context context) {
+        try {
+            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+            this.sharedPreferences = EncryptedSharedPreferences.create(
+                    PREF_NAME,
+                    masterKeyAlias,
+                    context,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );
+        } catch (GeneralSecurityException | IOException e) {
+            throw new RuntimeException("Could not create EncryptedSharedPreferences", e);
+        }
+        this.bluesky = BlueskyFactory.INSTANCE.instance("https://bsky.social");
+        this.userDao = AppDatabaseSingleton.getInstance(context).userDao();
+    }
+
+    // ログイン処理
+    public void login(String handle, String password) throws Exception {
+        ServerCreateSessionRequest request = new ServerCreateSessionRequest();
+        request.setIdentifier(handle);
+        request.setPassword(password);
+
+        Response<ServerCreateSessionResponse> response = bluesky.server().createSession(request);
+        ServerCreateSessionResponse data = response.getData();
+
+        // ログイン成功時の情報をログに出力
+        Log.d(TAG, "Login successful. AccessJwt: " + data.getAccessJwt());
+        Log.d(TAG, "Login successful. RefreshJwt: " + data.getRefreshJwt());
+        Log.d(TAG, "Login successful. DID: " + data.getDid());
+        Log.d(TAG, "Login successful. Handle: " + data.getHandle());
+
+        // ユーザーがDBに存在するか確認し、存在しなければ追加
+        User user = userDao.getUserByDid(data.getDid());
+        if (user == null) {
+            user = new User(data.getHandle(), data.getDid());
+            userDao.insert(user);
+        }
+
+        // 取得したトークンと情報をSharedPreferencesに保存
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
+        editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
+        editor.putString(KEY_DID, data.getDid());
+        editor.putString(KEY_HANDLE, data.getHandle());
+        editor.apply();
+    }
+
+    // ログアウト処理
+    public void logout() {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
+    // ログイン済みかチェック
+    public boolean isLoggedIn() {
+        return sharedPreferences.getString(KEY_ACCESS_TOKEN, null) != null;
+    }
+
+    // 保存された認証情報からAuthProviderを取得
+    public BearerTokenAuthProvider getAuthProvider() {
+        String accessToken = sharedPreferences.getString(KEY_ACCESS_TOKEN, null);
+        String refreshToken = sharedPreferences.getString(KEY_REFRESH_TOKEN, null);
+
+        if (accessToken != null && refreshToken != null) {
+            return new BearerTokenAuthProvider(accessToken, refreshToken);
+        }
+        return null;
+    }
+
+    // トークンをリフレッシュする
+    public boolean refreshToken() {
+        String currentRefreshToken = sharedPreferences.getString(KEY_REFRESH_TOKEN, null);
+        if (currentRefreshToken == null) {
+            Log.e(TAG, "No refresh token available.");
+            return false;
+        }
+
+        try {
+            // リフレッシュトークン専用のAuthProviderを作成
+            NoDPoPAuthProvider refreshOnlyAuthProvider = new NoDPoPAuthProvider(null, currentRefreshToken);
+
+            // AuthRequestにリフレッシュトークン専用のAuthProviderを渡す
+            AuthRequest request = new AuthRequest(refreshOnlyAuthProvider);
+
+            Response<ServerRefreshSessionResponse> response = bluesky.server().refreshSession(request);
+            ServerRefreshSessionResponse data = response.getData();
+
+            // 新しいトークンを保存
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(KEY_ACCESS_TOKEN, data.getAccessJwt());
+            editor.putString(KEY_REFRESH_TOKEN, data.getRefreshJwt());
+            editor.putString(KEY_DID, data.getDid());
+            editor.putString(KEY_HANDLE, data.getHandle());
+            editor.apply();
+            Log.d(TAG, "Token refreshed and saved successfully.");
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to refresh token", e);
+            // リフレッシュトークンも失効している場合は、保存されている情報をクリアしてログアウトさせる
+            if (e instanceof work.socialhub.kbsky.ATProtocolException) {
+                if (e.getMessage() != null && e.getMessage().contains("ExpiredToken")) {
+                    Log.d(TAG, "Refresh token has expired. Logging out.");
+                    logout();
+                }
+            }
+            return false;
+        }
+    }
+
+    public String getDid() {
+        return sharedPreferences.getString(KEY_DID, null);
+    }
+
+    public String getHandle() {
+        return sharedPreferences.getString(KEY_HANDLE, null);
+    }
+}

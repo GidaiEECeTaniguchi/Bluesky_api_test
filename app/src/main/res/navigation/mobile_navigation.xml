@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.testapp.bluesky_api_test.ui.fragment.MainFragment"
+        android:name="com.aether.myaether.ui.fragment.MainFragment"
         android:label="ホーム"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.testapp.bluesky_api_test.ui.fragment.NotificationsFragment"
+        android:name="com.aether.myaether.ui.fragment.NotificationsFragment"
         android:label="通知"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.testapp.bluesky_api_test.ui.fragment.UserManagementFragment"
+        android:name="com.aether.myaether.ui.fragment.UserManagementFragment"
         android:label="ユーザー管理"
         tools:layout="@layout/fragment_user_management" />
 

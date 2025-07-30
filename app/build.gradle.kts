@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.testapp.bluesky_api_test"
+    namespace = "com.aether.myaether"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.testapp.bluesky_api_test"
+        applicationId = "com.aether.myaether"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

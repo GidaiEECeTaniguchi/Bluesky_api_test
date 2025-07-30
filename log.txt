@@ -1,1 +1,163 @@
-とりあえず、機能は完成したよ!
+2025-07-30 13:42:09.552  2035-2035  nativeloader            com.aether.myaether                  D  Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+2025-07-30 13:42:09.837  2035-2035  nativeloader            com.aether.myaether                  D  Load /data/user/0/com.aether.myaether/code_cache/startup_agents/9758b833-agent.so using system ns (caller=<unknown>): ok
+2025-07-30 13:42:09.851  2035-2035  aether.myaether         com.aether.myaether                  W  hiddenapi: DexFile /data/data/com.aether.myaether/code_cache/.studio/instruments-07dd17c6.jar is in boot class path but is not in a known location
+2025-07-30 13:42:09.828  2035-2035  re-initialized>         com.aether.myaether                  W  type=1400 audit(0.0:94): avc:  granted  { execute } for  path="/data/data/com.aether.myaether/code_cache/startup_agents/9758b833-agent.so" dev="dm-55" ino=353880 scontext=u:r:untrusted_app:s0:c215,c256,c512,c768 tcontext=u:object_r:app_data_file:s0:c215,c256,c512,c768 tclass=file app=com.aether.myaether
+2025-07-30 13:42:11.656  2035-2035  aether.myaether         com.aether.myaether                  W  Redefining intrinsic method java.lang.Thread java.lang.Thread.currentThread(). This may cause the unexpected use of the original definition of java.lang.Thread java.lang.Thread.currentThread()in methods that have already been compiled.
+2025-07-30 13:42:11.656  2035-2035  aether.myaether         com.aether.myaether                  W  Redefining intrinsic method boolean java.lang.Thread.interrupted(). This may cause the unexpected use of the original definition of boolean java.lang.Thread.interrupted()in methods that have already been compiled.
+---------------------------- PROCESS STARTED (2035) for package com.aether.myaether ----------------------------
+2025-07-30 13:42:11.821  2035-2035  ApplicationLoaders      com.aether.myaether                  D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+2025-07-30 13:42:11.821  2035-2035  ApplicationLoaders      com.aether.myaether                  D  Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+2025-07-30 13:42:12.344  2035-2035  nativeloader            com.aether.myaether                  D  Configuring clns-9 for other apk /data/app/~~ytav1e6hWJZo3NZ1cDenOA==/com.aether.myaether-H5YUYjT5dC2f_yAz4iVLbg==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~ytav1e6hWJZo3NZ1cDenOA==/com.aether.myaether-H5YUYjT5dC2f_yAz4iVLbg==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.aether.myaether
+2025-07-30 13:42:12.348  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 202956589; UID 10215; state: ENABLED
+2025-07-30 13:42:12.352  2035-2035  aether.myaether         com.aether.myaether                  I  AssetManager2(0x7860d298d6f8) locale list changing from [] to [en-US]
+2025-07-30 13:42:12.356  2035-2035  aether.myaether         com.aether.myaether                  I  AssetManager2(0x7860d2986998) locale list changing from [] to [en-US]
+2025-07-30 13:42:12.372  2035-2035  GraphicsEnvironment     com.aether.myaether                  V  Currently set values for:
+2025-07-30 13:42:12.372  2035-2035  GraphicsEnvironment     com.aether.myaether                  V    angle_gl_driver_selection_pkgs=[]
+2025-07-30 13:42:12.372  2035-2035  GraphicsEnvironment     com.aether.myaether                  V    angle_gl_driver_selection_values=[]
+2025-07-30 13:42:12.372  2035-2035  GraphicsEnvironment     com.aether.myaether                  V  com.aether.myaether is not listed in per-application setting
+2025-07-30 13:42:12.373  2035-2035  GraphicsEnvironment     com.aether.myaether                  V  ANGLE allowlist from config: 
+2025-07-30 13:42:12.373  2035-2035  GraphicsEnvironment     com.aether.myaether                  V  com.aether.myaether is not listed in ANGLE allowlist or settings, returning default
+2025-07-30 13:42:12.373  2035-2035  GraphicsEnvironment     com.aether.myaether                  V  Neither updatable production driver nor prerelease driver is supported.
+2025-07-30 13:42:12.470  2035-2035  WM-WrkMgrInitializer    com.aether.myaether                  D  Initializing WorkManager with default configuration.
+2025-07-30 13:42:12.944  2035-2035  WM-PackageManagerHelper com.aether.myaether                  D  Skipping component enablement for androidx.work.impl.background.systemjob.SystemJobService
+2025-07-30 13:42:12.944  2035-2035  WM-Schedulers           com.aether.myaether                  D  Created SystemJobScheduler and enabled SystemJobService
+2025-07-30 13:42:13.121  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 279646685; UID 10215; state: ENABLED
+2025-07-30 13:42:13.174  2035-2249  ashmem                  com.aether.myaether                  E  Pinning is deprecated since Android Q. Please use trim or other methods.
+2025-07-30 13:42:13.688  2035-2277  DisplayManager          com.aether.myaether                  I  Choreographer implicitly registered for the refresh rate.
+2025-07-30 13:42:13.698  2035-2035  aether.myaether         com.aether.myaether                  I  AssetManager2(0x7860d2989238) locale list changing from [] to [en-US]
+2025-07-30 13:42:13.928  2035-2277  EGL_emulation           com.aether.myaether                  I  Opening libGLESv1_CM_emulation.so
+2025-07-30 13:42:13.928  2035-2277  EGL_emulation           com.aether.myaether                  I  Opening libGLESv2_emulation.so
+2025-07-30 13:42:13.939  2035-2277  HWUI                    com.aether.myaether                  W  Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+2025-07-30 13:42:13.940  2035-2277  HWUI                    com.aether.myaether                  W  Failed to initialize 101010-2 format, error = EGL_SUCCESS
+2025-07-30 13:42:14.102  2035-2035  AppCompatDelegate       com.aether.myaether                  D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2025-07-30 13:42:14.106  2035-2035  aether.myaether         com.aether.myaether                  I  AssetManager2(0x7860d298b498) locale list changing from [] to [en-US]
+2025-07-30 13:42:14.438  2035-2284  JobInfo                 com.aether.myaether                  W  Requested important-while-foreground flag for job2 is ignored and takes no effect
+2025-07-30 13:42:14.453  2035-2284  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 311402873; UID 10215; state: ENABLED
+2025-07-30 13:42:14.462  2035-2284  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 323349338; UID 10215; state: ENABLED
+2025-07-30 13:42:14.578  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 309578419; UID 10215; state: ENABLED
+2025-07-30 13:42:14.583  2035-2035  DesktopModeFlags        com.aether.myaether                  D  Toggle override initialized to: OVERRIDE_UNSET
+2025-07-30 13:42:14.674  2035-2035  aether.myaether         com.aether.myaether                  I  hiddenapi: Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/appcompat/widget/ViewUtils; (domain=app) using reflection: allowed
+2025-07-30 13:42:14.785  2035-2344  WM-WorkerFactory        com.aether.myaether                  E  Could not instantiate com.aether.myaether.task.TimelineCrawlerWorker
+                                                                                                    java.lang.NoSuchMethodException: com.aether.myaether.task.TimelineCrawlerWorker.<init> [class android.content.Context, class androidx.work.WorkerParameters]
+                                                                                                    	at java.lang.Class.getConstructor0(Class.java:3385)
+                                                                                                    	at java.lang.Class.getDeclaredConstructor(Class.java:3067)
+                                                                                                    	at androidx.work.WorkerFactory.createWorkerWithDefaultFallback(WorkerFactory.java:94)
+                                                                                                    	at androidx.work.impl.WorkerWrapper.runWorker(WorkerWrapper.java:243)
+                                                                                                    	at androidx.work.impl.WorkerWrapper.run(WorkerWrapper.java:144)
+                                                                                                    	at androidx.work.impl.utils.SerialExecutorImpl$Task.run(SerialExecutorImpl.java:96)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1119)
+2025-07-30 13:42:14.788  2035-2344  WM-WorkerWrapper        com.aether.myaether                  E  Could not create Worker com.aether.myaether.task.TimelineCrawlerWorker
+2025-07-30 13:42:14.820  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:14.821  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:14.821  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:14.825  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 63938206; UID 10215; state: ENABLED
+2025-07-30 13:42:14.833  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 352594277; UID 10215; state: ENABLED
+2025-07-30 13:42:14.877  2035-2035  CompatChangeReporter    com.aether.myaether                  D  Compat change id reported: 303326708; UID 10215; state: ENABLED
+2025-07-30 13:42:15.772  2035-2035  EngineFactory           com.aether.myaether                  I  Provider GmsCore_OpenSSL not available
+2025-07-30 13:42:16.180  2035-2035  Choreographer           com.aether.myaether                  I  Skipped 183 frames!  The application may be doing too much work on its main thread.
+2025-07-30 13:42:16.949  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:16.976  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:16.992  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:17.005  2035-2035  HWUI                    com.aether.myaether                  W  Image decoding logging dropped!
+2025-07-30 13:42:17.289  2035-2035  TransactionExecutor     com.aether.myaether                  E  Failed to execute the transaction: tId:-1954675697 ClientTransaction{
+                                                                                                    tId:-1954675697   transactionItems=[
+                                                                                                    tId:-1954675697     LaunchActivityItem{activityToken=android.os.BinderProxy@4ae26ee,intent=Intent { xflg=0x4 cmp=com.aether.myaether/.ui.MainActivity },ident=70041182,info=ActivityInfo{f14a547 com.aether.myaether.ui.MainActivity},curConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h914dp 420dpi nrml long port finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 1080, 2400) mAppBounds=Rect(0, 0 - 1080, 2400) mMaxBounds=Rect(0, 0 - 1080, 2400) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} s.9 fontWeightAdjustment=0},overrideConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h914dp 420dpi nrml long port finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 1080, 2400) mAppBounds=Rect(0, 0 - 1080, 2400) mMaxBounds=Rect(0, 0 - 1080, 2400) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=standard mAlwaysOnTop=undefined mRotation=ROTATION_0} s.2 fontWeightAdjustment=0},deviceId=0,referrer=com.aether.myaether,procState=2,state=null,persistentState=null,pendingResults=null,pendingNewIntents=null,sceneTransitionInfo=null,profilerInfo=null,assistToken=android.os.BinderProxy@dbad0c8,shareableActivityToken=android.os.BinderProxy@6d80561,activityWindowInfo=ActivityWindowInfo{isEmbedded=false, taskBounds=Rect(0, 0 - 1080, 2400), taskFragmentBounds=Rect(0, 0 - 1080, 2400)}}
+                                                                                                    tId:-1954675697     ResumeActivityItem{mActivityToken=android.os.BinderProxy@4ae26ee,procState=-1,isForward=true,shouldSendCompatFakeFocus=false}
+                                                                                                    tId:-1954675697     Target activity: com.aether.myaether.ui.MainActivity
+                                                                                                    tId:-1954675697   ]
+                                                                                                    tId:-1954675697 }
+2025-07-30 13:42:17.289  2035-2035  AndroidRuntime          com.aether.myaether                  D  Shutting down VM
+2025-07-30 13:42:17.295  2035-2035  AndroidRuntime          com.aether.myaether                  E  FATAL EXCEPTION: main
+                                                                                                    Process: com.aether.myaether, PID: 2035
+                                                                                                    java.lang.RuntimeException: Unable to start activity ComponentInfo{com.aether.myaether/com.aether.myaether.ui.MainActivity}: android.view.InflateException: Binary XML file line #47 in com.aether.myaether:layout/activity_main: Binary XML file line #47 in com.aether.myaether:layout/activity_main: Error inflating class androidx.fragment.app.FragmentContainerView
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4280)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4467)
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:222)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80)
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2823)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:110)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:248)
+                                                                                                    	at android.os.Looper.loop(Looper.java:338)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:9067)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+                                                                                                    Caused by: android.view.InflateException: Binary XML file line #47 in com.aether.myaether:layout/activity_main: Binary XML file line #47 in com.aether.myaether:layout/activity_main: Error inflating class androidx.fragment.app.FragmentContainerView
+                                                                                                    Caused by: android.view.InflateException: Binary XML file line #47 in com.aether.myaether:layout/activity_main: Error inflating class androidx.fragment.app.FragmentContainerView
+                                                                                                    Caused by: androidx.fragment.app.Fragment$InstantiationException: Unable to instantiate fragment com.testapp.bluesky_api_test.ui.fragment.MainFragment: make sure class name exists
+                                                                                                    	at androidx.fragment.app.FragmentFactory.loadFragmentClass(FragmentFactory.java:97)
+                                                                                                    	at androidx.fragment.app.Fragment.instantiate(Fragment.java:670)
+                                                                                                    	at androidx.fragment.app.FragmentContainer.instantiate(FragmentContainer.java:57)
+                                                                                                    	at androidx.fragment.app.FragmentManager$3.instantiate(FragmentManager.java:525)
+                                                                                                    	at androidx.navigation.fragment.FragmentNavigator.createFragmentTransaction(FragmentNavigator.kt:513)
+                                                                                                    	at androidx.navigation.fragment.FragmentNavigator.navigate(FragmentNavigator.kt:426)
+                                                                                                    	at androidx.navigation.fragment.FragmentNavigator.navigate(FragmentNavigator.kt:405)
+                                                                                                    	at androidx.navigation.NavGraphNavigator.navigate(NavGraphNavigator.kt:92)
+                                                                                                    	at androidx.navigation.NavGraphNavigator.navigate(NavGraphNavigator.kt:58)
+                                                                                                    	at androidx.navigation.NavController.navigateInternal(NavController.kt:266)
+                                                                                                    	at androidx.navigation.NavController.navigate(NavController.kt:1871)
+                                                                                                    	at androidx.navigation.NavController.onGraphCreated(NavController.kt:1287)
+                                                                                                    	at androidx.navigation.NavController.setGraph(NavController.kt:1199)
+                                                                                                    	at androidx.navigation.NavController.setGraph(NavController.kt:1152)
+                                                                                                    	at androidx.navigation.fragment.NavHostFragment$navHostController$2.invoke(NavHostFragment.kt:104)
+                                                                                                    	at androidx.navigation.fragment.NavHostFragment$navHostController$2.invoke(NavHostFragment.kt:78)
+                                                                                                    	at kotlin.SynchronizedLazyImpl.getValue(LazyJVM.kt:83)
+                                                                                                    	at androidx.navigation.fragment.NavHostFragment.getNavHostController$navigation_fragment_release(NavHostFragment.kt:78)
+                                                                                                    	at androidx.navigation.fragment.NavHostFragment.onCreate(NavHostFragment.kt:150)
+                                                                                                    	at androidx.fragment.app.Fragment.performCreate(Fragment.java:3094)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.create(FragmentStateManager.java:504)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:268)
+                                                                                                    	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:1943)
+2025-07-30 13:42:17.302  2035-2035  AndroidRuntime          com.aether.myaether                  E  	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:1845)
+                                                                                                    	at androidx.fragment.app.FragmentManager.execSingleAction(FragmentManager.java:1751)
+                                                                                                    	at androidx.fragment.app.BackStackRecord.commitNowAllowingStateLoss(BackStackRecord.java:323)
+                                                                                                    	at androidx.fragment.app.FragmentContainerView.<init>(FragmentContainerView.kt:163)
+                                                                                                    	at androidx.fragment.app.FragmentLayoutInflaterFactory.onCreateView(FragmentLayoutInflaterFactory.java:53)
+                                                                                                    	at androidx.fragment.app.FragmentController.onCreateView(FragmentController.java:136)
+                                                                                                    	at androidx.fragment.app.FragmentActivity.dispatchFragmentsOnCreateView(FragmentActivity.java:247)
+                                                                                                    	at androidx.fragment.app.FragmentActivity.onCreateView(FragmentActivity.java:226)
+                                                                                                    	at android.view.LayoutInflater.tryCreateView(LayoutInflater.java:958)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:886)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:850)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1012)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:973)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:571)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:462)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:413)
+                                                                                                    	at androidx.appcompat.app.AppCompatDelegateImpl.setContentView(AppCompatDelegateImpl.java:751)
+                                                                                                    	at androidx.appcompat.app.AppCompatActivity.setContentView(AppCompatActivity.java:197)
+                                                                                                    	at com.aether.myaether.ui.MainActivity.onCreate(MainActivity.java:29)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:9155)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:9133)
+                                                                                                    	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1521)
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4262)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4467)
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:222)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80)
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2823)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:110)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:248)
+                                                                                                    	at android.os.Looper.loop(Looper.java:338)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:9067)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+                                                                                                    Caused by: java.lang.ClassNotFoundException: com.testapp.bluesky_api_test.ui.fragment.MainFragment
+                                                                                                    	at java.lang.Class.classForName(Native Method)
+                                                                                                    	at java.lang.Class.forName(Class.java:597)
+                                                                                                    	at androidx.fragment.app.FragmentFactory.loadClass(FragmentFactory.java:53)
+                                                                                                    	at androidx.fragment.app.FragmentFactory.loadFragmentClass(FragmentFactory.java:94)
+                                                                                                    	... 58 more
+                                                                                                    Caused by: java.lang.ClassNotFoundException: Didn't find class "com.testapp.bluesky_api_test.ui.fragment.MainFragment" on path: DexPathList[[zip file "/data/app/~~ytav1e6hWJZo3NZ1cDenOA==/com.aether.myaether-H5YUYjT5dC2f_yAz4iVLbg==/base.apk"],nativeLibraryDirectories=[/data/app/~~ytav1e6hWJZo3NZ1cDenOA==/com.aether.myaether-H5YUYjT5dC2f_yAz4iVLbg==/lib/x86_64, /system/lib64, /system_ext/lib64]]
+                                                                                                    	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
+                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+                                                                                                    	... 62 more
+2025-07-30 13:42:17.410  2035-2035  Process                 com.aether.myaether                  I  Sending signal. PID: 2035 SIG: 9
+---------------------------- PROCESS ENDED (2035) for package com.aether.myaether ----------------------------

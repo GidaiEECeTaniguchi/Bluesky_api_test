@@ -8,7 +8,7 @@
     <!-- ここに GroupFragment を追加していく -->
     <fragment
         android:id="@+id/navigation_group_list"
-        android:name="com.testapp.bluesky_api_test.ui.fragment.GroupFragment"
+        android:name="com.aether.myaether.ui.fragment.GroupFragment"
         android:label="グループ一覧"
         tools:layout="@layout/fragment_group" />
 
