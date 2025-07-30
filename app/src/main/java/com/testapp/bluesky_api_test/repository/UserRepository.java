@@ -13,11 +13,16 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
 public class UserRepository {
     private UserDao userDao;
     private ExecutorService executorService;
 
-    public UserRepository(Application application) {
+
+    public UserRepository( Application application) {
         AppDatabase db = AppDatabaseSingleton.getInstance(application);
         userDao = db.userDao();
         executorService = Executors.newSingleThreadExecutor();

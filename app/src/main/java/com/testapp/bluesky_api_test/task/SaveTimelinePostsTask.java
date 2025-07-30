@@ -6,66 +6,56 @@ import android.util.Log;
 
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
+import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
 import com.testapp.bluesky_api_test.repository.PostRepository;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
+import com.testapp.bluesky_api_test.data.source.local.BlueskyLocalDataSourceImpl;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSourceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import work.socialhub.kbsky.BlueskyTypes;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedPost;
-import work.socialhub.kbsky.model.share.RecordUnion;
-
-public class SaveTimelinePostsTask extends AsyncTask<List<FeedDefsFeedViewPost>, Void, Void> {
+public class SaveTimelinePostsTask extends AsyncTask<List<BlueskyPostInfo>, Void, Void> {
 
     private static final String TAG = "SaveTimelinePostsTask";
     private final PostRepository postRepository;
     private final AuthorRepository authorRepository;
 
     public SaveTimelinePostsTask(Context context) {
-        this.postRepository = new PostRepository(context);
-        this.authorRepository = new AuthorRepository(context);
+        BlueskyRemoteDataSourceImpl blueskyRemoteDataSource = new BlueskyRemoteDataSourceImpl();
+        BlueskyLocalDataSourceImpl blueskyLocalDataSource = new BlueskyLocalDataSourceImpl(context);
+        this.postRepository = new PostRepository(context, blueskyRemoteDataSource, blueskyLocalDataSource);
+        this.authorRepository = new AuthorRepository(blueskyRemoteDataSource, blueskyLocalDataSource);
     }
 
     @Override
-    protected Void doInBackground(List<FeedDefsFeedViewPost>... lists) {
+    protected Void doInBackground(List<BlueskyPostInfo>... lists) {
         if (lists.length == 0 || lists[0] == null) {
             Log.e(TAG, "No posts provided to save.");
             return null;
         }
 
-        List<FeedDefsFeedViewPost> postsToSave = lists[0];
+        List<BlueskyPostInfo> postsToSave = lists[0];
         List<BasePost> basePosts = new ArrayList<>();
 
-        for (FeedDefsFeedViewPost feedViewPost : postsToSave) {
-            FeedDefsPostView postView = feedViewPost.getPost();
-            if (postView != null && postView.getRecord() != null) {
-                RecordUnion record = postView.getRecord();
-                if (BlueskyTypes.FeedPost.equals(record.getType())) {
-                    FeedPost postContent = (FeedPost) record;
-
-                    try {
-                        // Authorの保存または取得
-                        Author author = authorRepository.getAuthorByDidFromDb(postView.getAuthor().getDid());
-                        if (author == null) {
-                            author = new Author(postView.getAuthor().getHandle(), postView.getAuthor().getDid());
-                            author = authorRepository.insertAuthorToDb(author);
-                        }
-
-                        String content = postContent.getText() != null ? postContent.getText() : "";
-                        String createdAt = postContent.getCreatedAt();
-                        String uri = postView.getUri();
-                        String cid = postView.getCid();
-
-                        BasePost basePost = new BasePost(uri, cid, author.getId(), author.getId(), content, createdAt);
-                        basePosts.add(basePost);
-                    } catch (Exception e) {
-                        Log.e(TAG, "Error processing post for saving: " + e.getMessage());
-                    }
+        for (BlueskyPostInfo postInfo : postsToSave) {
+            try {
+                // Authorの保存または取得
+                Author author = authorRepository.getAuthorByHandleFromDb(postInfo.getAuthorHandle());
+                if (author == null) {
+                    author = authorRepository.insertAuthorToDb(new Author(postInfo.getAuthorHandle(), ""));
                 }
+
+                String content = postInfo.getText();
+                String createdAt = postInfo.getCreatedAt();
+                String uri = postInfo.getPostUri();
+                String cid = postInfo.getCid();
+
+                // TODO: 実際のuser_idを取得するように修正する
+                BasePost basePost = new BasePost(uri, cid, 1, author.getId(), content, createdAt);
+                basePosts.add(basePost);
+            } catch (Exception e) {
+                Log.e(TAG, "Error processing post for saving: " + e.getMessage());
             }
         }
 

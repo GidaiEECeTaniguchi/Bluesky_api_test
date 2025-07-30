@@ -8,6 +8,8 @@ import android.widget.Toast;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
 import com.testapp.bluesky_api_test.repository.PostRepository;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
+import com.testapp.bluesky_api_test.data.source.local.BlueskyLocalDataSourceImpl;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSourceImpl;
 
 import java.lang.ref.WeakReference;
 import com.testapp.bluesky_api_test.repository.AuthRepository;
@@ -29,8 +31,10 @@ public class DataFetchTask extends AsyncTask<Void, String, String> {
     public DataFetchTask(Activity activity, AuthRepository authRepository, TextView textView) {
         this.weakActivity = new WeakReference<>(activity);
         this.authRepository = authRepository;
-        this.authorRepository = new AuthorRepository(activity.getApplicationContext());
-        this.postRepository = new PostRepository(activity.getApplicationContext());
+        BlueskyRemoteDataSourceImpl blueskyRemoteDataSource = new BlueskyRemoteDataSourceImpl();
+        BlueskyLocalDataSourceImpl blueskyLocalDataSource = new BlueskyLocalDataSourceImpl(activity.getApplicationContext());
+        this.authorRepository = new AuthorRepository(blueskyRemoteDataSource, blueskyLocalDataSource);
+        this.postRepository = new PostRepository(activity.getApplicationContext(), blueskyRemoteDataSource, blueskyLocalDataSource);
         this.textViewToUpdate = textView;
     }
 

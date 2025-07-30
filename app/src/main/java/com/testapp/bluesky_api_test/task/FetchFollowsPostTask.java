@@ -3,31 +3,21 @@ package com.testapp.bluesky_api_test.task;
 import android.content.Context;
 import android.util.Log;
 
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.UserDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
-import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
 import com.testapp.bluesky_api_test.repository.AuthorRepository;
 import com.testapp.bluesky_api_test.repository.PostRepository;
+import com.testapp.bluesky_api_test.data.source.local.BlueskyLocalDataSource;
+import com.testapp.bluesky_api_test.data.source.local.BlueskyLocalDataSourceImpl;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSource;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSourceImpl;
 
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import work.socialhub.kbsky.model.app.bsky.actor.ActorDefsProfileView;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedPost;
-import work.socialhub.kbsky.model.share.RecordUnion;
-import work.socialhub.kbsky.BlueskyTypes;
 
 
 public class FetchFollowsPostTask {
@@ -36,14 +26,14 @@ public class FetchFollowsPostTask {
 
     private final AuthorRepository authorRepository;
     private final PostRepository postRepository;
-    private final UserDao userDao;
+    private final BlueskyLocalDataSource blueskyLocalDataSource;
     private final ExecutorService executorService;
 
     public FetchFollowsPostTask(Context context) {
-        this.authorRepository = new AuthorRepository(context);
-        this.postRepository = new PostRepository(context);
-        AppDatabase db = AppDatabaseSingleton.getInstance(context);
-        this.userDao = db.userDao();
+        BlueskyRemoteDataSource blueskyRemoteDataSource = new BlueskyRemoteDataSourceImpl();
+        this.blueskyLocalDataSource = new BlueskyLocalDataSourceImpl(context);
+        this.authorRepository = new AuthorRepository(blueskyRemoteDataSource, blueskyLocalDataSource);
+        this.postRepository = new PostRepository(context, blueskyRemoteDataSource, blueskyLocalDataSource);
         this.executorService = Executors.newSingleThreadExecutor();
     }
 
@@ -55,7 +45,7 @@ public class FetchFollowsPostTask {
     public void fetchAndSaveAllFollowsPosts(BearerTokenAuthProvider authProvider, String userDid) {
         executorService.execute(() -> {
             try {
-                User currentUser = userDao.getUserByDid(userDid);
+                User currentUser = blueskyLocalDataSource.getUserByDidFromDb(userDid);
                 if (currentUser == null) {
                     Log.e(TAG, "Current user not found in database: " + userDid);
                     return;
@@ -84,4 +74,3 @@ public class FetchFollowsPostTask {
         executorService.shutdown();
     }
 }
-

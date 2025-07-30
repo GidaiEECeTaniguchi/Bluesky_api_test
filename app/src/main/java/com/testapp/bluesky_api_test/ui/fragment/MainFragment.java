@@ -10,30 +10,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider; // 念のためimportを確認
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
-
-import androidx.lifecycle.ViewModelProvider;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
+import dagger.hilt.android.AndroidEntryPoint;
+import javax.inject.Inject;
 
 import com.testapp.bluesky_api_test.R;
 import com.testapp.bluesky_api_test.task.TimelineCrawlerWorker;
-import com.testapp.bluesky_api_test.repository.AuthRepository;
-import com.testapp.bluesky_api_test.repository.AuthorRepository;
-import com.testapp.bluesky_api_test.repository.PostRepository;
 import com.testapp.bluesky_api_test.viewmodel.MainViewModel;
 
 import java.util.List;
 
+@AndroidEntryPoint
 public class MainFragment extends Fragment implements BaseFragmentInterface{
 
     private static final String TAG = "MainFragment";
+
+    // ViewModelの宣言
     private MainViewModel mainViewModel;
 
     private TextView statusTextView;
     // private RecyclerView timelineRecyclerView;
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -46,8 +44,8 @@ public class MainFragment extends Fragment implements BaseFragmentInterface{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mainViewModel = new ViewModelProvider(this, new MainViewModelFactory(requireContext().getApplicationContext()))
-                .get(MainViewModel.class);
+        // ✅ ViewModelProviderを使ってViewModelを正しく初期化します
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         initViews(view, savedInstanceState);
         initListeners();
@@ -80,7 +78,7 @@ public class MainFragment extends Fragment implements BaseFragmentInterface{
             }
         });
 
-        mainViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
+        mainViewModel.isLoading().observe(getViewLifecycleOwner(), isLoading -> {
             if (isLoading) {
                 Log.d(TAG, "Loading timeline...");
                 statusTextView.setText("Loading timeline...");
@@ -107,26 +105,5 @@ public class MainFragment extends Fragment implements BaseFragmentInterface{
         OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(TimelineCrawlerWorker.class).build();
         WorkManager.getInstance(requireContext()).enqueue(workRequest);
         Log.d(TAG, "TimelineCrawlerWorker enqueued for immediate execution.");
-    }
-
-    // Custom ViewModelFactory for MainViewModel
-    private static class MainViewModelFactory implements ViewModelProvider.Factory {
-        private final Context applicationContext;
-
-        public MainViewModelFactory(Context applicationContext) {
-            this.applicationContext = applicationContext;
-        }
-
-        @NonNull
-        @Override
-        public <T extends androidx.lifecycle.ViewModel> T create(@NonNull Class<T> modelClass) {
-            if (modelClass.isAssignableFrom(MainViewModel.class)) {
-                AuthRepository authRepository = new AuthRepository(applicationContext);
-                AuthorRepository authorRepository = new AuthorRepository(applicationContext);
-                PostRepository postRepository = new PostRepository(applicationContext);
-                return (T) new MainViewModel(authRepository, authorRepository, postRepository);
-            }
-            throw new IllegalArgumentException("Unknown ViewModel class");
-        }
     }
 }

@@ -13,6 +13,7 @@ import com.testapp.bluesky_api_test.DataBaseManupilate.entity.User;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
+import dagger.hilt.android.qualifiers.ApplicationContext;
 import work.socialhub.kbsky.Bluesky;
 import work.socialhub.kbsky.BlueskyFactory;
 import work.socialhub.kbsky.api.entity.com.atproto.server.ServerCreateSessionRequest;
@@ -23,6 +24,8 @@ import com.testapp.bluesky_api_test.bluesky.NoDPoPAuthProvider;
 import work.socialhub.kbsky.api.entity.share.AuthRequest;
 import work.socialhub.kbsky.api.entity.share.Response;
 import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
+
+import javax.inject.Inject;
 
 public class AuthRepository {
 
@@ -36,6 +39,7 @@ public class AuthRepository {
     private final SharedPreferences sharedPreferences;
     private final Bluesky bluesky;
     private final UserDao userDao;
+
 
     public AuthRepository(Context context) {
         try {

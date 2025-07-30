@@ -14,6 +14,10 @@ constraintlayout = "2.2.1"
 roomVersion = "2.6.1"
 securityCrypto = "1.0.0"
 lifecycleViewmodelAndroid = "2.9.1"
+kotlinx-coroutines = "1.7.3"
+hilt = "2.51.1"
+hiltAndroidx = "1.2.0"
+hiltCommon = "1.2.0"
 
 [libraries]
 at-protocol-java = { module = "com.github.TomCools:AT-Protocol-Java", version.ref = "atProtocolJava" }
@@ -32,6 +36,12 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVer
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
 lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-androidx-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltAndroidx" }
+hilt-common = { group = "androidx.hilt", name = "hilt-common", version.ref = "hiltCommon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

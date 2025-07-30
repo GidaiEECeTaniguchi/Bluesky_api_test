@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -55,6 +56,7 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.security.crypto)
     implementation(libs.lifecycle.viewmodel.android)
+    implementation(libs.hilt.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -87,4 +89,13 @@ dependencies {
     val work_version = "2.9.0" // 最新バージョンは適宜確認してください
     implementation("androidx.work:work-runtime-ktx:$work_version")
 
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation("androidx.hilt:hilt-work:1.2.0")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
 }

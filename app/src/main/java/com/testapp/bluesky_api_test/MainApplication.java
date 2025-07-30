@@ -8,6 +8,9 @@ import androidx.work.WorkManager;
 import com.testapp.bluesky_api_test.task.TimelineCrawlerWorker;
 import java.util.concurrent.TimeUnit;
 
+import dagger.hilt.android.HiltAndroidApp;
+
+@HiltAndroidApp
 public class MainApplication extends Application {
 
     @Override

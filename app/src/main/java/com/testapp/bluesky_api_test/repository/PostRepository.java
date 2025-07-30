@@ -1,148 +1,98 @@
 package com.testapp.bluesky_api_test.repository;
 
 import android.content.Context;
-
 import androidx.lifecycle.LiveData;
-
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabase;
-import com.testapp.bluesky_api_test.DataBaseManupilate.AppDatabaseSingleton;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.AuthorDao;
-import com.testapp.bluesky_api_test.DataBaseManupilate.dao.BasePostDao;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.Author;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.BasePost;
 import com.testapp.bluesky_api_test.DataBaseManupilate.entity.PostWithAuthorName;
-import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
 import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
-import java.time.Instant;
-import java.util.Date;
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsPostView;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedPost;
-import work.socialhub.kbsky.model.share.RecordUnion;
-import work.socialhub.kbsky.BlueskyTypes;
+import com.testapp.bluesky_api_test.data.source.local.BlueskyLocalDataSource;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSource;
 
+import dagger.hilt.android.qualifiers.ApplicationContext;
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class PostRepository {
 
-    private final BlueskyOperations blueskyOperations;
-    private final BasePostDao basePostDao;
-    private final AuthorDao authorDao;
+    private final BlueskyRemoteDataSource blueskyRemoteDataSource;
+    private final BlueskyLocalDataSource blueskyLocalDataSource;
 
-    public PostRepository(Context context) {
-        this.blueskyOperations = new BlueskyOperations();
-        AppDatabase db = AppDatabaseSingleton.getInstance(context);
-        this.basePostDao = db.basePostDao();
-        this.authorDao = db.authorDao();
+
+    public PostRepository(
+             Context context,
+            BlueskyRemoteDataSource blueskyRemoteDataSource,
+            BlueskyLocalDataSource blueskyLocalDataSource) {
+        this.blueskyRemoteDataSource = blueskyRemoteDataSource;
+        this.blueskyLocalDataSource = blueskyLocalDataSource;
     }
 
     public void fetchAndSaveAuthorFeed(BearerTokenAuthProvider authProvider, String actorIdentifier, int userId) throws Exception {
-        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
+        List<BlueskyPostInfo> feedViewPosts = blueskyRemoteDataSource.fetchAuthorFeed(authProvider, actorIdentifier);
         List<BasePost> postsToSave = new ArrayList<>();
 
-        for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {
-            FeedDefsPostView postView = feedViewPost.getPost();
-            if (postView != null && postView.getRecord() != null) {
-                RecordUnion record = postView.getRecord();
-                if (BlueskyTypes.FeedPost.equals(record.getType())) {
-                    FeedPost postContent = (FeedPost) record;
-
-                    Author author = authorDao.getAuthorByDid(postView.getAuthor().getDid());
-                    if (author == null) {
-                        continue;
-                    }
-                    int authorId = author.getId();
-
-                    String content = postContent.getText() != null ? postContent.getText() : "";
-                    String createdAt = postContent.getCreatedAt();
-                    String uri = postView.getUri();
-                    String cid = postView.getCid();
-
-                    BasePost basePost = new BasePost(uri, cid, userId, authorId, content, createdAt);
-
-                    postsToSave.add(basePost);
+        for (BlueskyPostInfo postInfo : feedViewPosts) {
+            // Authorを保存または取得
+            Author author = blueskyLocalDataSource.getAuthorByHandleFromDb(postInfo.getAuthorHandle());
+            if (author == null) {
+                author = blueskyLocalDataSource.insertAuthorToDb(new Author(postInfo.getAuthorHandle(), ""));
+                if (author == null) {
+                    // Log.e("PostRepository", "Failed to insert author: " + postInfo.getAuthorHandle());
+                    continue; // Skip this post if author cannot be saved
                 }
             }
+
+            // BasePostを保存
+            // ここではuser_idを仮に1としています。
+            BasePost basePost = new BasePost(postInfo.getPostUri(), postInfo.getCid(), userId, author.getId(), postInfo.getText(), postInfo.getCreatedAt());
+            postsToSave.add(basePost);
         }
 
         if (!postsToSave.isEmpty()) {
-            basePostDao.insertAll(postsToSave.toArray(new BasePost[0]));
+            blueskyLocalDataSource.insertAllPosts(postsToSave);
         }
     }
 
     public List<BlueskyPostInfo> fetchTimelineFromApi(BearerTokenAuthProvider authProvider) throws Exception {
-        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchTimeline(authProvider);
-        return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
+        return blueskyRemoteDataSource.fetchTimeline(authProvider);
     }
 
     public List<BlueskyPostInfo> fetchAuthorFeedFromApi(BearerTokenAuthProvider authProvider, String actorIdentifier) throws Exception {
-        List<FeedDefsFeedViewPost> feedViewPosts = blueskyOperations.fetchAuthorFeed(authProvider, actorIdentifier);
-        return convertFeedViewPostsToBlueskyPostInfo(feedViewPosts);
+        return blueskyRemoteDataSource.fetchAuthorFeed(authProvider, actorIdentifier);
     }
 
     public LiveData<List<BasePost>> getSavedPostsFromDb() {
-        return basePostDao.getAll();
+        return blueskyLocalDataSource.getSavedPostsFromDb();
     }
 
     public long insertPostToDb(BasePost post) {
-        if (basePostDao.getPostByUri(post.getUri()) == null) {
-            return basePostDao.insert(post);
-        }
-        return -1; // Indicate that the post was not inserted (e.g., already exists)
+        return blueskyLocalDataSource.insertPostToDb(post);
     }
 
     public BasePost getPostByIdFromDb(int id) {
-        return basePostDao.getById(id);
+        return blueskyLocalDataSource.getPostByIdFromDb(id);
     }
     public List<BasePost> getPostsByUserIdFromDb(int userId) {
-        return basePostDao.getPostsByUserId(userId);
+        return blueskyLocalDataSource.getPostsByUserIdFromDb(userId);
     }
 
             public List<BasePost> getPostsByAuthorIdFromDb(int authorId) {
-    return basePostDao.getPostsByAuthorId(authorId);
+    return blueskyLocalDataSource.getPostsByAuthorIdFromDb(authorId);
  }
 
     public LiveData<List<PostWithAuthorName>> getAllPostsWithAuthorName() {
-        return basePostDao.getAllPostsWithAuthorName();
+        return blueskyLocalDataSource.getAllPostsWithAuthorName();
     }
 
     public LiveData<List<BasePost>> getAllPosts() {
-        return basePostDao.getAll();
+        return blueskyLocalDataSource.getAllPosts();
     }
 
     public void insertAllPosts(List<BasePost> posts) {
-        List<BasePost> postsToInsert = new ArrayList<>();
-        for (BasePost post : posts) {
-            if (basePostDao.getPostByUri(post.getUri()) == null) {
-                postsToInsert.add(post);
-            }
-        }
-        if (!postsToInsert.isEmpty()) {
-            basePostDao.insertAll(postsToInsert.toArray(new BasePost[0]));
-        }
-    }
-
-    private List<BlueskyPostInfo> convertFeedViewPostsToBlueskyPostInfo(List<FeedDefsFeedViewPost> feedViewPosts) {
-        List<BlueskyPostInfo> blueskyPostInfos = new ArrayList<>();
-        for (FeedDefsFeedViewPost feedViewPost : feedViewPosts) {
-            FeedDefsPostView postView = feedViewPost.getPost();
-            if (postView != null && postView.getRecord() != null) {
-                RecordUnion record = postView.getRecord();
-                if (BlueskyTypes.FeedPost.equals(record.getType())) {
-                    FeedPost postContent = (FeedPost) record;
-                    String postText = postContent.getText() != null ? postContent.getText() : "";
-                    int charCount = postText.length();
-                    String authorHandle = postView.getAuthor().getHandle();
-                    String postUri = postView.getUri();
-                    String cid = postView.getCid();
-                    String createdAt = postContent.getCreatedAt();
-                    blueskyPostInfos.add(new BlueskyPostInfo(authorHandle, postUri, cid, postText, charCount, createdAt));
-                }
-            }
-        }
-        return blueskyPostInfos;
+        blueskyLocalDataSource.insertAllPosts(posts);
     }
 
     public void shutdown() {

@@ -4,27 +4,27 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.testapp.bluesky_api_test.bluesky.BlueskyOperations;
+import com.testapp.bluesky_api_test.bluesky.BlueskyPostInfo;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSource;
+import com.testapp.bluesky_api_test.data.source.remote.BlueskyRemoteDataSourceImpl;
+import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
 
 import java.util.List;
 
-import work.socialhub.kbsky.auth.BearerTokenAuthProvider;
-import work.socialhub.kbsky.model.app.bsky.feed.FeedDefsFeedViewPost;
-
-public class CrawlPostsTask extends AsyncTask<BearerTokenAuthProvider, Void, List<FeedDefsFeedViewPost>> {
+public class CrawlPostsTask extends AsyncTask<BearerTokenAuthProvider, Void, List<BlueskyPostInfo>> {
 
     private static final String TAG = "CrawlPostsTask";
-    private final BlueskyOperations blueskyOperations;
+    private final BlueskyRemoteDataSource blueskyRemoteDataSource;
 
     private final Context context;
 
-    public CrawlPostsTask(Context context, BlueskyOperations blueskyOperations) {
+    public CrawlPostsTask(Context context) {
         this.context = context;
-        this.blueskyOperations = blueskyOperations;
+        this.blueskyRemoteDataSource = new BlueskyRemoteDataSourceImpl();
     }
 
     @Override
-    protected List<FeedDefsFeedViewPost> doInBackground(BearerTokenAuthProvider... authProviders) {
+    protected List<BlueskyPostInfo> doInBackground(BearerTokenAuthProvider... authProviders) {
         if (authProviders.length == 0 || authProviders[0] == null) {
             Log.e(TAG, "AuthProvider is null or not provided.");
             return null;
@@ -32,7 +32,7 @@ public class CrawlPostsTask extends AsyncTask<BearerTokenAuthProvider, Void, Lis
         BearerTokenAuthProvider authProvider = authProviders[0];
         try {
             Log.d(TAG, "Fetching timeline posts...");
-            return blueskyOperations.fetchTimeline(authProvider);
+            return blueskyRemoteDataSource.fetchTimeline(authProvider);
         } catch (Exception e) {
             Log.e(TAG, "Failed to fetch timeline posts", e);
             return null;
@@ -40,7 +40,7 @@ public class CrawlPostsTask extends AsyncTask<BearerTokenAuthProvider, Void, Lis
     }
 
     @Override
-    protected void onPostExecute(List<FeedDefsFeedViewPost> posts) {
+    protected void onPostExecute(List<BlueskyPostInfo> posts) {
         if (posts != null) {
             Log.d(TAG, "Successfully fetched " + posts.size() + " posts.");
             new SaveTimelinePostsTask(context).execute(posts);
